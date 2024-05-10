@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  BulletDeathParticles: {fileID: 4595045261103524536, guid: 537930dfb1cbc43759b92ab2383579f7, type: 3}

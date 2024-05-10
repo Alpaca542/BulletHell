@@ -9,7 +9,9 @@ public class EnemyAI : MonoBehaviour
     [Header("Params")]
     public float speed;
     public float health;
+    [Header("Fields")]
     private NavMeshAgent agent;
+    public GameObject SlimeDeathParticles;
     public GameObject target;
     private void Start()
     {
@@ -28,9 +30,11 @@ public class EnemyAI : MonoBehaviour
         if(collision.gameObject.tag == "bullet")
         {
             health -= collision.gameObject.GetComponent<BulletScript>().damage;
+            Destroy(collision.gameObject);
         }
         if (health <= 0)
         {
+            Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

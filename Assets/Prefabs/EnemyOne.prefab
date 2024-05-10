@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.048674583, b: 1, a: 1}
+  m_Color: {r: 0.0990566, g: 0.3962264, b: 0.11461926, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597ea658584954edc9b022b3df2ae432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3.5
+  health: 5
+  SlimeDeathParticles: {fileID: 3982605251137279380, guid: 0b303819a057b4ed49de0c3db1b61a63, type: 3}
   target: {fileID: 0}
 --- !u!50 &5168886396605298341
 Rigidbody2D:
