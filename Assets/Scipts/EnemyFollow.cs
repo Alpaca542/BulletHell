@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.speed = speed;
         target = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
