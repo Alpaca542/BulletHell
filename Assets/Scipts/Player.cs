@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Params")]
+    public float speed;
     private Rigidbody2D rb;
     private void Awake()
     {
@@ -13,6 +15,6 @@ public class Player : MonoBehaviour
     {
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(dirX, dirY);
+        rb.velocity = new Vector2(dirX, dirY) * speed;
     }
 }
