@@ -24,9 +24,13 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "buller")
+        if(collision.gameObject.tag == "bullet")
         {
             health -= collision.gameObject.GetComponent<BulletScript>().damage;
+        }
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
