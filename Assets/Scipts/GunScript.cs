@@ -31,7 +31,7 @@ public class GunScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject blt = Instantiate(bullet, transform.position, Quaternion.identity);
-            blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.forward*1000f);
+            blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
         }
     }
 }
