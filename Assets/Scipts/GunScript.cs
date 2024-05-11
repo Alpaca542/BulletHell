@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public GameObject plr;
-    public GameObject bullet;
+    //public GameObject bullet;
     void Update()
     {
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -30,7 +30,9 @@ public class GunScript : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject blt = Instantiate(bullet, transform.position, transform.rotation);
+			GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+            blt.transform.position = transform.position;
+            blt.transform.rotation = transform.rotation;
             blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
         }
     }

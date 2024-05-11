@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class BulletScript : MonoBehaviour
+public class BulletScript : MonoBehaviour, IPoolable
 {
     public float damage;
     public float speed = 3f;
@@ -13,16 +13,31 @@ public class BulletScript : MonoBehaviour
     private float t = 0.0f;
     private Vector3 startPosition;
     public Vector3 StartRotation;
-    private void Start()
-    {
-        startPosition = transform.position;
-        Invoke(nameof(DieInTime), 10f);
-    }
+
+    //private void Start()
+    //{
+    //    startPosition = transform.position;
+    //    Invoke(nameof(DieInTime), 10f);
+    //}
+
     public void DieInTime()
     {
-        Destroy(gameObject);
+        GameManager.Instance.pool.Return(this);
     }
-    private void Update()
+
+	public void OnGetFromPool()
+	{
+        gameObject.SetActive(true);
+		startPosition = transform.position;
+		Invoke(nameof(DieInTime), 10f);
+	}
+
+	public void OnReturnToPool()
+	{
+		gameObject.SetActive(false);
+	}
+
+	private void Update()
     {
         if(gameObject.tag == "EnemyBullet")
         {

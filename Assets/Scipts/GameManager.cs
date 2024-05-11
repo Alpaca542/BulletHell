@@ -5,10 +5,23 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private ObjectPool pool = new ObjectPool();
+	public static GameManager Instance;
+    public readonly ObjectPool pool = new ObjectPool();
 
-	// Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+		if (Instance != null && Instance != this)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+	}
+
+	void Start()
     {
 		LoadPoolablePrefabs();
 	}
