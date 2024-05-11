@@ -88,6 +88,7 @@ public class EnemyAI : MonoBehaviour
                     blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<BulletScript>().startPosition = guns[i].transform.position;
                     blt.GetComponent<BulletScript>().speed = bulletSpeed;
                     blt.GetComponent<BulletScript>().StartRotation = guns[i].transform.eulerAngles;
                     blt.transform.Rotate(new Vector3(0, 0, 90));

@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour, IPoolable
     public AnimationCurve Path;
     public GameObject BulletDeathParticles;
     private float t = 0.0f;
-    private Vector3 startPosition;
+    public Vector3 startPosition;
     public Vector3 StartRotation;
 
     public bool AmIFromPlayer;
