@@ -31,6 +31,7 @@ public class GunScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 			GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+            blt.GetComponent<BulletScript>().AmIFromPlayer = true;
             blt.transform.position = transform.position;
             blt.transform.rotation = transform.rotation;
             blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);

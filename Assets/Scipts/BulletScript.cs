@@ -14,11 +14,16 @@ public class BulletScript : MonoBehaviour, IPoolable
     private Vector3 startPosition;
     public Vector3 StartRotation;
 
-    //private void Start()
-    //{
-    //    startPosition = transform.position;
-    //    Invoke(nameof(DieInTime), 10f);
-    //}
+    public bool AmIFromPlayer;
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
+    private void OnEnable()
+    {
+        t = 0;
+        startPosition = transform.position;
+    }
 
     public void DieInTime()
     {
@@ -29,6 +34,7 @@ public class BulletScript : MonoBehaviour, IPoolable
 	{
         gameObject.SetActive(true);
 		startPosition = transform.position;
+        CancelInvoke(nameof(DieInTime));
 		Invoke(nameof(DieInTime), 10f);
 	}
 
@@ -39,7 +45,7 @@ public class BulletScript : MonoBehaviour, IPoolable
 
 	private void Update()
     {
-        if(gameObject.tag == "EnemyBullet")
+        if(!AmIFromPlayer)
         {
             t += Time.deltaTime;
 
@@ -75,7 +81,7 @@ public class BulletScript : MonoBehaviour, IPoolable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && gameObject.tag == "PlayerBullet")
+        if (collision.gameObject.tag == "Enemy" && AmIFromPlayer)
         {
             EnemyAI enem = collision.gameObject.GetComponent<EnemyAI>();
             enem.health -= damage;
@@ -86,7 +92,7 @@ public class BulletScript : MonoBehaviour, IPoolable
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.tag == "Player" && gameObject.tag == "EnemyBullet")
+        else if(collision.gameObject.tag == "Player" && !AmIFromPlayer)
         {
             Player plr = collision.gameObject.GetComponent<Player>();
             plr.health -= damage;
