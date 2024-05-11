@@ -274,6 +274,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   SidesToShoot: 00000000
+  BulletPath:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bulletSpeed: 0
   guns:
   - {fileID: 8290624857964755676}
   - {fileID: 2257432605690569480}
@@ -283,7 +290,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  bullet: {fileID: 8175071867525735681, guid: 2ee4c596906e142a58ba655abf72dc0e, type: 3}
+  bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
   AmIShooting: 0
 --- !u!50 &5168886396605298341
