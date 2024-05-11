@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5168886396605298341}
   m_Layer: 0
   m_Name: EnemyOne
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,6 +236,7 @@ MonoBehaviour:
   speed: 3.5
   health: 5
   shootingDistance: 0
+  shootingCooldown: 0
   searchingRadius: 0
   SouldSearch: 0
   SouldShoot: 0
@@ -272,7 +273,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  AmountOfProjectilesForEachSide: 0
   SidesToShoot: 00000000
   guns:
   - {fileID: 8290624857964755676}
@@ -312,7 +312,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6800914922020963949
 GameObject:
   m_ObjectHideFlags: 0

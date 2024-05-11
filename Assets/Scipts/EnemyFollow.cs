@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float speed;
     public float health;
     public float shootingDistance;
+    public float shootingCooldown;
     public float searchingRadius;
 
     [Header("Settings")]
@@ -61,7 +62,7 @@ public class EnemyAI : MonoBehaviour
                 if (!AmIShooting)
                 {
                     AmIShooting = true;
-                    InvokeRepeating(nameof(InvokeShoot), 0, 1f);
+                    InvokeRepeating(nameof(InvokeShoot), 0, shootingCooldown);
                 }
             }
             else
@@ -74,7 +75,6 @@ public class EnemyAI : MonoBehaviour
     }
     public void InvokeShoot()
     {
-        //90 0 -90
         for(int i = 0; i<4; i++)
         {
             if (SidesToShoot[i])
@@ -88,17 +88,9 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Die()
     {
-        if(collision.gameObject.tag == "PlayerBullet")
-        {
-            health -= collision.gameObject.GetComponent<BulletScript>().damage;
-            Destroy(collision.gameObject);
-        }
-        if (health <= 0)
-        {
-            Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Params")]
     public float speed;
+    public float health;
     private Rigidbody2D rb;
     private void Awake()
     {
@@ -16,5 +17,9 @@ public class Player : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(dirX, dirY) * speed;
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
