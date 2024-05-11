@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Params")]
+    [Header("Stats")]
     public float speed;
     public float health;
     public float shootingDistance;
     public float searchingRadius;
+
+    [Header("Settings")]
     public bool SouldSearch;
     public bool SouldShoot;
+    public AnimationCurve ProjectlilesPattern;
+    public int AmountOfProjectilesForEachSide;
 
     [Header("Fields")]
     private NavMeshAgent agent;
@@ -35,6 +38,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void Update()
     {
+        transform.right = target.transform.position - transform.position;
         if (SouldSearch)//Looks for a player in a radius
         {
             Collider2D searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, playerLayer);
@@ -70,8 +74,12 @@ public class EnemyAI : MonoBehaviour
     }
     public void InvokeShoot()
     {
-        GameObject blt = Instantiate(bullet, transform.position, Quaternion.identity);
-        blt.GetComponent<Rigidbody2D>().AddForce((target.transform.position-transform.position).normalized * 1000f);
+        //90 0 -90
+        foreach(Keyframe kf in ProjectlilesPattern.keys)
+        {
+            GameObject blt = Instantiate(bullet, new Vector2(transform.position.x + kf.value, transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, kf.inTangent+90)));
+            blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

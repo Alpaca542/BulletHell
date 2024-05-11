@@ -18,4 +18,8 @@ public class BulletScript : MonoBehaviour
     {
         Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 }

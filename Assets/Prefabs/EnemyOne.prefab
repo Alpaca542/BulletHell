@@ -171,14 +171,49 @@ MonoBehaviour:
   health: 5
   shootingDistance: 0
   searchingRadius: 0
-  AmISearching: 0
-  AmIShooting: 0
+  SouldSearch: 0
+  SouldShoot: 0
+  ProjectlilesPattern:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.49944475
+      value: -0.009687364
+      inSlope: 1.0244597
+      outSlope: 1.0244597
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.008375347
+      value: 0.49339345
+      inSlope: 0.03856197
+      outSlope: 0.03856197
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.49779654
+      value: 0.013878692
+      inSlope: -0.9473358
+      outSlope: -0.9473358
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  AmountOfProjectilesForEachSide: 0
   SlimeDeathParticles: {fileID: 3982605251137279380, guid: 0b303819a057b4ed49de0c3db1b61a63, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
   bullet: {fileID: 8175071867525735681, guid: 2ee4c596906e142a58ba655abf72dc0e, type: 3}
   target: {fileID: 0}
+  AmIShooting: 0
 --- !u!50 &5168886396605298341
 Rigidbody2D:
   serializedVersion: 4
