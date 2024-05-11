@@ -16,7 +16,6 @@ public class EnemyAI : MonoBehaviour
     public bool SouldSearch;
     public bool SouldShoot;
     public AnimationCurve ProjectlilesPattern;
-    public int AmountOfProjectilesForEachSide;
     public bool[] SidesToShoot;
 
     [Header("Fields")]
