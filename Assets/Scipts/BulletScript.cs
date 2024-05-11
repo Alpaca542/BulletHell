@@ -13,6 +13,7 @@ public class BulletScript : MonoBehaviour, IPoolable
     private float t = 0.0f;
     public Vector3 startPosition;
     public Vector3 StartRotation;
+    public bool InvertPattern;
 
     public bool AmIFromPlayer;
     private void Start()
@@ -57,25 +58,51 @@ public class BulletScript : MonoBehaviour, IPoolable
 
 
             float yPos = Path.Evaluate(t);
-            if(StartRotation.z == -90 || StartRotation.z == 270)
+            if (InvertPattern)
             {
-                Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
-                transform.position = newPosition;
+                if (StartRotation.z == -90 || StartRotation.z == 270)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 90 || StartRotation.z == -270)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 180 || StartRotation.z == -180)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y - t * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 0)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y + t * speed);
+                    transform.position = newPosition;
+                }
             }
-            else if (StartRotation.z == 90 || StartRotation.z == -270)
+            else
             {
-                Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
-                transform.position = newPosition;
-            }
-            else if (StartRotation.z == 180 || StartRotation.z == -180)
-            {
-                Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y - t * speed);
-                transform.position = newPosition;
-            }
-            else if (StartRotation.z == 0)
-            {
-                Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y + t * speed);
-                transform.position = newPosition;
+                if (StartRotation.z == -90 || StartRotation.z == 270)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 90 || StartRotation.z == -270)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 180 || StartRotation.z == -180)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y - t * speed);
+                    transform.position = newPosition;
+                }
+                else if (StartRotation.z == 0)
+                {
+                    Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y + t * speed);
+                    transform.position = newPosition;
+                }
             }
         }
     }
