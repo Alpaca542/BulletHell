@@ -783,6 +783,22 @@ PrefabInstance:
       propertyPath: shootingDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1858596548079234657, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
+      propertyPath: SidesToShoot.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858596548079234657, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
+      propertyPath: SidesToShoot.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858596548079234657, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
+      propertyPath: SidesToShoot.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858596548079234657, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
+      propertyPath: SidesToShoot.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2655634259043704896, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.6365466

@@ -17,8 +17,10 @@ public class EnemyAI : MonoBehaviour
     public bool SouldShoot;
     public AnimationCurve ProjectlilesPattern;
     public int AmountOfProjectilesForEachSide;
+    public bool[] SidesToShoot;
 
     [Header("Fields")]
+    public GameObject[] guns;
     private NavMeshAgent agent;
     public GameObject SlimeDeathParticles;
     public LayerMask playerLayer;
@@ -38,7 +40,6 @@ public class EnemyAI : MonoBehaviour
     }
     private void Update()
     {
-        transform.right = target.transform.position - transform.position;
         if (SouldSearch)//Looks for a player in a radius
         {
             Collider2D searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, playerLayer);
@@ -75,10 +76,17 @@ public class EnemyAI : MonoBehaviour
     public void InvokeShoot()
     {
         //90 0 -90
-        foreach(Keyframe kf in ProjectlilesPattern.keys)
+        for(int i = 0; i<4; i++)
         {
-            GameObject blt = Instantiate(bullet, new Vector2(transform.position.x + kf.value, transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, kf.inTangent+90)));
-            blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
+            if (SidesToShoot[i])
+            {
+                foreach (Keyframe kf in ProjectlilesPattern.keys)
+                {
+                    GameObject blt = Instantiate(bullet, new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent))));
+                    blt.transform.Rotate(new Vector3(0, 0, 90));
+                    blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
+                }
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
