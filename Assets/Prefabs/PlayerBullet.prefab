@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9078931937457166180}
   m_Layer: 0
   m_Name: PlayerBullet
-  m_TagString: bullet
+  m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,4 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  speed: 3
+  Path:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   BulletDeathParticles: {fileID: 4595045261103524536, guid: 537930dfb1cbc43759b92ab2383579f7, type: 3}

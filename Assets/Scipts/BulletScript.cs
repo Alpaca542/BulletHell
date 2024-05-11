@@ -1,19 +1,58 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
     public float damage;
+    public float speed = 3f;
+    public AnimationCurve Path;
     public GameObject BulletDeathParticles;
+    private float t = 0.0f;
+    private Vector3 startPosition;
+    public Vector3 StartRotation;
     private void Start()
     {
-        Invoke(nameof(DieInTime), 3f);
+        startPosition = transform.position;
+        Invoke(nameof(DieInTime), 10f);
     }
     public void DieInTime()
     {
         Destroy(gameObject);
+    }
+    private void Update()
+    {
+        if(gameObject.tag == "EnemyBullet")
+        {
+            t += Time.deltaTime;
+
+            if (t > Path.keys[Path.length - 1].time)
+                t = 0.0f;
+
+            float yPos = Path.Evaluate(t);
+            if(StartRotation.z == -90 || StartRotation.z == 270)
+            {
+                Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
+                transform.position = newPosition;
+            }
+            else if (StartRotation.z == 90 || StartRotation.z == -270)
+            {
+                Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
+                transform.position = newPosition;
+            }
+            else if (StartRotation.z == 180 || StartRotation.z == -180)
+            {
+                Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y - t * speed);
+                transform.position = newPosition;
+            }
+            else if (StartRotation.z == 0)
+            {
+                Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y + t * speed);
+                transform.position = newPosition;
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,11 +78,11 @@ public class BulletScript : MonoBehaviour
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        else if ((collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "EnemyBullet") || (collision.gameObject.tag == "EnemyBullet" && gameObject.tag == "PlayerBullet"))
-        {
-            Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
+        //else if ((collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "EnemyBullet") || (collision.gameObject.tag == "EnemyBullet" && gameObject.tag == "PlayerBullet"))
+        //{
+        //    Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+        //    Destroy(collision.gameObject);
+        //    Destroy(gameObject);
+        //}
     }
 }

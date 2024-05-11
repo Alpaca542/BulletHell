@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     public bool SouldShoot;
     public AnimationCurve ProjectlilesPattern;
     public bool[] SidesToShoot;
+    public AnimationCurve BulletPath;
+    public float bulletSpeed;
 
     [Header("Fields")]
     public GameObject[] guns;
@@ -82,8 +84,11 @@ public class EnemyAI : MonoBehaviour
                 foreach (Keyframe kf in ProjectlilesPattern.keys)
                 {
                     GameObject blt = Instantiate(bullet, new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent))));
+                    blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<BulletScript>().speed = bulletSpeed;
+                    blt.GetComponent<BulletScript>().StartRotation = guns[i].transform.eulerAngles;
                     blt.transform.Rotate(new Vector3(0, 0, 90));
-                    blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
+                    //blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
                 }
             }
         }
