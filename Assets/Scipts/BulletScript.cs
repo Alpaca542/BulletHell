@@ -44,7 +44,11 @@ public class BulletScript : MonoBehaviour, IPoolable
             t += Time.deltaTime;
 
             if (t > Path.keys[Path.length - 1].time)
+            {
                 t = 0.0f;
+                startPosition = transform.position;
+            }
+
 
             float yPos = Path.Evaluate(t);
             if(StartRotation.z == -90 || StartRotation.z == 270)
