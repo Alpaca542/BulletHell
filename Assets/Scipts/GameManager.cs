@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	[SerializeField] private AudioClip _music;
 	public static GameManager Instance;
+
     public readonly ObjectPool pool = new ObjectPool();
+	public readonly AudioSystem audioSystem = new AudioSystem();
 
 	private void Awake()
 	{
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
 	void Start()
     {
 		LoadPoolablePrefabs();
+		audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music });
 	}
 
 	private void LoadPoolablePrefabs()
