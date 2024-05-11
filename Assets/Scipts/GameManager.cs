@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
 	private void LoadPoolablePrefabs()
 	{
-		Object[] objs = Resources.LoadAll("PoolableMonoBehaviours");
+		Object[] objs = Resources.LoadAll("PoolablePrefabs");
 		foreach (Object obj in objs)
 		{
 			if (obj is not GameObject)
