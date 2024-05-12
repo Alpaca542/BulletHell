@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public GameObject plr;
+    public float angleOfChange;
     //public GameObject bullet;
     void Update()
     {
@@ -36,5 +37,38 @@ public class GunScript : MonoBehaviour
             blt.transform.rotation = transform.rotation;
             blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            if(angleOfChange != 90)
+            {
+                angleOfChange = angleOfChange + 45f;
+            }
+            else
+            {
+                angleOfChange = 0;
+            }
+        }
+    }
+    private void Start()
+    {
+        InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
+    }
+    public void InvokePlayerShooting()
+    {
+        GameObject blt2 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+        blt2.GetComponent<BulletScript>().AmIFromPlayer = true;
+        blt2.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
+        blt2.transform.localPosition = new Vector2(transform.position.x + 0.5f, transform.position.y - 0.5f);
+        blt2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.rotation.z));
+        blt2.transform.Rotate(new Vector3(0, 0, angleOfChange));
+        blt2.GetComponent<Rigidbody2D>().AddForce(blt2.transform.up * 1000f);
+
+        GameObject blt3 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+        blt3.GetComponent<BulletScript>().AmIFromPlayer = true;
+        blt3.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
+        blt3.transform.localPosition = new Vector2(transform.position.x - 0.5f, transform.position.y-0.5f);
+        blt3.transform.rotation = plr.transform.rotation;
+        blt3.transform.Rotate(new Vector3(0, 0, -angleOfChange));
+        blt3.GetComponent<Rigidbody2D>().AddForce(blt3.transform.up * 1000f);
     }
 }
