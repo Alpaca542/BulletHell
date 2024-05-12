@@ -17,6 +17,8 @@ public class SpawnEnemies : MonoBehaviour
     public int AmountOfStages;
     public float SpawnCooldown;
     public float WaveCooldown;
+    public Transform border1;
+    public Transform border2;
     private void Awake()
     {
         for(int i = 0; i < Enemies1.Length; i ++)
@@ -35,7 +37,8 @@ public class SpawnEnemies : MonoBehaviour
             while (EnemiesToUse.Count != 0)
             {
                 KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(Random.Range(0, Enemies.Count - 1));
-                Instantiate(chosenEnemy.Key, transform.position, Quaternion.identity);
+                Instantiate(chosenEnemy.Key, new Vector2(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y)), Quaternion.identity);
+                //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
                 HardnessLeft -= chosenEnemy.Value;
                 EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
                                                         .ToDictionary(kv => kv.Key, kv => kv.Value); yield return new WaitForSeconds(SpawnCooldown);

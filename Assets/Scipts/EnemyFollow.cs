@@ -4,7 +4,7 @@ using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IPoolable
 {
     [Header("Stats")]
     public float speed;
@@ -33,13 +33,23 @@ public class EnemyAI : MonoBehaviour
     [Header("Debug")]
     public bool AmIShooting;
 
-    private void Start()
+    private void OnEnable()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
         target = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    public void OnGetFromPool()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void OnReturnToPool()
+    {
+        gameObject.SetActive(false);
     }
     private void Update()
     {

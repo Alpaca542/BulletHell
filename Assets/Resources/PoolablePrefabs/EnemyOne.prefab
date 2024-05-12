@@ -235,11 +235,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   health: 5
-  shootingDistance: 0
-  shootingCooldown: 0
-  searchingRadius: 0
+  shootingDistance: 6
+  shootingCooldown: 0.2
+  searchingRadius: 5
   SouldSearch: 0
-  SouldShoot: 0
+  SouldShoot: 1
   ProjectlilesPattern:
     serializedVersion: 2
     m_Curve:
@@ -273,14 +273,33 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SidesToShoot: 00000000
+  SidesToShoot: 01010101
   BulletPath:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.001596991
+      value: -0.0010052919
+      inSlope: 0.004625544
+      outSlope: 0.004625544
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0008545
+      value: 0.0036315918
+      inSlope: 0.004625544
+      outSlope: 0.004625544
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bulletSpeed: 0
+  bulletSpeed: 10
+  InvertPatterns: 1
   guns:
   - {fileID: 8290624857964755676}
   - {fileID: 2257432605690569480}
