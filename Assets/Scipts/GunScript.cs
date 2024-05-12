@@ -37,7 +37,7 @@ public class GunScript : MonoBehaviour
             blt.transform.rotation = transform.rotation;
             blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
         {
             if(angleOfChange != 180)
             {
