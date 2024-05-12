@@ -6,6 +6,9 @@ public class GunScript : MonoBehaviour
 {
     public GameObject plr;
     public float angleOfChange;
+    public bool Connected = false;
+    public LayerMask ConnectLineTo, ConnectLineTo2;
+    public GameObject ConnectObject;
     //public GameObject bullet;
     void Update()
     {
@@ -29,14 +32,14 @@ public class GunScript : MonoBehaviour
         {
             plr.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-			GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
-            blt.GetComponent<BulletScript>().AmIFromPlayer = true;
-            blt.transform.position = transform.position;
-            blt.transform.rotation = transform.rotation;
-            blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
-        }
+   //     if (Input.GetMouseButtonDown(0))
+   //     {
+			//GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+   //         blt.GetComponent<BulletScript>().AmIFromPlayer = true;
+   //         blt.transform.position = transform.position;
+   //         blt.transform.rotation = transform.rotation;
+   //         blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
+   //     }
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
         {
             if(angleOfChange != 180)
@@ -47,6 +50,33 @@ public class GunScript : MonoBehaviour
             {
                 angleOfChange = 0;
             }
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
+        if (hit.collider != null && Input.GetMouseButton(0))
+        {
+            //CancelInvoke(nameof(ContinueTime));
+            //ContinueTime();
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 10f, ConnectLineTo);
+            if (hit2.collider != null )
+            {
+                Connected = true;
+                ConnectObject = hit2.collider.gameObject;
+            }
+        }
+        else
+        {
+            Connected = false;
+        }
+        if (Connected && ConnectObject != null)
+        {
+            GetComponent<LineRenderer>().enabled = true;
+            GetComponent<LineRenderer>().SetPosition(0, transform.position);
+            GetComponent<LineRenderer>().SetPosition(1, ConnectObject.transform.position);
+        }
+        else
+        {
+            GetComponent<LineRenderer>().enabled = false;
         }
     }
     private void Start()
