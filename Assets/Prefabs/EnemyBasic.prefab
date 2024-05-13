@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   health: 5
-  shootingDistance: 6
+  shootingDistance: 30
   shootingCooldown: 0.2
   searchingRadius: 5
   SouldSearch: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SidesToShoot: 01010101
+  SidesToShoot: 00000001
   BulletPath:
     serializedVersion: 2
     m_Curve:

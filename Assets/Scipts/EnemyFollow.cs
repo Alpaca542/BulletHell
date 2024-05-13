@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
                 if (!AmIShooting)
                 {
                     AmIShooting = true;
-                    InvokeRepeating(nameof(InvokeShoot), 0, shootingCooldown);
+                    InvokeRepeating(nameof(InvokeShoot), shootingCooldown, shootingCooldown);
                 }
             }
             else

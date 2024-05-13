@@ -36,7 +36,7 @@ public class SpawnEnemies : MonoBehaviour
                                                     .ToDictionary(kv => kv.Key, kv => kv.Value);
             while (EnemiesToUse.Count != 0)
             {
-                KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(Random.Range(0, Enemies.Count - 1));
+                KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(Random.Range(0, Enemies.Count));
                 Instantiate(chosenEnemy.Key, new Vector2(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y)), Quaternion.identity);
                 //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
                 HardnessLeft -= chosenEnemy.Value;

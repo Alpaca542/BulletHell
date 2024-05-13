@@ -108,8 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3.5
   health: 5
-  shootingDistance: 6
-  shootingCooldown: 0.2
+  shootingDistance: 30
+  shootingCooldown: 0.5
   searchingRadius: 5
   SouldSearch: 0
   SouldShoot: 1
@@ -117,14 +117,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.016431987
-      value: -0.006820172
-      inSlope: 0.0059360587
-      outSlope: 0.0059360587
+      time: -0.49688405
+      value: -0.0049413517
+      inSlope: 0.60393155
+      outSlope: 0.60393155
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.120009646
+    - serializedVersion: 3
+      time: -0.0013366084
+      value: -0.0049221534
+      inSlope: 0.000038741593
+      outSlope: 0.000038741593
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4991141
+      value: -0.004902765
+      inSlope: -0.4479652
+      outSlope: -0.4479652
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12599102
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
