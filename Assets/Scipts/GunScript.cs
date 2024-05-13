@@ -60,8 +60,12 @@ public class GunScript : MonoBehaviour
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 10f, ConnectLineTo);
             if (hit2.collider != null )
             {
-                Connected = true;
-                ConnectObject = hit2.collider.gameObject;
+                if(hit2.collider.gameObject != ConnectObject)
+                {
+                    Connected = true;
+                    ConnectObject = hit2.collider.gameObject;
+                    Invoke(nameof(CatchInvoke), 2f);
+                }
             }
         }
         else
@@ -78,6 +82,10 @@ public class GunScript : MonoBehaviour
         {
             GetComponent<LineRenderer>().enabled = false;
         }
+    }
+    public void CatchInvoke()
+    {
+
     }
     private void Start()
     {
