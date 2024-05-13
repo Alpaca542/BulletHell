@@ -9,7 +9,6 @@ public class GunScript : MonoBehaviour
     public bool Connected = false;
     public LayerMask ConnectLineTo, ConnectLineTo2;
     public GameObject ConnectObject;
-    //public GameObject bullet;
     void Update()
     {
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -32,14 +31,7 @@ public class GunScript : MonoBehaviour
         {
             plr.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-   //     if (Input.GetMouseButtonDown(0))
-   //     {
-			//GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
-   //         blt.GetComponent<BulletScript>().AmIFromPlayer = true;
-   //         blt.transform.position = transform.position;
-   //         blt.transform.rotation = transform.rotation;
-   //         blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up*1000f);
-   //     }
+
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
         {
             if(angleOfChange != 180)
@@ -55,8 +47,6 @@ public class GunScript : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
         if (hit.collider != null && Input.GetMouseButton(0))
         {
-            //CancelInvoke(nameof(ContinueTime));
-            //ContinueTime();
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 10f, ConnectLineTo);
             if (hit2.collider != null )
             {
@@ -98,7 +88,7 @@ public class GunScript : MonoBehaviour
         blt2.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt2.transform.localPosition = new Vector2(transform.position.x + 0.5f, transform.position.y - 0.2f);
         blt2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.rotation.z));
-        blt2.transform.Rotate(new Vector3(0, 0, angleOfChange));
+        blt2.transform.Rotate(new Vector3(0, 0, -angleOfChange));
         blt2.GetComponent<Rigidbody2D>().AddForce(blt2.transform.up * 1000f);
 
         GameObject blt3 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
@@ -106,7 +96,7 @@ public class GunScript : MonoBehaviour
         blt3.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt3.transform.localPosition = new Vector2(transform.position.x - 0.5f, transform.position.y-0.2f);
         blt2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.rotation.z));
-        blt3.transform.Rotate(new Vector3(0, 0, -angleOfChange));
+        blt3.transform.Rotate(new Vector3(0, 0, angleOfChange));
         blt3.GetComponent<Rigidbody2D>().AddForce(blt3.transform.up * 1000f);
     }
 }

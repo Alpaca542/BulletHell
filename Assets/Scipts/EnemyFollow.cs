@@ -4,7 +4,7 @@ using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IPoolable
+public class EnemyAI : MonoBehaviour
 {
     [Header("Stats")]
     public float speed;
@@ -39,18 +39,19 @@ public class EnemyAI : MonoBehaviour, IPoolable
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
+        GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    public void OnGetFromPool()
-    {
-        gameObject.SetActive(true);
-    }
+    //public void OnGetFromPool()
+    //{
+    //    gameObject.SetActive(true);
+    //}
 
-    public void OnReturnToPool()
-    {
-        gameObject.SetActive(false);
-    }
+    //public void OnReturnToPool()
+    //{
+    //    gameObject.SetActive(false);
+    //}
     private void Update()
     {
         if (SouldSearch)//Looks for a player in a radius

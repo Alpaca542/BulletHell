@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 184046254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.42, y: 22.02, z: 0}
+  m_LocalPosition: {x: 12.78, y: 20.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,7 +892,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2505033, y: 0.58451766}
+  m_Offset: {x: 0.2952354, y: 0.5845177}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -903,7 +903,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7256894, y: 2.5682182}
+  m_Size: {x: 2.8151536, y: 2.5682182}
   m_EdgeRadius: 0
 --- !u!1 &628434503
 GameObject:
@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 628434507}
   - component: {fileID: 628434506}
   - component: {fileID: 628434505}
+  - component: {fileID: 628434508}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -1063,6 +1064,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &628434508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628434503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &934954158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,6 +1277,7 @@ GameObject:
   - component: {fileID: 1173806518}
   - component: {fileID: 1173806517}
   - component: {fileID: 1173806516}
+  - component: {fileID: 1173806519}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -1406,6 +1424,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1173806519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173806514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1207520645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,7 +1589,7 @@ Transform:
   m_GameObject: {fileID: 1354768406}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.37, y: 0, z: 0}
+  m_LocalPosition: {x: -14.91, y: 16.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1657,6 +1691,7 @@ GameObject:
   - component: {fileID: 1679711792}
   - component: {fileID: 1679711791}
   - component: {fileID: 1679711790}
+  - component: {fileID: 1679711793}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -1803,6 +1838,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1679711793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679711788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1909468709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1972,7 @@ GameObject:
   - component: {fileID: 1922103847}
   - component: {fileID: 1922103846}
   - component: {fileID: 1922103845}
+  - component: {fileID: 1922103848}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -2067,6 +2119,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1922103848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922103843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
