@@ -1079,7 +1079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934954159
 Transform:
   m_ObjectHideFlags: 0
@@ -1577,7 +1577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1452591199
 Transform:
   m_ObjectHideFlags: 0
@@ -1813,6 +1813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909468711}
   - component: {fileID: 1909468710}
+  - component: {fileID: 1909468712}
   m_Layer: 7
   m_Name: Base
   m_TagString: Untagged
@@ -1861,12 +1862,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: a5af149d7cdeb4dde95051bf5bc1bcbd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc97d4a10f68d4a40b98e8ed843cbc6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.6681793, y: 2.4638526}
+  m_DrawMode: 2
+  m_Size: {x: 6.485345, y: 6.3715963}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1881,12 +1882,33 @@ Transform:
   m_GameObject: {fileID: 1909468709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25696, y: 0.57529, z: 0}
-  m_LocalScale: {x: 0.124935396, y: 0.15754516, z: 1}
+  m_LocalPosition: {x: -0.82856, y: 3.07401, z: 0}
+  m_LocalScale: {x: 0.9364843, y: 1.2788521, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 591661874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1909468712
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909468709}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82c205d4bf206429ba5280a0a760414b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1922103843
 GameObject:
   m_ObjectHideFlags: 0
