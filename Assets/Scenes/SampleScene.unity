@@ -1545,12 +1545,14 @@ MonoBehaviour:
   - 1
   - 2
   - 2
+  BigHardnessMultiplyer: 2
   HardnessMultiplyer: 1.5
   StartingHardness: 5
   AmountOfWaves: 3
   AmountOfStages: 1
   SpawnCooldown: 2
   WaveCooldown: 2
+  StageCooldown: 5
   border1: {fileID: 1354768407}
   border2: {fileID: 184046255}
 --- !u!4 &1313676514

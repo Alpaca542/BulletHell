@@ -97,11 +97,19 @@ public class EnemyAI : MonoBehaviour
                 {
                     //GameObject blt = Instantiate(bullet, new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent))));
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
-                    blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
                     blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
-                    blt.GetComponent<BulletScript>().startPosition = guns[i].transform.position;
+                    if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
+                    {
+                        blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
+                        blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
+                    }
+                    else
+                    {
+                        blt.transform.position = new Vector2(guns[i].transform.position.x + kf.time, guns[i].transform.position.y + kf.value);
+                        blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.time, guns[i].transform.position.y + kf.value);
+                    }
                     blt.GetComponent<BulletScript>().speed = bulletSpeed;
                     blt.GetComponent<BulletScript>().StartRotation = guns[i].transform.eulerAngles;
                     blt.transform.Rotate(new Vector3(0, 0, 90));
