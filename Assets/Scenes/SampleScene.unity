@@ -1540,8 +1540,10 @@ MonoBehaviour:
   Enemies1:
   - {fileID: 4543110674110024123, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
   - {fileID: 1081003551578108873, guid: f99eddb0f8098479abb6df30689456b0, type: 3}
+  - {fileID: 9144182740559946561, guid: 942d75c5fc5674dabae3d10116237865, type: 3}
   Hardness:
   - 1
+  - 2
   - 2
   HardnessMultiplyer: 1.5
   StartingHardness: 5
