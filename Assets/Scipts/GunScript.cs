@@ -33,13 +33,9 @@ public class GunScript : MonoBehaviour
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized, 100f, ConnectLineTo);
             if (hit2.collider != null )
             {
-                if(hit2.collider.gameObject != ConnectObject)
-                {
-                    Debug.Log(123333);
-                    Connected = true;
-                    ConnectObject = hit2.collider.gameObject;
-                    Invoke(nameof(CatchInvoke), 2f);
-                }
+                Connected = true;
+                ConnectObject = hit2.collider.gameObject;
+                Invoke(nameof(CatchInvoke), 2f);
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -49,7 +45,6 @@ public class GunScript : MonoBehaviour
         }
         if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled)
         {
-            Debug.Log(122);
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, ConnectObject.transform.position);
