@@ -46,7 +46,7 @@ public class GunScript : MonoBehaviour
             CancelInvoke(nameof(CatchInvoke));
             Connected = false;
         }
-        if (Connected && ConnectObject != null)
+        if (Connected && ConnectObject != null && GetComponent<EnemyAI>().enabled)
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
@@ -54,6 +54,9 @@ public class GunScript : MonoBehaviour
         }
         else
         {
+            Debug.Log(123);
+            GetComponent<LineRenderer>().SetPosition(0, transform.position);
+            GetComponent<LineRenderer>().SetPosition(1, transform.position);
             GetComponent<LineRenderer>().enabled = false;
         }
     }
@@ -75,6 +78,10 @@ public class GunScript : MonoBehaviour
         {
             AmountOfSlimes[3] += 1;
         }
+        GetComponent<LineRenderer>().SetPosition(0, transform.position);
+        GetComponent<LineRenderer>().SetPosition(1, transform.position);
+        Debug.Log(1234);
+        GetComponent<LineRenderer>().enabled = false;
         ConnectObject.GetComponent<Animation>().Play();
         ConnectObject.GetComponent<EnemyAI>().InvokeDestr1();
     }

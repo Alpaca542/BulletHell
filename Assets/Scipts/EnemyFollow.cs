@@ -38,7 +38,10 @@ public class EnemyAI : MonoBehaviour
     public bool AmIShooting;
     public bool ShootAPlayer;
     public bool AmIKind;
-
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(InvokeShoot));
+    }
     public void InvokeDestr1()
     {
         Invoke(nameof(InvokeDestr2), 2f);
