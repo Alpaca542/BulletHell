@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public GameObject plr;
+    public int[] AmountOfSlimes;
     public float angleOfChange;
     public bool Connected = false;
     public LayerMask ConnectLineTo, ConnectLineTo2;
@@ -42,6 +43,7 @@ public class GunScript : MonoBehaviour
         }
         else
         {
+            CancelInvoke(nameof(CatchInvoke));
             Connected = false;
         }
         if (Connected && ConnectObject != null)
@@ -57,8 +59,26 @@ public class GunScript : MonoBehaviour
     }
     public void CatchInvoke()
     {
-
+        if (ConnectObject.name.Contains("Basic"))
+        {
+            AmountOfSlimes[0] += 1;
+        }
+        else if (ConnectObject.name.Contains("AllSides"))
+        {
+            AmountOfSlimes[1] += 1;
+        }
+        else if (ConnectObject.name.Contains("Mosquito"))
+        {
+            AmountOfSlimes[2] += 1;
+        }
+        else if (ConnectObject.name.Contains("Diagonal"))
+        {
+            AmountOfSlimes[3] += 1;
+        }
+        ConnectObject.GetComponent<Animation>().Play();
+        ConnectObject.GetComponent<EnemyAI>().InvokeDestr1();
     }
+
     private void Start()
     {
         InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);

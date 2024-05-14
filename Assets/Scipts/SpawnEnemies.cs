@@ -25,7 +25,10 @@ public class SpawnEnemies : MonoBehaviour
 
     [Header("Debug")]
     public int StageIndex = 0;
-
+    public void SpawnABoss()
+    {
+        Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
+    }
     private void Awake()
     {
         for(int i = 0; i < Enemies1.Length; i ++)
@@ -36,6 +39,8 @@ public class SpawnEnemies : MonoBehaviour
     }
     IEnumerator StartSpawningg()
     {
+        StageIndex++;
+        StartingHardness *= BigHardnessMultiplyer;
         for (int i = 0; i < AmountOfWaves; i++)
         {
             float HardnessLeft = StartingHardness;
@@ -55,8 +60,5 @@ public class SpawnEnemies : MonoBehaviour
             StartingHardness *= HardnessMultiplyer;
             yield return new WaitForSeconds(WaveCooldown);
         }
-        Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
-        StageIndex++;
-        StartingHardness *= BigHardnessMultiplyer;
     }
 }

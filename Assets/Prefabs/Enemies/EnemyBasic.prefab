@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 7609955120425441050}
   - component: {fileID: 2187558579143364490}
   - component: {fileID: 734796039248953838}
+  - component: {fileID: -4787576900353257839}
   m_Layer: 8
   m_Name: EnemyBasic
   m_TagString: Enemy
@@ -369,6 +370,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: c958b6e98d965497892049e897d8b27a, type: 3}
   AmIShooting: 0
+  ShootAPlayer: 0
   AmIKind: 0
 --- !u!50 &5168886396605298341
 Rigidbody2D:
@@ -478,13 +480,29 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 17.75
   m_BaseOffset: 8.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!111 &-4787576900353257839
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543110674110024123}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6800914922020963949
 GameObject:
   m_ObjectHideFlags: 0

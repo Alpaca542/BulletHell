@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7716682908433821222}
   - component: {fileID: 7377536382300082869}
   - component: {fileID: 7246540010423785919}
+  - component: {fileID: 7105747952895835266}
   m_Layer: 8
   m_Name: SlimeAllSides
   m_TagString: Enemy
@@ -189,6 +190,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: 532b9a0efaa0f43f1b5cb9a41c24f223, type: 3}
   AmIShooting: 0
+  ShootAPlayer: 0
   AmIKind: 0
 --- !u!50 &915517992098834010
 Rigidbody2D:
@@ -305,6 +307,22 @@ NavMeshAgent:
   m_BaseOffset: 10
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!111 &7105747952895835266
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081003551578108873}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3149198791155945593
 GameObject:
   m_ObjectHideFlags: 0

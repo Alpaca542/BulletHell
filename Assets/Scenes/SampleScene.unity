@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 232072037}
   m_Layer: 6
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,11 +537,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plr: {fileID: 587019919}
+  AmountOfSlimes: 00000000000000000000000000000000
   angleOfChange: 0
   Connected: 0
   ConnectLineTo:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   ConnectLineTo2:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -568,7 +569,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 134c4aceaffb34fe4aac598a5b35a8f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -588,10 +589,10 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -3.3021, y: 5.7, z: 0}
+  - {x: -3.3021, y: 5.7, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -599,8 +600,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.18571472
+        time: 0.00938797
+        value: 0.1785717
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1942,7 +1943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1050227595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2567,7 @@ Transform:
   m_GameObject: {fileID: 1240197823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1922421, y: 10.143601, z: 0.01670811}
+  m_LocalPosition: {x: 1.1922421, y: 10.143601, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2594,6 +2595,13 @@ MonoBehaviour:
   - {fileID: 1081003551578108873, guid: f99eddb0f8098479abb6df30689456b0, type: 3}
   - {fileID: 9144182740559946561, guid: 942d75c5fc5674dabae3d10116237865, type: 3}
   - {fileID: 1978566303153032683, guid: 499c6419cca1a40ceae802a97b6bcc3c, type: 3}
+  gh: {fileID: 0}
+  gn: {fileID: 232072036}
+  slimeAmounts:
+  - {fileID: 1503750840}
+  - {fileID: 212496853}
+  - {fileID: 701865381}
+  - {fileID: 363639165}
 --- !u!1 &1240396205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,17 +2723,17 @@ MonoBehaviour:
   Bosses: []
   Hardness:
   - 1
-  - 2
+  - 3
   - 2
   - 3
   BigHardnessMultiplyer: 2
-  HardnessMultiplyer: 1.5
-  StartingHardness: 5
+  HardnessMultiplyer: 1.1
+  StartingHardness: 2
   AmountOfWaves: 3
   AmountOfStages: 1
   SpawnCooldown: 2
-  WaveCooldown: 2
-  StageCooldown: 5
+  WaveCooldown: 4
+  StageCooldown: 10
   border1: {fileID: 1354768407}
   border2: {fileID: 184046255}
   StageIndex: 0
@@ -2738,7 +2746,7 @@ Transform:
   m_GameObject: {fileID: 1313676512}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.29, y: 3.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

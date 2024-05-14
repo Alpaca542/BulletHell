@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 4580894368299919696}
   - component: {fileID: 8794539082405556590}
   - component: {fileID: 1869600634114624920}
+  - component: {fileID: 4880728568201673081}
   m_Layer: 8
   m_Name: Mosquito
   m_TagString: Enemy
@@ -440,6 +441,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: 56df6d13bf46247038ff02fb178b4b91, type: 3}
   AmIShooting: 0
+  ShootAPlayer: 0
   AmIKind: 0
 --- !u!50 &3949813686205608606
 Rigidbody2D:
@@ -556,3 +558,19 @@ NavMeshAgent:
   m_BaseOffset: 8.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!111 &4880728568201673081
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9144182740559946561}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

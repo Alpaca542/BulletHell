@@ -39,6 +39,14 @@ public class EnemyAI : MonoBehaviour
     public bool ShootAPlayer;
     public bool AmIKind;
 
+    public void InvokeDestr1()
+    {
+        Invoke(nameof(InvokeDestr2), 2f);
+    }
+    public void InvokeDestr2()
+    {
+        Destroy(gameObject);
+    }
     private void OnEnable()
     {
         System.Random rnd = new System.Random();
