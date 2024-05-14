@@ -49,6 +49,7 @@ public class GunScript : MonoBehaviour
         }
         if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled)
         {
+            Debug.Log(122);
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, ConnectObject.transform.position);

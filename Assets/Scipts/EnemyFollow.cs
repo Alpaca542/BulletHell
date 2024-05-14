@@ -33,11 +33,13 @@ public class EnemyAI : MonoBehaviour
     public GameObject bullet;
     public GameObject target;
     public Sprite enemyBullet;
+    private RaycastHit2D ray;
 
     [Header("Debug")]
     public bool AmIShooting;
     public bool ShootAPlayer;
     public bool AmIKind;
+
     private void OnDisable()
     {
         CancelInvoke(nameof(InvokeShoot));
@@ -137,14 +139,19 @@ public class EnemyAI : MonoBehaviour
 
         if (SouldShoot)
         {
-            RaycastHit2D ray;
             if (!AmIKind)
             {
-                ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, playerLayer);
+                if (target != null)
+                {
+                    ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, playerLayer);
+                }
             }
             else
             {
-                ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, enemyLayer);
+                if (target != null)
+                {
+                    ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, enemyLayer);
+                }
             }
             if (ray)
             {
