@@ -2756,7 +2756,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0c49ca1be41db4d2ca1943deb7ff44f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2804,6 +2804,7 @@ MonoBehaviour:
   - {fileID: 1978566303153032683, guid: 499c6419cca1a40ceae802a97b6bcc3c, type: 3}
   Bosses:
   - {fileID: 36201875529249406, guid: b7c9b29aba2ca43c588cc34810897b61, type: 3}
+  - {fileID: 3595609691918035010, guid: 1d56a6560374b4c04943779f0813c5b9, type: 3}
   Hardness:
   - 1
   - 3
@@ -2814,7 +2815,7 @@ MonoBehaviour:
   HardnessMultiplyer: 1.1
   StartingHardness: 2
   AmountOfWaves: 3
-  AmountOfStages: 1
+  AmountOfStages: 2
   SpawnCooldown: 2
   WaveCooldown: 4
   StageCooldown: 10

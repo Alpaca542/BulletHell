@@ -220,14 +220,9 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            Invoke(nameof(InvokeEndBoss), 3f);
+            spwn.BossKilled();
         }
         Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
-    }
-    public void InvokeEndBoss()
-    {
-        SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
-        spwn.BossKilled();
     }
 }

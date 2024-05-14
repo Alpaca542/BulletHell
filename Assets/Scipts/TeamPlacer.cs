@@ -23,7 +23,7 @@ public class TeamPlacer : MonoBehaviour
     }
     public void PlaceTeammate(int Who)
     {
-        if (GameObject.FindGameObjectWithTag("Gun").GetComponent<GunScript>().AmountOfSlimes[2] > 0)
+        if (GameObject.FindGameObjectWithTag("Gun").GetComponent<GunScript>().AmountOfSlimes[Who] > 0)
         {
             if (gh != null)
             {
@@ -45,7 +45,7 @@ public class TeamPlacer : MonoBehaviour
     public IEnumerator InvokeRedText(int Who)
     {
         yield return new WaitForSeconds(0.3f);
-        slimeAmounts[Who].color = new Color32(255, 0, 0, 255);
+        slimeAmounts[Who].color = new Color32(0, 0, 0, 255);
     }
     public void StartTheBattle()
     {
