@@ -28,9 +28,9 @@ public class GunScript : MonoBehaviour
         }
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
-        if (hit.collider != null && Input.GetMouseButton(0))
+        if (hit.collider != null && Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 30f, ConnectLineTo);
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized, 100f, ConnectLineTo);
             if (hit2.collider != null )
             {
                 if(hit2.collider.gameObject != ConnectObject)
@@ -42,7 +42,7 @@ public class GunScript : MonoBehaviour
                 }
             }
         }
-        else
+        if (Input.GetMouseButtonUp(0))
         {
             CancelInvoke(nameof(CatchInvoke));
             Connected = false;
