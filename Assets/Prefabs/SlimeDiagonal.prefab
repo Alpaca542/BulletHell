@@ -200,7 +200,7 @@ MonoBehaviour:
   - {fileID: 7399898093182702042}
   - {fileID: 5372887915927235998}
   - {fileID: 874213739178516676}
-  SlimeDeathParticles: {fileID: 3982605251137279380, guid: 0b303819a057b4ed49de0c3db1b61a63, type: 3}
+  SlimeDeathParticles: {fileID: 7427602934990590072, guid: 649d5332196394b2f9121be3732bc788, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

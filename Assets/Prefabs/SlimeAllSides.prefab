@@ -178,7 +178,7 @@ MonoBehaviour:
   - {fileID: 3149198791155945593}
   - {fileID: 6639722443992410311}
   - {fileID: 4324571018247470138}
-  SlimeDeathParticles: {fileID: 3982605251137279380, guid: 0b303819a057b4ed49de0c3db1b61a63, type: 3}
+  SlimeDeathParticles: {fileID: 702919899685105290, guid: 77c119e7e8f2d40daa0da47ea56c67e4, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

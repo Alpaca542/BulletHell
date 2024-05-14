@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 742848186485136659}
   - component: {fileID: 6644076704001269586}
   m_Layer: 0
-  m_Name: SlimeDeathParticles
+  m_Name: greenPRT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,8 +1326,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 13506
-        atime2: 0
+        atime1: 24326
+        atime2: 25746
         atime3: 0
         atime4: 0
         atime5: 0
@@ -1336,7 +1336,7 @@ ParticleSystem:
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
