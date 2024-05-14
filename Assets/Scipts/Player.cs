@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(dirX, dirY) * speed;
-        if(Mathf.Abs(dirX) < 0.2f || Mathf.Abs(dirY) < 0.2f)
+        if((Mathf.Abs(dirX) < 0.2f || Mathf.Abs(dirY) < 0.2f) && (Mathf.Abs(dirX) > 0.2f || Mathf.Abs(dirY) > 0.2f))
         {
             if (dirX > 0.2f)
             {

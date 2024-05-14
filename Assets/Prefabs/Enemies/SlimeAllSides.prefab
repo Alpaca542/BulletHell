@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7716682908433821222}
   - component: {fileID: 7377536382300082869}
   - component: {fileID: 7246540010423785919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SlimeAllSides
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -182,10 +182,14 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: 532b9a0efaa0f43f1b5cb9a41c24f223, type: 3}
   AmIShooting: 0
+  AmIKind: 0
 --- !u!50 &915517992098834010
 Rigidbody2D:
   serializedVersion: 4
@@ -310,7 +314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6644390373441925604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +345,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378618921489065154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6264625951641116538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2445696620278415637}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GunRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +440,7 @@ GameObject:
   - component: {fileID: 7679508361929894734}
   - component: {fileID: 5772059392149094148}
   - component: {fileID: 693811723270918967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

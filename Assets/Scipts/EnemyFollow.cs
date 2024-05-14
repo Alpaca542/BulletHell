@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
+using System.Linq;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -27,20 +29,39 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     public GameObject SlimeDeathParticles;
     public LayerMask playerLayer;
+    public LayerMask enemyLayer;
     public GameObject bullet;
     public GameObject target;
     public Sprite enemyBullet;
 
     [Header("Debug")]
     public bool AmIShooting;
+    public bool ShootAPlayer;
+    public bool AmIKind;
 
     private void OnEnable()
     {
+        System.Random rnd = new System.Random();
+        if(rnd.Next(0, 2) == 0)
+        {
+            ShootAPlayer = true;
+        }
+        else
+        {
+            ShootAPlayer = false;
+        }
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
-        target = GameObject.FindGameObjectWithTag("Player");
+        if (!AmIKind)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+        else
+        {
+            target = GameObject.FindGameObjectWithTag("Enemy");
+        }
     }
 
     //public void OnGetFromPool()
@@ -54,14 +75,41 @@ public class EnemyAI : MonoBehaviour
     //}
     private void Update()
     {
-        if(GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
+        if (!AmIKind)
+        {
+            var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
+                .Select(obj => obj.GetComponent<EnemyAI>())
+                .Where(ai => ai != null && ai.AmIKind)
+                .ToList();
+            if (ShootAPlayer && kindEnemies.Count != 0)
+            {
+                target = kindEnemies[0].gameObject;
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Player");
+            }
+        }
+        else
+        {
+            target = GameObject.FindGameObjectWithTag("Enemy");
+        }
+        if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {
             GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
         }
 
-        if (SouldSearch)//Looks for a player in a radius
+        if (SouldSearch)
         {
-            Collider2D searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, playerLayer);
+            Collider2D searcher;
+            if (!AmIKind)
+            {
+                searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, playerLayer);
+            }
+            else
+            {
+                searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, enemyLayer);
+            }
             if (searcher)
             {
                 agent.SetDestination(searcher.transform.position);
@@ -69,13 +117,24 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            agent.SetDestination(target.transform.position);
+            if (target != null)
+            {
+                agent.SetDestination(target.transform.position);
+            }
         }
 
 
-        if (SouldShoot)//Sends a ray, if it hits smth start a shooting invoke
+        if (SouldShoot)
         {
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, (target.transform.position-transform.position).normalized, shootingDistance, playerLayer);
+            RaycastHit2D ray;
+            if (!AmIKind)
+            {
+                ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, playerLayer);
+            }
+            else
+            {
+                ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, enemyLayer);
+            }
             if (ray)
             {
                 if (!AmIShooting)
@@ -100,12 +159,20 @@ public class EnemyAI : MonoBehaviour
             {
                 foreach (Keyframe kf in ProjectlilesPattern.keys)
                 {
-                    //GameObject blt = Instantiate(bullet, new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time), Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent))));
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
                     blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
-                    blt.GetComponent<BulletScript>().AmIFromPlayer = false;
+                    if (!AmIKind)
+                    {
+                        blt.GetComponent<BulletScript>().AmIFromPlayer = false;
+                        blt.GetComponent<BulletScript>().FromATeammate = false;
+                    }
+                    else
+                    {
+                        blt.GetComponent<BulletScript>().FromATeammate = true;
+                        blt.GetComponent<BulletScript>().AmIFromPlayer = true;
+                    }
                     blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
                     if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
                     {
@@ -120,7 +187,6 @@ public class EnemyAI : MonoBehaviour
                     blt.GetComponent<BulletScript>().speed = bulletSpeed;
                     blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent));
                     blt.transform.Rotate(new Vector3(0, 0, 90));
-                    //blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
                 }
             }
         }

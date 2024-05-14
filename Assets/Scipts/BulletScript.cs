@@ -16,6 +16,7 @@ public class BulletScript : MonoBehaviour, IPoolable
     public bool InvertPattern;
 
     public bool AmIFromPlayer;
+    public bool FromATeammate;
     private void Start()
     {
         startPosition = transform.position;
@@ -46,7 +47,7 @@ public class BulletScript : MonoBehaviour, IPoolable
 
 	private void Update()
     {
-        if(!AmIFromPlayer)
+        if(!AmIFromPlayer || FromATeammate)
         {
             t += Time.deltaTime;
 
@@ -81,20 +82,26 @@ public class BulletScript : MonoBehaviour, IPoolable
         }
         else if(collision.gameObject.tag == "Player" && !AmIFromPlayer)
         {
-            Player plr = collision.gameObject.GetComponent<Player>();
-            plr.health -= damage;
-            if (plr.health <= 0)
+            if(collision.gameObject.GetComponent<Player>() != null)
             {
-                plr.Die();
+                Player plr = collision.gameObject.GetComponent<Player>();
+                plr.health -= damage;
+                if (plr.health <= 0)
+                {
+                    plr.Die();
+                }
+            }
+            else
+            {
+                EnemyAI enem = collision.gameObject.GetComponent<EnemyAI>();
+                enem.health -= damage;
+                if (enem.health <= 0)
+                {
+                    enem.Die();
+                }
             }
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
             GameManager.Instance.pool.Return(this);
         }
-        //else if ((collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "EnemyBullet") || (collision.gameObject.tag == "EnemyBullet" && gameObject.tag == "PlayerBullet"))
-        //{
-        //    Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
-        //    Destroy(collision.gameObject);
-        //    Destroy(gameObject);
-        //}
     }
 }

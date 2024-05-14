@@ -7,6 +7,7 @@ public class SpawnEnemies : MonoBehaviour
 {
     [Header("Fields")]
     public GameObject[] Enemies1;
+    public GameObject[] Bosses;
     public float[] Hardness;
     public Dictionary<GameObject, float> Enemies = new Dictionary<GameObject, float>();
 
@@ -21,6 +22,10 @@ public class SpawnEnemies : MonoBehaviour
     public float StageCooldown;
     public Transform border1;
     public Transform border2;
+
+    [Header("Debug")]
+    public int StageIndex = 0;
+
     private void Awake()
     {
         for(int i = 0; i < Enemies1.Length; i ++)
@@ -31,30 +36,27 @@ public class SpawnEnemies : MonoBehaviour
     }
     IEnumerator StartSpawningg()
     {
-        for (int j = 0; j < AmountOfStages; j++)
+        for (int i = 0; i < AmountOfWaves; i++)
         {
-            for (int i = 0; i < AmountOfWaves; i++)
+            float HardnessLeft = StartingHardness;
+            Dictionary<GameObject, float> EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
+                                                    .ToDictionary(kv => kv.Key, kv => kv.Value);
+            while (EnemiesToUse.Count != 0)
             {
-                float HardnessLeft = StartingHardness;
-                Dictionary<GameObject, float> EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
-                                                        .ToDictionary(kv => kv.Key, kv => kv.Value);
-                while (EnemiesToUse.Count != 0)
-                {
-                    System.Random random = new System.Random();
+                System.Random random = new System.Random();
 
-                    KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(random.Next(0, EnemiesToUse.Count));
-                    Instantiate(chosenEnemy.Key, new Vector2(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y)), Quaternion.identity);
-                    //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
-                    HardnessLeft -= chosenEnemy.Value;
-                    EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
-                                                            .ToDictionary(kv => kv.Key, kv => kv.Value); yield return new WaitForSeconds(SpawnCooldown);
-                }
-                StartingHardness *= HardnessMultiplyer;
-                yield return new WaitForSeconds(WaveCooldown);
+                KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(random.Next(0, EnemiesToUse.Count));
+                Instantiate(chosenEnemy.Key, new Vector2(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y)), Quaternion.identity);
+                //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
+                HardnessLeft -= chosenEnemy.Value;
+                EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
+                                                        .ToDictionary(kv => kv.Key, kv => kv.Value); yield return new WaitForSeconds(SpawnCooldown);
             }
+            StartingHardness *= HardnessMultiplyer;
+            yield return new WaitForSeconds(WaveCooldown);
         }
-        //spawn a boss
+        Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
+        StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
-        yield return new WaitForSeconds(StageCooldown);
     }
 }
