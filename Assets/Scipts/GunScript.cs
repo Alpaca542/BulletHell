@@ -30,7 +30,7 @@ public class GunScript : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
         if (hit.collider != null && Input.GetMouseButton(0))
         {
-            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 10f, ConnectLineTo);
+            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position, 30f, ConnectLineTo);
             if (hit2.collider != null )
             {
                 if(hit2.collider.gameObject != ConnectObject)
@@ -46,7 +46,7 @@ public class GunScript : MonoBehaviour
             CancelInvoke(nameof(CatchInvoke));
             Connected = false;
         }
-        if (Connected && ConnectObject != null && GetComponent<EnemyAI>().enabled)
+        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled)
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
@@ -54,7 +54,6 @@ public class GunScript : MonoBehaviour
         }
         else
         {
-            Debug.Log(123);
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, transform.position);
             GetComponent<LineRenderer>().enabled = false;
@@ -80,7 +79,6 @@ public class GunScript : MonoBehaviour
         }
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
         GetComponent<LineRenderer>().SetPosition(1, transform.position);
-        Debug.Log(1234);
         GetComponent<LineRenderer>().enabled = false;
         ConnectObject.GetComponent<Animation>().Play();
         ConnectObject.GetComponent<EnemyAI>().InvokeDestr1();
