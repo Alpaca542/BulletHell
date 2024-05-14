@@ -10,6 +10,8 @@ public class TeamPlacer : MonoBehaviour
     public GameObject gh;
     public GunScript gn;
     public Text[] slimeAmounts;
+    public GameObject cnvv;
+    public SpawnEnemies enemsp;
 
     private void Update()
     {
@@ -26,5 +28,10 @@ public class TeamPlacer : MonoBehaviour
         }
         gh = Instantiate(ghosts[Who], transform.position, Quaternion.identity);
         gh.GetComponent<GhostTeam>().realBrother = reals[Who];
+    }
+    public void StartTheBattle()
+    {
+        cnvv.SetActive(false);
+        enemsp.SpawnABoss();
     }
 }

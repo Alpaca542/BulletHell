@@ -9,6 +9,7 @@ public class SpawnEnemies : MonoBehaviour
     public GameObject[] Enemies1;
     public GameObject[] Bosses;
     public float[] Hardness;
+    public GameObject cnv;
     public Dictionary<GameObject, float> Enemies = new Dictionary<GameObject, float>();
 
     [Header("Settings")]
@@ -39,8 +40,6 @@ public class SpawnEnemies : MonoBehaviour
     }
     IEnumerator StartSpawningg()
     {
-        StageIndex++;
-        StartingHardness *= BigHardnessMultiplyer;
         for (int i = 0; i < AmountOfWaves; i++)
         {
             float HardnessLeft = StartingHardness;
@@ -51,7 +50,7 @@ public class SpawnEnemies : MonoBehaviour
                 System.Random random = new System.Random();
 
                 KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(random.Next(0, EnemiesToUse.Count));
-                Instantiate(chosenEnemy.Key, new Vector2(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y)), Quaternion.identity);
+                Instantiate(chosenEnemy.Key, new Vector3(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y), 0), Quaternion.identity);
                 //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
                 HardnessLeft -= chosenEnemy.Value;
                 EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
@@ -60,5 +59,8 @@ public class SpawnEnemies : MonoBehaviour
             StartingHardness *= HardnessMultiplyer;
             yield return new WaitForSeconds(WaveCooldown);
         }
+        cnv.SetActive(true);
+        StageIndex++;
+        StartingHardness *= BigHardnessMultiplyer;
     }
 }

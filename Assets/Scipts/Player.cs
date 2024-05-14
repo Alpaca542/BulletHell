@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Player : MonoBehaviour
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Destroy(gameObject);
     }
 }

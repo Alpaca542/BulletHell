@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class EnemyAI : MonoBehaviour
+public class BossScript : MonoBehaviour
 {
     [Header("Stats")]
     public float speed;
@@ -40,6 +41,10 @@ public class EnemyAI : MonoBehaviour
     public bool ShootAPlayer;
     public bool AmIKind;
 
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(InvokeShoot));
+    }
     public void InvokeDestr1()
     {
         Invoke(nameof(InvokeDestr2), 2f);
@@ -50,15 +55,15 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnEnable()
     {
-        //System.Random rnd = new System.Random();
-        //if(rnd.Next(0, 2) == 0)
-        //{
-        //    ShootAPlayer = true;
-        //}
-        //else
-        //{
-        //    ShootAPlayer = false;
-        //}
+        System.Random rnd = new System.Random();
+        if (rnd.Next(0, 2) == 0)
+        {
+            ShootAPlayer = true;
+        }
+        else
+        {
+            ShootAPlayer = false;
+        }
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -86,20 +91,18 @@ public class EnemyAI : MonoBehaviour
     {
         if (!AmIKind)
         {
-            target = GameObject.FindGameObjectWithTag("Player");
-
-            //var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
-            //    .Select(obj => obj.GetComponent<EnemyAI>())
-            //    .Where(ai => ai != null && ai.AmIKind)
-            //    .ToList();
-            //if (!ShootAPlayer && kindEnemies.Count != 0)
-            //{
-            //    target = kindEnemies[0].gameObject;
-            //}
-            //else
-            //{
-            //    target = GameObject.FindGameObjectWithTag("Player");
-            //}
+            var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
+                .Select(obj => obj.GetComponent<EnemyAI>())
+                .Where(ai => ai != null && ai.AmIKind)
+                .ToList();
+            if (ShootAPlayer && kindEnemies.Count != 0)
+            {
+                target = kindEnemies[0].gameObject;
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Player");
+            }
         }
         else
         {
@@ -151,7 +154,7 @@ public class EnemyAI : MonoBehaviour
                     ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, enemyLayer);
                 }
             }
-            if (ray.collider != null)
+            if (ray)
             {
                 if (!AmIShooting)
                 {
@@ -169,7 +172,7 @@ public class EnemyAI : MonoBehaviour
     }
     public void InvokeShoot()
     {
-        for(int i = 0; i<4; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (SidesToShoot[i])
             {
@@ -190,7 +193,7 @@ public class EnemyAI : MonoBehaviour
                         blt.GetComponent<BulletScript>().AmIFromPlayer = true;
                     }
                     blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
-                    if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
+                    if (guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
                     {
                         blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
                         blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
@@ -209,6 +212,11 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
+        SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
+        if (spwn.StageIndex == spwn.AmountOfStages - 1)
+        {
+            SceneManager.LoadScene("win");
+        }
         Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
