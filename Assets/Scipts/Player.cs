@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private float currentVelocity;
     private float rotationSmoothTime = 0.1f;
+    private Animator anim;
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
@@ -26,9 +28,14 @@ public class Player : MonoBehaviour
         // Handle rotation
         if (movement != Vector2.zero)
         {
+            anim.SetBool("IsMoving", true);
             float targetAngle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
             float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.z, targetAngle, ref currentVelocity, rotationSmoothTime);
             transform.rotation = Quaternion.Euler(0, 0, smoothedAngle);
+        }
+        else
+        {
+            anim.SetBool("IsMoving", false);
         }
     }
     public void Die()
