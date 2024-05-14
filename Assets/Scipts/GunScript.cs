@@ -35,6 +35,7 @@ public class GunScript : MonoBehaviour
             {
                 if(hit2.collider.gameObject != ConnectObject)
                 {
+                    Debug.Log(123333);
                     Connected = true;
                     ConnectObject = hit2.collider.gameObject;
                     Invoke(nameof(CatchInvoke), 2f);
