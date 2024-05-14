@@ -17,6 +17,44 @@ public class Player : MonoBehaviour
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(dirX, dirY) * speed;
+        if(Mathf.Abs(dirX) < 0.2f || Mathf.Abs(dirY) < 0.2f)
+        {
+            if (dirX > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            }
+            else if (dirX < -0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            }
+            else if (dirY > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            }
+            else if (dirY < -0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            }
+        }
+        else
+        {
+            if (dirX > 0.2f && dirY < -0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90-45));
+            }
+            else if (dirX > 0.2f && dirY > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90 + 45));
+            }
+            else if (dirX < -0.2f && dirY < -0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90 + 45));
+            }
+            else if (dirX < -0.2f && dirY > 0.2f)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90 - 45));
+            }
+        }
     }
     public void Die()
     {

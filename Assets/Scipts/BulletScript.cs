@@ -117,7 +117,7 @@ public class BulletScript : MonoBehaviour, IPoolable
                 enem.Die();
             }
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            GameManager.Instance.pool.Return(this);
         }
         else if(collision.gameObject.tag == "Player" && !AmIFromPlayer)
         {
@@ -128,7 +128,7 @@ public class BulletScript : MonoBehaviour, IPoolable
                 plr.Die();
             }
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            GameManager.Instance.pool.Return(this);
         }
         //else if ((collision.gameObject.tag == "PlayerBullet" && gameObject.tag == "EnemyBullet") || (collision.gameObject.tag == "EnemyBullet" && gameObject.tag == "PlayerBullet"))
         //{

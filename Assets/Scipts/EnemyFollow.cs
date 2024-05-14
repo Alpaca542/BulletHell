@@ -39,7 +39,6 @@ public class EnemyAI : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = speed;
-        GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -54,6 +53,11 @@ public class EnemyAI : MonoBehaviour
     //}
     private void Update()
     {
+        if(GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
+        {
+            GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+        }
+
         if (SouldSearch)//Looks for a player in a radius
         {
             Collider2D searcher = Physics2D.OverlapCircle(transform.position, searchingRadius, playerLayer);
@@ -99,6 +103,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<BulletScript>().AmIFromPlayer = false;
                     blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
                     if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
                     {
