@@ -1703,7 +1703,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 587019921}
-  m_LocalEulerAnglesHint: {x: 0, y: -21.374, z: -52.035}
+  m_LocalEulerAnglesHint: {x: -10.455, y: -18.748, z: -80.164}
 --- !u!212 &816078888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1787,7 +1787,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 587019921}
-  m_LocalEulerAnglesHint: {x: 0, y: -21.374, z: -52.035}
+  m_LocalEulerAnglesHint: {x: 10.788, y: -18.563, z: -22.9}
 --- !u!212 &921643337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1942,7 +1942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1050227595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,7 +2694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1313676513
 MonoBehaviour:
   m_ObjectHideFlags: 0
