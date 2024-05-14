@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  health: 20
+  health: 129.2
 --- !u!95 &587019925
 Animator:
   serializedVersion: 5
@@ -2682,8 +2682,8 @@ MonoBehaviour:
   - {fileID: 212496853}
   - {fileID: 701865381}
   - {fileID: 363639165}
-  cnvv: {fileID: 0}
-  enemsp: {fileID: 0}
+  cnvv: {fileID: 1050227594}
+  enemsp: {fileID: 1313676513}
 --- !u!1 &1240396205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2780,7 @@ GameObject:
   - component: {fileID: 1313676513}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2802,13 +2802,14 @@ MonoBehaviour:
   - {fileID: 1081003551578108873, guid: f99eddb0f8098479abb6df30689456b0, type: 3}
   - {fileID: 9144182740559946561, guid: 942d75c5fc5674dabae3d10116237865, type: 3}
   - {fileID: 1978566303153032683, guid: 499c6419cca1a40ceae802a97b6bcc3c, type: 3}
-  Bosses: []
+  Bosses:
+  - {fileID: 36201875529249406, guid: b7c9b29aba2ca43c588cc34810897b61, type: 3}
   Hardness:
   - 1
   - 3
   - 2
   - 3
-  cnv: {fileID: 0}
+  cnv: {fileID: 1050227594}
   BigHardnessMultiplyer: 2
   HardnessMultiplyer: 1.1
   StartingHardness: 2

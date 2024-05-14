@@ -6,6 +6,7 @@ using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using System;
 
 public class BossScript : MonoBehaviour
 {
@@ -215,9 +216,18 @@ public class BossScript : MonoBehaviour
         SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
         if (spwn.StageIndex == spwn.AmountOfStages - 1)
         {
-            SceneManager.LoadScene("win");
+            SceneManager.LoadScene("Win");
+        }
+        else
+        {
+            Invoke(nameof(InvokeEndBoss), 3f);
         }
         Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+    public void InvokeEndBoss()
+    {
+        SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
+        spwn.BossKilled();
     }
 }

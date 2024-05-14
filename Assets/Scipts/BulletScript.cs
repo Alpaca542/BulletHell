@@ -37,7 +37,7 @@ public class BulletScript : MonoBehaviour, IPoolable
         gameObject.SetActive(true);
 		startPosition = transform.position;
         CancelInvoke(nameof(DieInTime));
-		Invoke(nameof(DieInTime), 10f);
+		Invoke(nameof(DieInTime), 4f);
 	}
 
 	public void OnReturnToPool()
@@ -90,15 +90,17 @@ public class BulletScript : MonoBehaviour, IPoolable
                 {
                     plr.Die();
                 }
+                Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+                GameManager.Instance.pool.Return(this);
             }
-            else
+        }
+        else if (collision.gameObject.tag == "Boss" && AmIFromPlayer)
+        {
+            BossScript enem = collision.gameObject.GetComponent<BossScript>();
+            enem.health -= damage;
+            if (enem.health <= 0)
             {
-                EnemyAI enem = collision.gameObject.GetComponent<EnemyAI>();
-                enem.health -= damage;
-                if (enem.health <= 0)
-                {
-                    enem.Die();
-                }
+                enem.Die();
             }
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
             GameManager.Instance.pool.Return(this);

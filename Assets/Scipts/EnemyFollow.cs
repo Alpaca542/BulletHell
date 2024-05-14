@@ -50,15 +50,15 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnEnable()
     {
-        //System.Random rnd = new System.Random();
-        //if(rnd.Next(0, 2) == 0)
-        //{
-        //    ShootAPlayer = true;
-        //}
-        //else
-        //{
-        //    ShootAPlayer = false;
-        //}
+        System.Random rnd = new System.Random();
+        if (rnd.Next(0, 2) == 0)
+        {
+            ShootAPlayer = true;
+        }
+        else
+        {
+            ShootAPlayer = false;
+        }
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -88,22 +88,29 @@ public class EnemyAI : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player");
 
-            //var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
-            //    .Select(obj => obj.GetComponent<EnemyAI>())
-            //    .Where(ai => ai != null && ai.AmIKind)
-            //    .ToList();
-            //if (!ShootAPlayer && kindEnemies.Count != 0)
-            //{
-            //    target = kindEnemies[0].gameObject;
-            //}
-            //else
-            //{
-            //    target = GameObject.FindGameObjectWithTag("Player");
-            //}
+            var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
+                .Select(obj => obj.GetComponent<EnemyAI>())
+                .Where(ai => ai != null && ai.AmIKind)
+                .ToList();
+            if (!ShootAPlayer && kindEnemies.Count != 0)
+            {
+                target = kindEnemies[0].gameObject;
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Player");
+            }
         }
         else
         {
-            target = GameObject.FindGameObjectWithTag("Enemy");
+            if (GameObject.FindGameObjectWithTag("Boss"))
+            {
+                target = GameObject.FindGameObjectWithTag("Boss");
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Enemy");
+            }
         }
         if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {

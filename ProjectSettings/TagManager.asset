@@ -9,6 +9,8 @@ TagManager:
   - bullet
   - Enemy
   - Gun
+  - Spawner
+  - Boss
   layers:
   - Default
   - TransparentFX

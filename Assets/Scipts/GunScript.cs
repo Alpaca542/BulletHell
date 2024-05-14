@@ -35,7 +35,8 @@ public class GunScript : MonoBehaviour
             {
                 Connected = true;
                 ConnectObject = hit2.collider.gameObject;
-                Invoke(nameof(CatchInvoke), 2f);
+                CancelInvoke(nameof(CatchInvoke));
+                Invoke(nameof(CatchInvoke), 4f);
             }
         }
         if (Input.GetMouseButtonUp(0))
@@ -43,7 +44,7 @@ public class GunScript : MonoBehaviour
             CancelInvoke(nameof(CatchInvoke));
             Connected = false;
         }
-        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled)
+        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled && ConnectObject.gameObject.tag != "Boss")
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
@@ -51,6 +52,7 @@ public class GunScript : MonoBehaviour
         }
         else
         {
+            CancelInvoke(nameof(CatchInvoke));
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
             GetComponent<LineRenderer>().SetPosition(1, transform.position);
             GetComponent<LineRenderer>().enabled = false;

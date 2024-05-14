@@ -38,8 +38,15 @@ public class SpawnEnemies : MonoBehaviour
         }
         StartCoroutine(StartSpawningg());
     }
+    public void BossKilled()
+    {
+        StartCoroutine(StartSpawningg());
+        StageIndex++;
+        StartingHardness *= BigHardnessMultiplyer;
+    }
     IEnumerator StartSpawningg()
     {
+        yield return new WaitForSeconds(2f);
         for (int i = 0; i < AmountOfWaves; i++)
         {
             float HardnessLeft = StartingHardness;
@@ -60,7 +67,5 @@ public class SpawnEnemies : MonoBehaviour
             yield return new WaitForSeconds(WaveCooldown);
         }
         cnv.SetActive(true);
-        StageIndex++;
-        StartingHardness *= BigHardnessMultiplyer;
     }
 }

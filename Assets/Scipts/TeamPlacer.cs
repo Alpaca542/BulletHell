@@ -12,6 +12,7 @@ public class TeamPlacer : MonoBehaviour
     public Text[] slimeAmounts;
     public GameObject cnvv;
     public SpawnEnemies enemsp;
+    private Coroutine crtn;
 
     private void Update()
     {
@@ -22,12 +23,29 @@ public class TeamPlacer : MonoBehaviour
     }
     public void PlaceTeammate(int Who)
     {
-        if(gh != null)
+        if (GameObject.FindGameObjectWithTag("Gun").GetComponent<GunScript>().AmountOfSlimes[2] > 0)
         {
-            Destroy(gh);
+            if (gh != null)
+            {
+                Destroy(gh);
+            }
+            gh = Instantiate(ghosts[Who], transform.position, Quaternion.identity);
+            gh.GetComponent<GhostTeam>().realBrother = reals[Who];
         }
-        gh = Instantiate(ghosts[Who], transform.position, Quaternion.identity);
-        gh.GetComponent<GhostTeam>().realBrother = reals[Who];
+        else
+        {
+            slimeAmounts[Who].color = new Color32(255, 0, 0, 255);
+            if(crtn != null)
+            {
+                StopCoroutine(crtn);
+            }
+            crtn = StartCoroutine(InvokeRedText(Who));
+        }
+    }
+    public IEnumerator InvokeRedText(int Who)
+    {
+        yield return new WaitForSeconds(0.3f);
+        slimeAmounts[Who].color = new Color32(255, 0, 0, 255);
     }
     public void StartTheBattle()
     {
