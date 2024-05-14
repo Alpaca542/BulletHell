@@ -41,11 +41,8 @@ public class BossScript : MonoBehaviour
     public bool AmIShooting;
     public bool ShootAPlayer;
     public bool AmIKind;
+    public bool Died;
 
-    private void OnDisable()
-    {
-        CancelInvoke(nameof(InvokeShoot));
-    }
     public void InvokeDestr1()
     {
         Invoke(nameof(InvokeDestr2), 2f);
@@ -213,16 +210,20 @@ public class BossScript : MonoBehaviour
     }
     public void Die()
     {
-        SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
-        if (spwn.StageIndex == spwn.AmountOfStages - 1)
+        if (!Died)
         {
-            SceneManager.LoadScene("Win");
+            Died = true;
+            SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
+            if (spwn.StageIndex == spwn.AmountOfStages - 1)
+            {
+                SceneManager.LoadScene("Win");
+            }
+            else
+            {
+                spwn.BossKilled();
+            }
+            Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
-        else
-        {
-            spwn.BossKilled();
-        }
-        Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
-        Destroy(gameObject);
     }
 }

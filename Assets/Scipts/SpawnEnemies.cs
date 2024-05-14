@@ -40,7 +40,6 @@ public class SpawnEnemies : MonoBehaviour
     }
     public void BossKilled()
     {
-        Debug.Log(123);
         StartCoroutine(StartSpawningg());
         StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
