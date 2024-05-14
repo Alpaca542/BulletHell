@@ -2805,6 +2805,8 @@ MonoBehaviour:
   Bosses:
   - {fileID: 36201875529249406, guid: b7c9b29aba2ca43c588cc34810897b61, type: 3}
   - {fileID: 3595609691918035010, guid: 1d56a6560374b4c04943779f0813c5b9, type: 3}
+  - {fileID: 7614033080297132135, guid: 275c1525ec77340c4af06aa2da8e297f, type: 3}
+  - {fileID: 1932256041328878569, guid: 446a5b13691f149b2b6194b26048d037, type: 3}
   Hardness:
   - 1
   - 3
@@ -2815,7 +2817,7 @@ MonoBehaviour:
   HardnessMultiplyer: 1.1
   StartingHardness: 2
   AmountOfWaves: 3
-  AmountOfStages: 2
+  AmountOfStages: 4
   SpawnCooldown: 2
   WaveCooldown: 4
   StageCooldown: 10
