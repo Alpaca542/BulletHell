@@ -105,5 +105,10 @@ public class BulletScript : MonoBehaviour, IPoolable
             Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
             GameManager.Instance.pool.Return(this);
         }
+        else if (collision.gameObject.tag == "Obstacle")
+        {
+            Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+            GameManager.Instance.pool.Return(this);
+        }
     }
 }
