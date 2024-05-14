@@ -435,6 +435,7 @@ MonoBehaviour:
     m_Bits: 64
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
+  enemyBullet: {fileID: 21300000, guid: 56df6d13bf46247038ff02fb178b4b91, type: 3}
   AmIShooting: 0
 --- !u!50 &3949813686205608606
 Rigidbody2D:

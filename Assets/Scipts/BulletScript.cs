@@ -60,49 +60,9 @@ public class BulletScript : MonoBehaviour, IPoolable
             float yPos = Path.Evaluate(t);
             if (InvertPattern)
             {
-                if (StartRotation.z == -90 || StartRotation.z == 270)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 90 || StartRotation.z == -270)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 180 || StartRotation.z == -180)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y - t * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 0)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y + t * speed);
-                    transform.position = newPosition;
-                }
-            }
-            else
-            {
-                if (StartRotation.z == -90 || StartRotation.z == 270)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x - t * speed, startPosition.y - yPos * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 90 || StartRotation.z == -270)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x + t * speed, startPosition.y + yPos * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 180 || StartRotation.z == -180)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x - yPos * speed, startPosition.y - t * speed);
-                    transform.position = newPosition;
-                }
-                else if (StartRotation.z == 0)
-                {
-                    Vector2 newPosition = new Vector2(startPosition.x + yPos * speed, startPosition.y + t * speed);
-                    transform.position = newPosition;
-                }
+                Vector2 newPosition = new Vector2(t * speed, yPos * speed);
+                Vector2 rotatedVector = startPosition + (Quaternion.AngleAxis(StartRotation.z+90f, Vector3.forward) * newPosition);
+                transform.position = rotatedVector;
             }
         }
     }

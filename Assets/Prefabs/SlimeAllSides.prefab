@@ -119,8 +119,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.49688405
       value: -0.0049413517
-      inSlope: 0.60393155
-      outSlope: 0.60393155
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -128,17 +128,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.0013366084
       value: -0.0049221534
-      inSlope: 0.000038741593
-      outSlope: 0.000038741593
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.4991141
       value: -0.004902765
-      inSlope: -0.4479652
-      outSlope: -0.4479652
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.12599102
@@ -184,6 +184,7 @@ MonoBehaviour:
     m_Bits: 64
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
+  enemyBullet: {fileID: 21300000, guid: 532b9a0efaa0f43f1b5cb9a41c24f223, type: 3}
   AmIShooting: 0
 --- !u!50 &915517992098834010
 Rigidbody2D:

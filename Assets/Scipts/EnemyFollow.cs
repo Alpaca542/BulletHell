@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask playerLayer;
     public GameObject bullet;
     public GameObject target;
+    public Sprite enemyBullet;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -103,6 +104,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
                     blt.GetComponent<BulletScript>().AmIFromPlayer = false;
                     blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
                     if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
@@ -116,7 +118,7 @@ public class EnemyAI : MonoBehaviour
                         blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.time, guns[i].transform.position.y + kf.value);
                     }
                     blt.GetComponent<BulletScript>().speed = bulletSpeed;
-                    blt.GetComponent<BulletScript>().StartRotation = guns[i].transform.eulerAngles;
+                    blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent));
                     blt.transform.Rotate(new Vector3(0, 0, 90));
                     //blt.GetComponent<Rigidbody2D>().AddForce(blt.transform.up * 1000f);
                 }
