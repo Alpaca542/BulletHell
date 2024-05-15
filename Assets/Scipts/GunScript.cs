@@ -94,30 +94,22 @@ public class GunScript : MonoBehaviour
         blt2.GetComponent<BulletScript>().damage = plr.GetComponent<Player>().damage;
         blt2.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt2.GetComponent<SpriteRenderer>().sprite = PlayerBullet;
-        if (transform.eulerAngles.z == 90 || transform.eulerAngles.z == -90 || transform.eulerAngles.z == 270 || transform.eulerAngles.z == -270)
-        {
-            blt2.transform.localPosition = new Vector2(transform.position.x - 0.2f, transform.position.y + 0.5f);
-        }
-        else
-        {
-            blt2.transform.localPosition = new Vector2(transform.position.x + 0.5f, transform.position.y - 0.2f);
-        }
-        blt2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.eulerAngles.z - angleOfChange));
+
+        Vector2 newPosition = new Vector2(-0.3f, 0.5f);
+        Vector3 rotatedVector = Quaternion.AngleAxis(plr.transform.eulerAngles.z, Vector3.forward) * newPosition;
+        blt2.transform.localPosition = transform.position + rotatedVector;
+
+        blt2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.eulerAngles.z));
         blt2.GetComponent<Rigidbody2D>().AddForce(blt2.transform.up * 1000f);
 
         GameObject blt3 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
         blt3.GetComponent<BulletScript>().AmIFromPlayer = true;
         blt3.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt3.GetComponent<SpriteRenderer>().sprite = PlayerBullet;
-        blt3.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.eulerAngles.z + angleOfChange));
-        if(transform.eulerAngles.z == 90 || transform.eulerAngles.z == -90 || transform.eulerAngles.z == 270 || transform.eulerAngles.z == -270)
-        {
-            blt3.transform.localPosition = new Vector2(transform.position.x - 0.2f, transform.position.y - 0.5f);
-        }
-        else
-        {
-            blt3.transform.localPosition = new Vector2(transform.position.x - 0.5f, transform.position.y - 0.2f);
-        }
+        Vector2 newPosition2 = new Vector2(0.3f, 0.5f);
+        Vector3 rotatedVector2 = Quaternion.AngleAxis(plr.transform.eulerAngles.z, Vector3.forward) * newPosition2;
+        blt3.transform.localPosition = transform.position + rotatedVector2;
+        blt3.transform.rotation = Quaternion.Euler(new Vector3(0, 0, plr.transform.eulerAngles.z));
         blt3.GetComponent<Rigidbody2D>().AddForce(blt3.transform.up * 1000f);
     }
 }
