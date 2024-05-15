@@ -85,6 +85,11 @@ public class BossScript : MonoBehaviour
     //{
     //    gameObject.SetActive(false);
     //}
+    public IEnumerator AttackFlip()
+    {
+
+        yield return new WaitForSeconds(1f);
+    }
     private void Update()
     {
         if (!AmIKind)

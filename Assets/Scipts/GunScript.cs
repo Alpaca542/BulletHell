@@ -13,19 +13,19 @@ public class GunScript : MonoBehaviour
     public Sprite PlayerBullet;
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
-        {
-            if(angleOfChange != 180)
-            {
-                angleOfChange = angleOfChange + 30f;
-            }
-            else
-            {
-                angleOfChange = 0;
-            }
-            //CancelInvoke(nameof(InvokePlayerShooting));
-            //InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
-        }
+        //if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    if(angleOfChange != 180)
+        //    {
+        //        angleOfChange = angleOfChange + 30f;
+        //    }
+        //    else
+        //    {
+        //        angleOfChange = 0;
+        //    }
+        //    //CancelInvoke(nameof(InvokePlayerShooting));
+        //    //InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
+        //}
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
         if (hit.collider != null && Input.GetMouseButtonDown(0))

@@ -306,12 +306,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  health: 5
+  health: 10
   shootingDistance: 30
   shootingCooldown: 0.2
   searchingRadius: 5
   SouldSearch: 0
   SouldShoot: 1
+  SouldGoUp: 1
   ProjectlilesPattern:
     serializedVersion: 2
     m_Curve:
@@ -354,6 +355,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   InvertPatterns: 1
+  myDeathParticles: {fileID: 0}
   guns:
   - {fileID: 8290624857964755676}
   - {fileID: 2257432605690569480}

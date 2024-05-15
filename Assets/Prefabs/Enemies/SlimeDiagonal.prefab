@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  health: 5
+  health: 35
   shootingDistance: 30
   shootingCooldown: 0.5
   searchingRadius: 5
@@ -196,6 +196,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   InvertPatterns: 1
+  myDeathParticles: {fileID: 0}
   guns:
   - {fileID: 6221912725436464798}
   - {fileID: 7399898093182702042}

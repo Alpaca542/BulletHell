@@ -5,6 +5,7 @@ using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEditor.Searcher;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Settings")]
     public bool SouldSearch;
     public bool SouldShoot;
+    public bool SouldGoUp;
     public AnimationCurve ProjectlilesPattern;
     public bool[] SidesToShoot;
     public AnimationCurve BulletPath;
@@ -133,14 +135,28 @@ public class EnemyAI : MonoBehaviour
             }
             if (searcher)
             {
-                agent.SetDestination(searcher.transform.position);
+                if (SouldGoUp)
+                {
+                    agent.SetDestination(new Vector2(searcher.transform.position.x, searcher.transform.position.y+4f));
+                }
+                else
+                {
+                    agent.SetDestination(searcher.transform.position);
+                }
             }
         }
         else
         {
             if (target != null)
             {
-                agent.SetDestination(target.transform.position);
+                if (SouldGoUp)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + 4f));
+                }
+                else
+                {
+                    agent.SetDestination(target.transform.position);
+                }
             }
         }
 

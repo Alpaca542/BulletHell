@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  health: 5
+  health: 15
   shootingDistance: 30
   shootingCooldown: 0.2
   searchingRadius: 5

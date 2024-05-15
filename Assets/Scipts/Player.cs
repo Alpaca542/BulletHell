@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float health;
     private Rigidbody2D rb;
     private float currentVelocity;
-    private float rotationSmoothTime = 0.1f;
+    private float rotationSmoothTime = 0.2f;
     private Animator anim;
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         rb.velocity = movement;
 
         // Handle rotation
-        if (movement != Vector2.zero)
+        if (Mathf.Abs(movement.x) > 0.2f || Mathf.Abs(movement.y) > 0.2f)
         {
             anim.SetBool("IsMoving", true);
             float targetAngle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
