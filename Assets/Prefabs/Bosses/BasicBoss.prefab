@@ -175,7 +175,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000333786, y: 0.2505331}
+  m_Offset: {x: -0.041027546, y: 0.6195326}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16.241974, y: 13.987169}
+  m_Size: {x: 12.773795, y: 11.686346}
   m_EdgeRadius: 0
 --- !u!195 &8054469526497458893
 NavMeshAgent:
@@ -249,10 +249,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.49713257
-      value: -0.014038086
-      inSlope: 0.060290452
-      outSlope: 0.060290452
+      time: -0.45059326
+      value: -0.0018310547
+      inSlope: 0.042227317
+      outSlope: 0.042227317
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -267,10 +267,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.24887767
     - serializedVersion: 3
-      time: 0.50231934
-      value: -0.0041503906
-      inSlope: -0.056184314
-      outSlope: -0.056184314
+      time: 0.44921875
+      value: -0.00012207031
+      inSlope: -0.053429876
+      outSlope: -0.053429876
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -279,6 +279,178 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   SidesToShoot: 01010101
+  BossAttacks:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.99757004
+      value: 0.0033883564
+      inSlope: 0.08296478
+      outSlope: 0.08296478
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06064202
+    - serializedVersion: 3
+      time: 0.0035155863
+      value: -0.008520114
+      inSlope: -0.017527344
+      outSlope: -0.017527344
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0023193
+      value: -0.007751465
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -4.6945353
+      value: 0.010819234
+      inSlope: 0.39078707
+      outSlope: 0.39078707
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050410736
+    - serializedVersion: 3
+      time: -3.8651068
+      value: 0.30275357
+      inSlope: 0.31355363
+      outSlope: 0.31355363
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -2.9581015
+      value: 0.549875
+      inSlope: 0.2318417
+      outSlope: 0.2318417
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -1.3323271
+      value: 0.8123233
+      inSlope: 0.092553414
+      outSlope: 0.092553414
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.018643696
+      value: 0.8631952
+      inSlope: -0.016181419
+      outSlope: -0.016181419
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.2720678
+      value: 0.7826819
+      inSlope: -0.111375056
+      outSlope: -0.111375056
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.2754936
+      value: 0.6343782
+      inSlope: -0.18363476
+      outSlope: -0.18363476
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.5018413
+      value: 0.35741368
+      inSlope: -0.26718143
+      outSlope: -0.26718143
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4.685758
+      value: -0.004189685
+      inSlope: -0.34286356
+      outSlope: -0.34286356
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.044455644
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BossAttacksBulletPatterns:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9987793
+      value: -0.0048828125
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0010070801
+      value: -0.0052490234
+      inSlope: -0.0019457637
+      outSlope: -0.0019457637
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99694824
+      value: -0.0071868896
+      inSlope: -0.0019457637
+      outSlope: -0.0019457637
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BossAttacksCds:
+  - 0.2
+  - 0.9
+  BossAttacksTiming:
+  - 5
+  - 1
   BulletPath:
     serializedVersion: 2
     m_Curve:
@@ -305,6 +477,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   InvertPatterns: 1
+  myDeathParticles: {fileID: 0}
   guns:
   - {fileID: 1975959877171692600}
   - {fileID: 4290873684293886508}

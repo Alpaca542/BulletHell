@@ -20,6 +20,10 @@ public class BossScript : MonoBehaviour
     public bool SouldShoot;
     public AnimationCurve ProjectlilesPattern;
     public bool[] SidesToShoot;
+    public AnimationCurve[] BossAttacks;
+    public AnimationCurve[] BossAttacksBulletPatterns;
+    public float[] BossAttacksCds;
+    public float[] BossAttacksTiming;
     public AnimationCurve BulletPath;
     public float bulletSpeed;
     public bool InvertPatterns;
@@ -51,8 +55,18 @@ public class BossScript : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void AttackSpawnCycle()
+    {
+        System.Random rnd = new System.Random();
+        int vl = rnd.Next(0, BossAttacks.Length);
+        BulletPath = BossAttacksBulletPatterns[vl];
+        ProjectlilesPattern = BossAttacks[vl];
+        shootingCooldown = BossAttacksCds[vl];
+        Invoke(nameof(AttackSpawnCycle), BossAttacksTiming[vl]);
+    }
     private void OnEnable()
     {
+        AttackSpawnCycle();
         System.Random rnd = new System.Random();
         if (rnd.Next(0, 2) == 0)
         {
@@ -76,20 +90,6 @@ public class BossScript : MonoBehaviour
         }
     }
 
-    //public void OnGetFromPool()
-    //{
-    //    gameObject.SetActive(true);
-    //}
-
-    //public void OnReturnToPool()
-    //{
-    //    gameObject.SetActive(false);
-    //}
-    public IEnumerator AttackFlip()
-    {
-
-        yield return new WaitForSeconds(1f);
-    }
     private void Update()
     {
         if (!AmIKind)
@@ -194,6 +194,7 @@ public class BossScript : MonoBehaviour
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.transform.localScale = new Vector2(0.04f, 0.04f);
                     blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
                     if (!AmIKind)
                     {

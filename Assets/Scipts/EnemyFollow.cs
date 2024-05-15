@@ -227,6 +227,7 @@ public class EnemyAI : MonoBehaviour
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.transform.localScale = new Vector2(0.04f, 0.04f);
                     blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
                     if (!AmIKind)
                     {
