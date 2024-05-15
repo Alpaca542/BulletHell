@@ -490,12 +490,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   InvertPatterns: 1
+  myDeathParticles: {fileID: 0}
   guns:
   - {fileID: 8915593888706669783}
   - {fileID: 8888102304190565852}
   - {fileID: 3697927482962060335}
   - {fileID: 1104746470713081366}
-  SlimeDeathParticles: {fileID: 6417038553441873970, guid: 0a18113029b3941cfb18eee56a32f0e6, type: 3}
+  SlimeDeathParticles: {fileID: 8084497266746819488, guid: aedda525ef7364e83910b7f178849924, type: 3}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64

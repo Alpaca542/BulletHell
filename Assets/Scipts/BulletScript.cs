@@ -129,7 +129,15 @@ public class BulletScript : MonoBehaviour, IPoolable
         ParticleSystem.ColorOverLifetimeModule originalColorOverLifetime = originalPS.colorOverLifetime;
         ParticleSystem.ColorOverLifetimeModule copyColorOverLifetime = copyPS.colorOverLifetime;
 
+        ParticleSystem.MainModule originalMainModule = originalPS.main;
+        ParticleSystem.MainModule copyMainModule = copyPS.main;
+
         copyColorOverLifetime.enabled = originalColorOverLifetime.enabled;
         copyColorOverLifetime.color = originalColorOverLifetime.color;
+
+
+        copyMainModule.startSize = originalMainModule.startSize;
+        copyMainModule.startSpeed = originalMainModule.startSpeed;
+        copyMainModule.maxParticles = originalMainModule.maxParticles;
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.SceneManagement;
 
 public class BossScript : MonoBehaviour
@@ -119,7 +118,7 @@ public class BossScript : MonoBehaviour
         if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {
             GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-            GetComponent<Animator>().SetBool("Alive", true);
+            GetComponent<Animator>().SetBool("Boss", true);
         }
 
         if (SouldSearch)
@@ -219,6 +218,7 @@ public class BossScript : MonoBehaviour
             }
         }
     }
+
     public void Die()
     {
         if (!Died)
@@ -233,10 +233,13 @@ public class BossScript : MonoBehaviour
             {
                 spwn.BossKilled();
             }
-            Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
+            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+            CopyComponent(SlimeDeathParticles, prt);
+            prt.transform.position = transform.position;
             Destroy(gameObject);
         }
     }
+
     void CopyComponent(GameObject original, GameObject toWhat)
     {
         ParticleSystem originalPS = original.GetComponent<ParticleSystem>();
@@ -245,7 +248,15 @@ public class BossScript : MonoBehaviour
         ParticleSystem.ColorOverLifetimeModule originalColorOverLifetime = originalPS.colorOverLifetime;
         ParticleSystem.ColorOverLifetimeModule copyColorOverLifetime = copyPS.colorOverLifetime;
 
+        ParticleSystem.MainModule originalMainModule = originalPS.main;
+        ParticleSystem.MainModule copyMainModule = copyPS.main;
+
         copyColorOverLifetime.enabled = originalColorOverLifetime.enabled;
         copyColorOverLifetime.color = originalColorOverLifetime.color;
+
+
+        copyMainModule.startSize = originalMainModule.startSize;
+        copyMainModule.startSpeed = originalMainModule.startSpeed;
+        copyMainModule.maxParticles = originalMainModule.maxParticles;
     }
 }
