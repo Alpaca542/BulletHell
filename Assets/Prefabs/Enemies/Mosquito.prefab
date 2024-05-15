@@ -374,31 +374,25 @@ MonoBehaviour:
   searchingRadius: 5
   SouldSearch: 0
   SouldShoot: 1
+  SouldGoUp: 0
+  ShouldGoSide: 1
+  ShouldGoDiag: 0
   ProjectlilesPattern:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.5006982
-      value: 0.0017078817
-      inSlope: 1.8412906
-      outSlope: 1.8412906
+      time: 0.0019263029
+      value: -0.004761845
+      inSlope: -0.04615742
+      outSlope: -0.04615742
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.05073802
-    - serializedVersion: 3
-      time: 1
-      value: -0.0040725973
-      inSlope: -1.8086245
-      outSlope: -1.8086245
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.053784132
-      outWeight: 0
+      outWeight: 0.07874272
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  SidesToShoot: 00000001
+  SidesToShoot: 00010100
   BulletPath:
     serializedVersion: 2
     m_Curve:
@@ -444,6 +438,8 @@ MonoBehaviour:
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0
+  distance: 0
+  distance2: 0
 --- !u!50 &3949813686205608606
 Rigidbody2D:
   serializedVersion: 4

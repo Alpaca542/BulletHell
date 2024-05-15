@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using System.Linq;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEditor.Searcher;
+using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     public bool SouldSearch;
     public bool SouldShoot;
     public bool SouldGoUp;
+    public bool ShouldGoSide;
+    public bool ShouldGoDiag;
     public AnimationCurve ProjectlilesPattern;
     public bool[] SidesToShoot;
     public AnimationCurve BulletPath;
@@ -43,6 +46,8 @@ public class EnemyAI : MonoBehaviour
     public bool AmIShooting;
     public bool ShootAPlayer;
     public bool AmIKind;
+    public float distance = 0;
+    public float distance2 = 0;
 
     public void InvokeDestr1()
     {
@@ -63,6 +68,8 @@ public class EnemyAI : MonoBehaviour
         {
             ShootAPlayer = false;
         }
+        distance = rnd.Next(-40, 40) / 10;
+        distance2 = rnd.Next(20, 70) / 10;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -137,11 +144,19 @@ public class EnemyAI : MonoBehaviour
             {
                 if (SouldGoUp)
                 {
-                    agent.SetDestination(new Vector2(searcher.transform.position.x, searcher.transform.position.y+4f));
+                    agent.SetDestination(new Vector2(searcher.transform.position.x, searcher.transform.position.y+ distance2));
+                }
+                else if (ShouldGoSide)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance2, target.transform.position.y));
+                }
+                else if (ShouldGoDiag)
+                {
+                    agent.SetDestination(new Vector2(searcher.transform.position.x + distance, searcher.transform.position.y + distance2));
                 }
                 else
                 {
-                    agent.SetDestination(searcher.transform.position);
+                    agent.SetDestination(new Vector2(searcher.transform.position.x + distance, searcher.transform.position.y + distance));
                 }
             }
         }
@@ -151,11 +166,19 @@ public class EnemyAI : MonoBehaviour
             {
                 if (SouldGoUp)
                 {
-                    agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + 4f));
+                    agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + distance2));
+                }
+                else if (ShouldGoSide)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance2, target.transform.position.y));
+                }
+                else if (ShouldGoDiag)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance2));
                 }
                 else
                 {
-                    agent.SetDestination(target.transform.position);
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance));
                 }
             }
         }
