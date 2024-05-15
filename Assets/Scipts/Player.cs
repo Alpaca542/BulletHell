@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public float health;
     private Rigidbody2D rb;
     private float currentVelocity;
-    private float rotationSmoothTime = 0.2f;
+    public float rotationSmoothTime = 0.2f;
     private Animator anim;
     public float damage = 1f;
     private void Awake()
