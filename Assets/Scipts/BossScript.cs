@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
 using static UnityEditor.Experimental.GraphView.GraphView;
-using System;
+using UnityEngine.SceneManagement;
 
 public class BossScript : MonoBehaviour
 {
@@ -89,11 +88,13 @@ public class BossScript : MonoBehaviour
     {
         if (!AmIKind)
         {
+            target = GameObject.FindGameObjectWithTag("Player");
+
             var kindEnemies = GameObject.FindObjectsOfType<EnemyAI>()
                 .Select(obj => obj.GetComponent<EnemyAI>())
                 .Where(ai => ai != null && ai.AmIKind)
                 .ToList();
-            if (ShootAPlayer && kindEnemies.Count != 0)
+            if (!ShootAPlayer && kindEnemies.Count != 0)
             {
                 target = kindEnemies[0].gameObject;
             }
@@ -104,11 +105,19 @@ public class BossScript : MonoBehaviour
         }
         else
         {
-            target = GameObject.FindGameObjectWithTag("Enemy");
+            if (GameObject.FindGameObjectWithTag("Boss"))
+            {
+                target = GameObject.FindGameObjectWithTag("Boss");
+            }
+            else
+            {
+                target = GameObject.FindGameObjectWithTag("Enemy");
+            }
         }
         if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {
             GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+            GetComponent<Animator>().SetBool("Boss", true);
         }
 
         if (SouldSearch)
@@ -152,7 +161,7 @@ public class BossScript : MonoBehaviour
                     ray = Physics2D.Raycast(transform.position, (target.transform.position - transform.position).normalized, shootingDistance, enemyLayer);
                 }
             }
-            if (ray)
+            if (ray.collider != null)
             {
                 if (!AmIShooting)
                 {

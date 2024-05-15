@@ -115,6 +115,7 @@ public class EnemyAI : MonoBehaviour
         if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {
             GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+            GetComponent<Animator>().SetBool("Alive", true);
         }
 
         if (SouldSearch)
