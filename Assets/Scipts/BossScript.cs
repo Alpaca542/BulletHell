@@ -24,6 +24,7 @@ public class BossScript : MonoBehaviour
     public AnimationCurve BulletPath;
     public float bulletSpeed;
     public bool InvertPatterns;
+    public ParticleSystem myDeathParticles;
 
     [Header("Fields")]
     public GameObject[] guns;
@@ -35,6 +36,7 @@ public class BossScript : MonoBehaviour
     public GameObject target;
     public Sprite enemyBullet;
     private RaycastHit2D ray;
+    private ParticleSystem copy;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -117,7 +119,7 @@ public class BossScript : MonoBehaviour
         if (GetComponent<SpriteRenderer>().maskInteraction != SpriteMaskInteraction.None)
         {
             GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
-            GetComponent<Animator>().SetBool("Boss", true);
+            GetComponent<Animator>().SetBool("Alive", true);
         }
 
         if (SouldSearch)
@@ -234,5 +236,16 @@ public class BossScript : MonoBehaviour
             Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+    void CopyComponent(GameObject original, GameObject toWhat)
+    {
+        ParticleSystem originalPS = original.GetComponent<ParticleSystem>();
+        ParticleSystem copyPS = toWhat.GetComponent<ParticleSystem>();
+
+        ParticleSystem.ColorOverLifetimeModule originalColorOverLifetime = originalPS.colorOverLifetime;
+        ParticleSystem.ColorOverLifetimeModule copyColorOverLifetime = copyPS.colorOverLifetime;
+
+        copyColorOverLifetime.enabled = originalColorOverLifetime.enabled;
+        copyColorOverLifetime.color = originalColorOverLifetime.color;
     }
 }

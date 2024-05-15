@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour, IPoolable
@@ -17,6 +18,7 @@ public class BulletScript : MonoBehaviour, IPoolable
 
     public bool AmIFromPlayer;
     public bool FromATeammate;
+
     private void Start()
     {
         startPosition = transform.position;
@@ -77,7 +79,9 @@ public class BulletScript : MonoBehaviour, IPoolable
             {
                 enem.Die();
             }
-            Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+            CopyComponent(BulletDeathParticles, prt);
+            prt.transform.position = transform.position;
             GameManager.Instance.pool.Return(this);
         }
         else if(collision.gameObject.tag == "Player" && !AmIFromPlayer)
@@ -90,7 +94,9 @@ public class BulletScript : MonoBehaviour, IPoolable
                 {
                     plr.Die();
                 }
-                Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+                GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+                CopyComponent(BulletDeathParticles, prt);
+                prt.transform.position = transform.position;
                 GameManager.Instance.pool.Return(this);
             }
         }
@@ -102,13 +108,28 @@ public class BulletScript : MonoBehaviour, IPoolable
             {
                 enem.Die();
             }
-            Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+            CopyComponent(BulletDeathParticles, prt);
+            prt.transform.position = transform.position;
             GameManager.Instance.pool.Return(this);
         }
         else if (collision.gameObject.tag == "Obstacle")
         {
-            Instantiate(BulletDeathParticles, transform.position, Quaternion.identity);
+            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+            CopyComponent(BulletDeathParticles, prt);
+            prt.transform.position = transform.position;
             GameManager.Instance.pool.Return(this);
         }
+    }
+    void CopyComponent(GameObject original, GameObject toWhat)
+    {
+        ParticleSystem originalPS = original.GetComponent<ParticleSystem>();
+        ParticleSystem copyPS = toWhat.GetComponent<ParticleSystem>();
+
+        ParticleSystem.ColorOverLifetimeModule originalColorOverLifetime = originalPS.colorOverLifetime;
+        ParticleSystem.ColorOverLifetimeModule copyColorOverLifetime = copyPS.colorOverLifetime;
+
+        copyColorOverLifetime.enabled = originalColorOverLifetime.enabled;
+        copyColorOverLifetime.color = originalColorOverLifetime.color;
     }
 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8796331685304283197}
   - component: {fileID: 2566046185456155400}
   - component: {fileID: 7920345663881412402}
-  - component: {fileID: 2396813578732034587}
   m_Layer: 0
   m_Name: greenPRTBOSS
   m_TagString: Untagged
@@ -4831,16 +4830,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2396813578732034587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417038553441873970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e557ee9946274b5da1f4e16db90b645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeInSeconds: 1

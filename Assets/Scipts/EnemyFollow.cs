@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     public AnimationCurve BulletPath;
     public float bulletSpeed;
     public bool InvertPatterns;
+    public ParticleSystem myDeathParticles;
 
     [Header("Fields")]
     public GameObject[] guns;
@@ -34,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject target;
     public Sprite enemyBullet;
     private RaycastHit2D ray;
+    private ParticleSystem copy;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -217,7 +219,20 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
-        Instantiate(SlimeDeathParticles, transform.position, Quaternion.identity);
+        GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+        CopyComponent(SlimeDeathParticles, prt);
+        prt.transform.position = transform.position;
         Destroy(gameObject);
+    }
+    void CopyComponent(GameObject original, GameObject toWhat)
+    {
+        ParticleSystem originalPS = original.GetComponent<ParticleSystem>();
+        ParticleSystem copyPS = toWhat.GetComponent<ParticleSystem>();
+
+        ParticleSystem.ColorOverLifetimeModule originalColorOverLifetime = originalPS.colorOverLifetime;
+        ParticleSystem.ColorOverLifetimeModule copyColorOverLifetime = copyPS.colorOverLifetime;
+
+        copyColorOverLifetime.enabled = originalColorOverLifetime.enabled;
+        copyColorOverLifetime.color = originalColorOverLifetime.color;
     }
 }

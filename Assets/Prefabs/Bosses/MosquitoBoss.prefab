@@ -552,6 +552,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   InvertPatterns: 1
+  myDeathParticles: {fileID: 0}
   guns:
   - {fileID: 7245995190922544221}
   - {fileID: 8491060735183892043}
