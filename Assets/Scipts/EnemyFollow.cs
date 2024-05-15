@@ -41,6 +41,7 @@ public class EnemyAI : MonoBehaviour
     public Sprite enemyBullet;
     private RaycastHit2D ray;
     private ParticleSystem copy;
+    public GameObject[] PickUps;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -262,6 +263,15 @@ public class EnemyAI : MonoBehaviour
         GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
         CopyComponent(SlimeDeathParticles, prt);
         prt.transform.position = transform.position;
+        System.Random rnd = new System.Random();
+        if (rnd.Next(0, 10) == 0)
+        {
+            int RandomValue = rnd.Next(0, 3);
+            if(RandomValue == 0)
+            {
+                Instantiate(PickUps[RandomValue], transform.position, Quaternion.identity);
+            }
+        }
         Destroy(gameObject);
     }
     void CopyComponent(GameObject original, GameObject toWhat)

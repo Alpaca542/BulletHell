@@ -493,6 +493,7 @@ MonoBehaviour:
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: c958b6e98d965497892049e897d8b27a, type: 3}
+  gigaPickup: {fileID: 5945777791856796745, guid: 1a06954d80f634fd6842d77b30e10b0a, type: 3}
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0

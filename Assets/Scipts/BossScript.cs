@@ -40,6 +40,7 @@ public class BossScript : MonoBehaviour
     public Sprite enemyBullet;
     private RaycastHit2D ray;
     private ParticleSystem copy;
+    public GameObject gigaPickup;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -239,6 +240,7 @@ public class BossScript : MonoBehaviour
             {
                 spwn.BossKilled();
             }
+            Instantiate(gigaPickup, transform.position, Quaternion.identity);
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(SlimeDeathParticles, prt);
             prt.transform.position = transform.position;

@@ -114,6 +114,9 @@ MonoBehaviour:
   searchingRadius: 5
   SouldSearch: 0
   SouldShoot: 1
+  SouldGoUp: 0
+  ShouldGoSide: 0
+  ShouldGoDiag: 0
   ProjectlilesPattern:
     serializedVersion: 2
     m_Curve:
@@ -190,9 +193,15 @@ MonoBehaviour:
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
   target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: 532b9a0efaa0f43f1b5cb9a41c24f223, type: 3}
+  PickUps:
+  - {fileID: 2838283864997083625, guid: 164e24249265743dbb54b4443a229c0f, type: 3}
+  - {fileID: 4899957029877777301, guid: def9af9dd0135414aa02e051dfdec957, type: 3}
+  - {fileID: 1987717496500586349, guid: 05318edb6e6d84d9f8b24a678230b0de, type: 3}
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0
+  distance: 0
+  distance2: 0
 --- !u!50 &915517992098834010
 Rigidbody2D:
   serializedVersion: 4

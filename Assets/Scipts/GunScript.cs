@@ -91,6 +91,7 @@ public class GunScript : MonoBehaviour
     {
         GameObject blt2 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
         blt2.GetComponent<BulletScript>().AmIFromPlayer = true;
+        blt2.GetComponent<BulletScript>().damage = plr.GetComponent<Player>().damage;
         blt2.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt2.GetComponent<SpriteRenderer>().sprite = PlayerBullet;
         if (transform.eulerAngles.z == 90 || transform.eulerAngles.z == -90 || transform.eulerAngles.z == 270 || transform.eulerAngles.z == -270)

@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private float currentVelocity;
     private float rotationSmoothTime = 0.2f;
     private Animator anim;
+    public float damage = 1f;
     private void Awake()
     {
         anim = GetComponent<Animator>();
