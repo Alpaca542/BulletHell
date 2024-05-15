@@ -4,9 +4,6 @@ using UnityEngine;
 using NavMeshPlus.Components;
 using UnityEngine.AI;
 using System.Linq;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEditor.Searcher;
-using Unity.VisualScripting;
 
 public class EnemyAI : MonoBehaviour
 {
