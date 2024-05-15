@@ -99,6 +99,19 @@ public class BulletScript : MonoBehaviour, IPoolable
                 prt.transform.position = transform.position;
                 GameManager.Instance.pool.Return(this);
             }
+            else
+            {
+                EnemyAI enem = collision.gameObject.GetComponent<EnemyAI>();
+                enem.health -= damage;
+                if (enem.health <= 0)
+                {
+                    enem.Die();
+                }
+                GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+                CopyComponent(BulletDeathParticles, prt);
+                prt.transform.position = transform.position;
+                GameManager.Instance.pool.Return(this);
+            }
         }
         else if (collision.gameObject.tag == "Boss" && AmIFromPlayer)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnEnemies : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class SpawnEnemies : MonoBehaviour
 
     [Header("Debug")]
     public int StageIndex = 0;
+    public int PriorIndex = 0;
+
     public void SpawnABoss()
     {
         Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
@@ -62,7 +65,9 @@ public class SpawnEnemies : MonoBehaviour
                 System.Random random = new System.Random();
 
                 KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(random.Next(0, EnemiesToUse.Count));
-                Instantiate(chosenEnemy.Key, new Vector3(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y), 0), Quaternion.identity);
+                GameObject enem = Instantiate(chosenEnemy.Key, new Vector3(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y), 0), Quaternion.identity);
+                enem.GetComponent<NavMeshAgent>().avoidancePriority = PriorIndex;
+                PriorIndex++;
                 //GameObject enem = ((EnemyAI)GameManager.Instance.pool.Get<EnemyAI>()).gameObject;
                 HardnessLeft -= chosenEnemy.Value;
                 EnemiesToUse = Enemies.Where(obj => obj.Value <= HardnessLeft)
