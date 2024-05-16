@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597ea658584954edc9b022b3df2ae432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   health: 30
   shootingDistance: 30
   shootingCooldown: 0.5
@@ -198,10 +198,12 @@ MonoBehaviour:
   - {fileID: 4899957029877777301, guid: def9af9dd0135414aa02e051dfdec957, type: 3}
   - {fileID: 1987717496500586349, guid: 05318edb6e6d84d9f8b24a678230b0de, type: 3}
   AmIShooting: 0
+  Alive: 1
   ShootAPlayer: 0
   AmIKind: 0
   distance: 0
   distance2: 0
+  Died: 0
 --- !u!50 &915517992098834010
 Rigidbody2D:
   serializedVersion: 4

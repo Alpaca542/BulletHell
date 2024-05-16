@@ -265,11 +265,11 @@ public class EnemyAI : MonoBehaviour
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(SlimeDeathParticles, prt);
             prt.transform.position = transform.position;
-            System.Random rnd = new System.Random();
-            if (rnd.Next(0, 5) == 0)
+            System.Random rnd1 = new System.Random();
+            if (rnd1.Next(0, 5) == 1)
             {
-                int RandomValue = rnd.Next(0, 3);
-                Instantiate(PickUps[RandomValue], transform.position, Quaternion.identity);
+                System.Random rnd2 = new System.Random();
+                Instantiate(PickUps[rnd2.Next(0, 3)], transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }
