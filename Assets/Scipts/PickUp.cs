@@ -5,26 +5,27 @@ using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
+    public int which;
     public float HealthBoost;
-    public float DamageBoost;
-    public float SpeedBoost;
     public GameObject pickUpParticles;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player" && collision.GetComponent<Player>() != null)
         {
-            collision.GetComponent<Player>().speed += SpeedBoost;
-            collision.GetComponent<Player>().damage += DamageBoost;
-            collision.GetComponent<Player>().TakeDamage(-HealthBoost);
+            if (!collision.GetComponent<Player>().boosted)
+            {
+                collision.GetComponent<Player>().Boost(which);
+                collision.GetComponent<Player>().TakeDamage(-HealthBoost);
 
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal();
 
 
-            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
-            CopyComponent(pickUpParticles, prt);
-            prt.transform.position = transform.position;
-            Destroy(gameObject);
+                GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+                CopyComponent(pickUpParticles, prt);
+                prt.transform.position = transform.position;
+                Destroy(gameObject);
+            }
         }
     }
     void CopyComponent(GameObject original, GameObject toWhat)

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +25,75 @@ public class Player : MonoBehaviour
     public float damage = 1f;
     public Gradient healthGradient;
     public bool healing;
+    public bool boosted;
+    public Volume volume;
+    public Color32[] vignettereffects;
+    public Text[] BoostTextes;
+    public GameObject[] BoostImgs;
+    public void Boost(int which)
+    {
+        Vignette vgn;
+        if (volume.profile.TryGet<Vignette>(out vgn))
+        {
+            vgn.active = true;
+            vgn.color.value = vignettereffects[which];
+        }
+
+        if (which == 0)
+        {
+            speed += 8;
+            StartCoroutine(CrtnEndBoost(which));
+            BoostImgs[which].SetActive(true);
+        }
+        else if (which == 1)
+        {
+            damage += 5;
+            StartCoroutine(CrtnEndBoost(which));
+            BoostImgs[which].SetActive(true);
+        }
+        else if (which == 2)
+        {
+            damage += 5;
+            speed += 5;
+            StartCoroutine(CrtnEndBoost(which));
+            BoostImgs[which].SetActive(true);
+        }
+        else if (which == 3)
+        {
+            health += 20;
+            CancelInvoke(nameof(InvokeEndHeal));
+            Invoke(nameof(InvokeEndHeal), 0.5f);
+        }
+    }
+    public void InvokeEndHeal()
+    {
+        Vignette vgn;
+        if (volume.profile.TryGet<Vignette>(out vgn))
+        {
+            vgn.active = false;
+        }
+    }
+    public IEnumerator CrtnEndBoost(int which)
+    {
+        boosted = true;
+        float timer = 5;
+        while(timer > 0.1)
+        {
+            timer -= 0.1f;
+            BoostTextes[which].text = timer.ToString();
+            yield return new WaitForSeconds(0.1f);
+        }
+        damage = 0.5f;
+        speed = 7f;
+        Vignette vgn;
+        if (volume.profile.TryGet<Vignette>(out vgn))
+        {
+            vgn.active = false;
+        }
+        BoostImgs[which].SetActive(false);
+        BoostTextes[which].text = "0";
+        boosted = false;
+    }
     private void Awake()
     {
         healthBeforeChanged = health;

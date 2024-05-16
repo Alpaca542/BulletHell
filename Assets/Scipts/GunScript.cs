@@ -42,7 +42,10 @@ public class GunScript : MonoBehaviour
         }
         else
         {
-            plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+            if (!plr2.GetComponent<Player>().boosted)
+            {
+                plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+            }
             DoICatch = false;
             DoIShoot = false;
             Connected = false;

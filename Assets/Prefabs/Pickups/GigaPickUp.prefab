@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2215534, g: 0, b: 0.6415094, a: 1}
+  m_Color: {r: 0.3644459, g: 0, b: 0.735849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf36c8a968274dbdb846eb9bdfb2187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBoost: 50
-  DamageBoost: 0.5
-  SpeedBoost: 1
+  which: 2
+  HealthBoost: 20
   pickUpParticles: {fileID: 7159719375912422335, guid: 31fc06792b00041a2b26538ab0b88e72, type: 3}
