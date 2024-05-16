@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
@@ -15,7 +16,11 @@ public class PickUp : MonoBehaviour
         {
             collision.GetComponent<Player>().speed += SpeedBoost;
             collision.GetComponent<Player>().damage += DamageBoost;
-            collision.GetComponent<Player>().health += HealthBoost;
+            collision.GetComponent<Player>().TakeDamage(-HealthBoost);
+
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal();
+
+
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(pickUpParticles, prt);
             prt.transform.position = transform.position;

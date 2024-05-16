@@ -11,46 +11,59 @@ public class Player : MonoBehaviour
     public Image fill;
     public float speed;
     public float health;
-    private float healthBeforeChanged;
+    private float AllTheDamage;
     private Rigidbody2D rb;
     public float baseSpeed;
     private float currentVelocity;
     public float rotationSmoothTime = 0.2f;
     private Animator anim;
+    public float healthBeforeChanged;
     public Slider healthBar;
     public float damage = 1f;
     public Gradient healthGradient;
+    public bool healing;
     private void Awake()
     {
+        healthBeforeChanged = health;
+        healthBar.value = health;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+
         baseSpeed = speed;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(CrtnTakeDamage());
     }
     public void TakeDamage(float dmg)
     {
-        healthBeforeChanged = health;
+        AllTheDamage += dmg;
         health -= dmg;
         health = Mathf.Clamp(health, 0, 100);
         if (health <= 0)
         {
             Die();
         }
-        StartCoroutine(CrtnTakeDamage());
+        if (!healing)
+        {
+            StartCoroutine(CrtnTakeDamage());
+        }
+    }
+    public void Heal()
+    {
+        healthBar.GetComponent<Animation>().Play();
+        healthBar.value = health;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
     }
     public IEnumerator CrtnTakeDamage()
     {
-        healthBar.value = healthBeforeChanged;
-        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-        yield return new WaitForSeconds(0.05f);
-        healthBar.value = healthBeforeChanged - (healthBeforeChanged-health)/3;
-        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-        yield return new WaitForSeconds(0.05f);
-        healthBar.value = healthBeforeChanged - ((healthBeforeChanged - health) / 3) * 2;
-        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-        yield return new WaitForSeconds(0.05f);
-        healthBar.value = health;
-        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-
+        healing = true;
+        while (AllTheDamage >= 0.4f)
+        {
+            healthBar.value -= 0.2f;
+            AllTheDamage -= 0.2f;
+            fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+            yield return new WaitForSeconds(0.01f);
+        }
+        healing = false;
     }
     void FixedUpdate()
     {

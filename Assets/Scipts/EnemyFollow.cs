@@ -47,6 +47,7 @@ public class EnemyAI : MonoBehaviour
     public bool AmIKind;
     public float distance = 0;
     public float distance2 = 0;
+    public bool Died;
 
     public void InvokeDestr1()
     {
@@ -258,19 +259,20 @@ public class EnemyAI : MonoBehaviour
     }
     public void Die()
     {
-        GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
-        CopyComponent(SlimeDeathParticles, prt);
-        prt.transform.position = transform.position;
-        System.Random rnd = new System.Random();
-        if (rnd.Next(0, 10) == 0)
+        if (!Died)
         {
-            int RandomValue = rnd.Next(0, 3);
-            if(RandomValue == 0)
+            Died = true;
+            GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
+            CopyComponent(SlimeDeathParticles, prt);
+            prt.transform.position = transform.position;
+            System.Random rnd = new System.Random();
+            if (rnd.Next(0, 5) == 0)
             {
+                int RandomValue = rnd.Next(0, 3);
                 Instantiate(PickUps[RandomValue], transform.position, Quaternion.identity);
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
     void CopyComponent(GameObject original, GameObject toWhat)
     {
