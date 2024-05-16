@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float health;
     private float healthBeforeChanged;
     private Rigidbody2D rb;
+    public float baseSpeed;
     private float currentVelocity;
     public float rotationSmoothTime = 0.2f;
     private Animator anim;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     public Gradient healthGradient;
     private void Awake()
     {
+        baseSpeed = speed;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
