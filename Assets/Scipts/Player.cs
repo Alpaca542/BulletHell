@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
             fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
             Invoke(nameof(InvokeEndHeal), 0.5f);
         }
+        baseSpeed = speed;
     }
     public void InvokeEndHeal()
     {
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
         BoostImgs[which].SetActive(false);
         BoostTextes[which].text = "0";
         boosted = false;
+        baseSpeed = speed;
     }
 
     private void Awake()

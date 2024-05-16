@@ -13,12 +13,7 @@ public class GunScript : MonoBehaviour
     public GameObject ConnectObject;
     public bool DoIShoot;
     public bool DoICatch;
-    public Vector2 zeropos;
     public Sprite PlayerBullet;
-    private void Awake()
-    {
-        zeropos = transform.position;
-    }
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -47,10 +42,7 @@ public class GunScript : MonoBehaviour
         }
         else
         {
-            if (!plr2.GetComponent<Player>().boosted)
-            {
-                plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
-            }
+            plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
             DoICatch = false;
             DoIShoot = false;
             Connected = false;
