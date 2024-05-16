@@ -50,7 +50,7 @@ public class SpawnEnemies : MonoBehaviour
         StartCoroutine(StartSpawningg());
         StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
-        WaveCooldown /= Mathf.Sqrt(BigHardnessMultiplyer);
+        WaveCooldown /= BigHardnessMultiplyer;
     }
     IEnumerator StartSpawningg()
     {
@@ -74,8 +74,8 @@ public class SpawnEnemies : MonoBehaviour
                                                         .ToDictionary(kv => kv.Key, kv => kv.Value); yield return new WaitForSeconds(SpawnCooldown);
             }
             StartingHardness *= HardnessMultiplyer;
-            WaveCooldown /= Mathf.Sqrt(HardnessMultiplyer);
-            yield return new WaitForSeconds(Random.Range(WaveCooldown*10 - 10, WaveCooldown*10 + 10)/10);
+            WaveCooldown /= HardnessMultiplyer;
+            yield return new WaitForSeconds(Random.Range(WaveCooldown*10 - 3, WaveCooldown*10 + 3)/10);
         }
         cnv.SetActive(true);
     }

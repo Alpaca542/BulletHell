@@ -194,6 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBoost: 0
-  DamageBoost: 1
+  DamageBoost: 0.5
   SpeedBoost: 0
   pickUpParticles: {fileID: 7159719375912422335, guid: 31fc06792b00041a2b26538ab0b88e72, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunScript : MonoBehaviour
 {
     public GameObject plr;
+    public GameObject plr2;
     public int[] AmountOfSlimes;
     public float angleOfChange;
     public bool Connected = false;
@@ -91,7 +92,7 @@ public class GunScript : MonoBehaviour
     {
         GameObject blt2 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
         blt2.GetComponent<BulletScript>().AmIFromPlayer = true;
-        blt2.GetComponent<BulletScript>().damage = plr.GetComponent<Player>().damage;
+        blt2.GetComponent<BulletScript>().damage = plr2.GetComponent<Player>().damage;
         blt2.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt2.GetComponent<SpriteRenderer>().sprite = PlayerBullet;
 
@@ -104,6 +105,7 @@ public class GunScript : MonoBehaviour
 
         GameObject blt3 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
         blt3.GetComponent<BulletScript>().AmIFromPlayer = true;
+        blt3.GetComponent<BulletScript>().damage = plr2.GetComponent<Player>().damage;
         blt3.transform.localScale = new Vector3(0.03f, 0.03f, 1f);
         blt3.GetComponent<SpriteRenderer>().sprite = PlayerBullet;
         Vector2 newPosition2 = new Vector2(0.3f, 0.5f);

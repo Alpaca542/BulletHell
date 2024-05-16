@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     [Header("Params")]
+    public Image fill;
     public float speed;
     public float health;
     private Rigidbody2D rb;
     private float currentVelocity;
     public float rotationSmoothTime = 0.2f;
     private Animator anim;
+    public Slider healthBar;
     public float damage = 1f;
+    public Gradient healthGradient;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -21,6 +25,9 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        health = Mathf.Clamp(health, 0, 100);
+        healthBar.value = health;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
         // Handle movement
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
