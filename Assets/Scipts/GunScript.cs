@@ -22,7 +22,7 @@ public class GunScript : MonoBehaviour
             {
                 DoIShoot = true;
                 plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
-                plr2.GetComponent<Player>().speed /= 1.5f;
+                plr2.GetComponent<Player>().speed /= 1.3f;
                 DoICatch = false;
                 Connected = false;
                 InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
@@ -34,7 +34,7 @@ public class GunScript : MonoBehaviour
             {
                 DoICatch = true;
                 plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
-                plr2.GetComponent<Player>().speed /= 2f;
+                plr2.GetComponent<Player>().speed /= 1.6f;
                 DoIShoot = false;
                 Connected = false;
                 CancelInvoke(nameof(InvokePlayerShooting));
