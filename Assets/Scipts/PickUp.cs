@@ -16,10 +16,6 @@ public class PickUp : MonoBehaviour
             if (!collision.GetComponent<Player>().boosted)
             {
                 collision.GetComponent<Player>().Boost(which);
-                collision.GetComponent<Player>().TakeDamage(-HealthBoost);
-
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Heal();
-
 
                 GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
                 CopyComponent(pickUpParticles, prt);

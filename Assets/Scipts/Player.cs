@@ -62,6 +62,9 @@ public class Player : MonoBehaviour
         {
             health += 20;
             CancelInvoke(nameof(InvokeEndHeal));
+            healthBar.GetComponent<Animation>().Play();
+            healthBar.value = health;
+            fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
             Invoke(nameof(InvokeEndHeal), 0.5f);
         }
     }
@@ -73,6 +76,7 @@ public class Player : MonoBehaviour
             vgn.active = false;
         }
     }
+
     public IEnumerator CrtnEndBoost(int which)
     {
         boosted = true;
@@ -94,6 +98,7 @@ public class Player : MonoBehaviour
         BoostTextes[which].text = "0";
         boosted = false;
     }
+
     private void Awake()
     {
         healthBeforeChanged = health;
@@ -105,6 +110,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(CrtnTakeDamage());
     }
+
     public void TakeDamage(float dmg)
     {
         AllTheDamage += dmg;
@@ -119,12 +125,7 @@ public class Player : MonoBehaviour
             StartCoroutine(CrtnTakeDamage());
         }
     }
-    public void Heal()
-    {
-        healthBar.GetComponent<Animation>().Play();
-        healthBar.value = health;
-        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-    }
+
     public IEnumerator CrtnTakeDamage()
     {
         healing = true;

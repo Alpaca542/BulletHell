@@ -13,7 +13,12 @@ public class GunScript : MonoBehaviour
     public GameObject ConnectObject;
     public bool DoIShoot;
     public bool DoICatch;
+    public Vector2 zeropos;
     public Sprite PlayerBullet;
+    private void Awake()
+    {
+        zeropos = transform.position;
+    }
     void Update()
     {
         if (Input.GetMouseButton(0))
@@ -60,7 +65,7 @@ public class GunScript : MonoBehaviour
                 Connected = true;
                 ConnectObject = hit2.collider.gameObject;
                 CancelInvoke(nameof(CatchInvoke));
-                Invoke(nameof(CatchInvoke), 4f);
+                Invoke(nameof(CatchInvoke), 2.5f);
             }
         }
 
