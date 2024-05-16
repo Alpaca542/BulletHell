@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Image fill;
     public float speed;
     public float health;
+    private float healthBeforeChanged;
     private Rigidbody2D rb;
     private float currentVelocity;
     public float rotationSmoothTime = 0.2f;
@@ -23,11 +24,34 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-    void FixedUpdate()
+    public void TakeDamage(float dmg)
     {
+        healthBeforeChanged = health;
+        health -= dmg;
         health = Mathf.Clamp(health, 0, 100);
+        if (health <= 0)
+        {
+            Die();
+        }
+        StartCoroutine(CrtnTakeDamage());
+    }
+    public IEnumerator CrtnTakeDamage()
+    {
+        healthBar.value = healthBeforeChanged;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+        yield return new WaitForSeconds(0.05f);
+        healthBar.value = healthBeforeChanged - (healthBeforeChanged-health)/3;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+        yield return new WaitForSeconds(0.05f);
+        healthBar.value = healthBeforeChanged - ((healthBeforeChanged - health) / 3) * 2;
+        fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+        yield return new WaitForSeconds(0.05f);
         healthBar.value = health;
         fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+
+    }
+    void FixedUpdate()
+    {
         // Handle movement
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");

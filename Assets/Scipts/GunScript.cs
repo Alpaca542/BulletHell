@@ -11,28 +11,45 @@ public class GunScript : MonoBehaviour
     public bool Connected = false;
     public LayerMask ConnectLineTo, ConnectLineTo2;
     public GameObject ConnectObject;
+    public bool DoIShoot;
+    public bool DoICatch;
     public Sprite PlayerBullet;
     void Update()
     {
-        //if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    if(angleOfChange != 180)
-        //    {
-        //        angleOfChange = angleOfChange + 30f;
-        //    }
-        //    else
-        //    {
-        //        angleOfChange = 0;
-        //    }
-        //    //CancelInvoke(nameof(InvokePlayerShooting));
-        //    //InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
-        //}
-
+        if (Input.GetMouseButton(0))
+        {
+            if (!DoIShoot)
+            {
+                DoIShoot = true;
+                plr2.GetComponent<Player>().speed /= 1.5f;
+                DoICatch = false;
+                Connected = false;
+                InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
+            }
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            if (!DoICatch)
+            {
+                DoICatch = true;
+                plr2.GetComponent<Player>().speed /= 2f;
+                DoIShoot = false;
+                Connected = false;
+                CancelInvoke(nameof(InvokePlayerShooting));
+            }
+        }
+        else
+        {
+            DoICatch = false;
+            DoIShoot = false;
+            Connected = false;
+            CancelInvoke(nameof(InvokePlayerShooting));
+        }
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, ConnectLineTo2);
-        if (hit.collider != null && Input.GetMouseButtonDown(0))
+        if (hit.collider != null && DoICatch)
         {
             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized, 100f, ConnectLineTo);
-            if (hit2.collider != null )
+            if (hit2.collider != null && !Connected)
             {
                 Connected = true;
                 ConnectObject = hit2.collider.gameObject;
@@ -40,12 +57,9 @@ public class GunScript : MonoBehaviour
                 Invoke(nameof(CatchInvoke), 4f);
             }
         }
-        if (Input.GetMouseButtonUp(0))
-        {
-            CancelInvoke(nameof(CatchInvoke));
-            Connected = false;
-        }
-        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().enabled && ConnectObject.gameObject.tag != "Boss")
+
+
+        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().Alive && ConnectObject.gameObject.tag != "Boss")
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
@@ -58,6 +72,8 @@ public class GunScript : MonoBehaviour
             GetComponent<LineRenderer>().SetPosition(1, transform.position);
             GetComponent<LineRenderer>().enabled = false;
         }
+
+
     }
     public void CatchInvoke()
     {
@@ -82,12 +98,9 @@ public class GunScript : MonoBehaviour
         GetComponent<LineRenderer>().enabled = false;
         ConnectObject.GetComponent<Animation>().Play();
         ConnectObject.GetComponent<EnemyAI>().InvokeDestr1();
+        ConnectObject.GetComponent<EnemyAI>().Alive = false;
     }
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
-    }
     public void InvokePlayerShooting()
     {
         GameObject blt2 = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;

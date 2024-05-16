@@ -89,11 +89,7 @@ public class BulletScript : MonoBehaviour, IPoolable
             if(collision.gameObject.GetComponent<Player>() != null)
             {
                 Player plr = collision.gameObject.GetComponent<Player>();
-                plr.health -= damage;
-                if (plr.health <= 0)
-                {
-                    plr.Die();
-                }
+                plr.TakeDamage(damage);
                 GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
                 CopyComponent(BulletDeathParticles, prt);
                 prt.transform.position = transform.position;
