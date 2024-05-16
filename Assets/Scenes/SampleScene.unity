@@ -550,7 +550,6 @@ MonoBehaviour:
   ConnectObject: {fileID: 0}
   DoIShoot: 0
   DoICatch: 0
-  zeropos: {x: 0, y: 0}
   PlayerBullet: {fileID: 21300000, guid: 4bca3e7ca776c42a49ccbe2bbac70c72, type: 3}
 --- !u!120 &232072037
 LineRenderer:
