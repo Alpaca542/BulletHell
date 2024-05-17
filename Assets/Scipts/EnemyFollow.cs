@@ -95,6 +95,10 @@ public class EnemyAI : MonoBehaviour
     //}
     private void Update()
     {
+        if (Died)
+        {
+            CancelInvoke(nameof(InvokeShoot));
+        }
         if (!AmIKind)
         {
             target = GameObject.FindGameObjectWithTag("Player");

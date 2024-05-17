@@ -58,11 +58,11 @@ public class DialogueScript : MonoBehaviour
         Display.text = "";
         if (WhatToShow.name == "player")
         {
-            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(350, 350);
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 420);
         }
         else
         {
-            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(160, 160);
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
         }
         Display2.sprite = WhatToShow;
         foreach (char letter1 in WhatToType.ToCharArray())
