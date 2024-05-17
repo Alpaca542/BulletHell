@@ -21,8 +21,11 @@ public class GunScript : MonoBehaviour
             if (!DoIShoot)
             {
                 DoIShoot = true;
-                plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
-                plr2.GetComponent<Player>().speed /= 1.3f;
+                if (!plr2.GetComponent<Player>().boosted)
+                {
+                    plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+                    plr2.GetComponent<Player>().speed /= 1.3f;
+                }
                 DoICatch = false;
                 Connected = false;
                 InvokeRepeating(nameof(InvokePlayerShooting), 0, 0.2f);
@@ -33,8 +36,11 @@ public class GunScript : MonoBehaviour
             if (!DoICatch)
             {
                 DoICatch = true;
-                plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
-                plr2.GetComponent<Player>().speed /= 1.6f;
+                if (!plr2.GetComponent<Player>().boosted)
+                {
+                    plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+                    plr2.GetComponent<Player>().speed /= 1.6f;
+                }
                 DoIShoot = false;
                 Connected = false;
                 CancelInvoke(nameof(InvokePlayerShooting));
@@ -42,7 +48,10 @@ public class GunScript : MonoBehaviour
         }
         else
         {
-            plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+            if (!plr2.GetComponent<Player>().boosted)
+            {
+                plr2.GetComponent<Player>().speed = plr2.GetComponent<Player>().baseSpeed;
+            }
             DoICatch = false;
             DoIShoot = false;
             Connected = false;

@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float health;
     public bool usedBoost1;
     public bool usedBoost2;
+    public float basedamage;
     private float AllTheDamage;
     private Rigidbody2D rb;
     public float baseSpeed;
@@ -49,12 +50,14 @@ public class Player : MonoBehaviour
         }
         else if (which == 1)
         {
-            damage += 5;
+            damage += 2;
             StartCoroutine(CrtnEndBoost(which));
             BoostImgs[which].SetActive(true);
         }
         else if (which == 2)
         {
+            baseSpeed += 2;
+            basedamage ++;
             damage += 5;
             speed += 5;
             StartCoroutine(CrtnEndBoost(which));
@@ -69,7 +72,6 @@ public class Player : MonoBehaviour
             fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
             Invoke(nameof(InvokeEndHeal), 0.5f);
         }
-        baseSpeed = speed;
     }
     public void InvokeEndHeal()
     {
@@ -90,8 +92,8 @@ public class Player : MonoBehaviour
             BoostTextes[which].text = timer.ToString();
             yield return new WaitForSeconds(0.1f);
         }
-        damage = 0.5f;
-        speed = 7f;
+        damage = basedamage;
+        speed = baseSpeed;
         Vignette vgn;
         if (volume.profile.TryGet<Vignette>(out vgn))
         {
@@ -100,7 +102,6 @@ public class Player : MonoBehaviour
         BoostImgs[which].SetActive(false);
         BoostTextes[which].text = "0";
         boosted = false;
-        baseSpeed = speed;
     }
 
     private void Awake()
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour
         fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
 
         baseSpeed = speed;
+        basedamage = damage;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(CrtnTakeDamage());

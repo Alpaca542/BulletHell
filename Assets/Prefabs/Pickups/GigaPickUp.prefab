@@ -197,8 +197,8 @@ MonoBehaviour:
   PickUpLesson1: This is a Slimer! When you consume it, you gain part of the power
     of the slime that owned it before for a few seconds. Use this time wisely
   PickUpLessonSprite1: {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
-  PickUpLesson2: This is the Great Slimer! When you consume it, your energy and power
-    increase instantly!
+  PickUpLesson2: This is the Great Slimer! In addition to the boost, it permanently
+    increases your energy and power
   PickUpLessonSprite2: {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   HealthBoost: 20
   pickUpParticles: {fileID: 7159719375912422335, guid: 31fc06792b00041a2b26538ab0b88e72, type: 3}
