@@ -67491,6 +67491,7 @@ MonoBehaviour:
   - And... one more thing... Can you please avoid killing my people? If you capture
     them, I can break the hypnosis and they can help you fight the mutants
   - I'll think about it
+  - You can use your right mouse button to catch them and left mouse button to shoot!
   - I'll have my revenge
   - Thank you so much!
   - You saved us!
@@ -67508,7 +67509,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3968ae04eb5dd4d09b00ec7ff7f48543, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
-  stopindexes: 080000000c000000
+  stopindexes: 0a0000000d000000
   IndexInMain: 0
   Stringpb: 
   btnContinue: {fileID: 1763882459}
