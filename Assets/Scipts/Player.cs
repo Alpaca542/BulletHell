@@ -66,11 +66,11 @@ public class Player : MonoBehaviour
         else if (which == 3)
         {
             health += 20;
-            CancelInvoke(nameof(InvokeEndHeal));
-            healthBar.GetComponent<Animation>().Play();
             healthBar.value = health;
+            healthBar.GetComponent<Animation>().Play();
+            BoostImgs[which].SetActive(true);
             fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
-            Invoke(nameof(InvokeEndHeal), 0.5f);
+            StartCoroutine(CrtnEndBoost(which));
         }
     }
     public void InvokeEndHeal()
