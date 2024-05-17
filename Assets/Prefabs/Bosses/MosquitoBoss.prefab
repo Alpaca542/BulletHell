@@ -243,7 +243,6 @@ GameObject:
   - component: {fileID: 6208097128680574291}
   - component: {fileID: 6434848836115306878}
   - component: {fileID: 4110529118466052179}
-  - component: {fileID: 6452527767849680759}
   - component: {fileID: 516598305088456917}
   m_Layer: 8
   m_Name: MosquitoBoss
@@ -439,22 +438,6 @@ NavMeshAgent:
   m_BaseOffset: 8.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!111 &6452527767849680759
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7614033080297132135}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &516598305088456917
 MonoBehaviour:
   m_ObjectHideFlags: 0

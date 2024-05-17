@@ -33,9 +33,9 @@ public class SpawnEnemies : MonoBehaviour
     {
         Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
     }
-    private void Awake()
+    private void OnEnable()
     {
-        for(int i = 0; i < Enemies1.Length; i ++)
+        for (int i = 0; i < Enemies1.Length; i++)
         {
             Enemies[Enemies1[i]] = Hardness[i];
         }

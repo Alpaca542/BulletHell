@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 7676257601306163956}
   - component: {fileID: 4585518727117292946}
   - component: {fileID: 7978111762052631576}
-  - component: {fileID: 1495290168980805539}
   - component: {fileID: 3443510946168026267}
   m_Layer: 8
   m_Name: CrossBoss
@@ -241,22 +240,6 @@ NavMeshAgent:
   m_BaseOffset: 8.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!111 &1495290168980805539
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932256041328878569}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &3443510946168026267
 MonoBehaviour:
   m_ObjectHideFlags: 0

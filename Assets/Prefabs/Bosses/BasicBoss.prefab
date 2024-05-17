@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7218416339540944300}
   - component: {fileID: 7916831798847538187}
   - component: {fileID: 8054469526497458893}
-  - component: {fileID: 4156928388440250425}
   - component: {fileID: 2853038813744228266}
   m_Layer: 8
   m_Name: BasicBoss
@@ -209,22 +208,6 @@ NavMeshAgent:
   m_BaseOffset: 8.3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!111 &4156928388440250425
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36201875529249406}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 75f055e62aa464077853c4310ba83f38, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &2853038813744228266
 MonoBehaviour:
   m_ObjectHideFlags: 0
