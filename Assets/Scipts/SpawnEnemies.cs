@@ -43,9 +43,9 @@ public class SpawnEnemies : MonoBehaviour
     }
     public void BossKilled()
     {
-        foreach(GameObject gmb in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach(EnemyAI gmb in GameObject.FindObjectsByType<EnemyAI>(FindObjectsSortMode.None))
         {
-            Destroy(gmb);
+            gmb.Die();
         }
         StartCoroutine(StartSpawningg());
         StageIndex++;

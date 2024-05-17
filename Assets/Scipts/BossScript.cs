@@ -14,6 +14,7 @@ public class BossScript : MonoBehaviour
     public float shootingDistance;
     public float shootingCooldown;
     public float searchingRadius;
+    public float damage = 1;
 
     [Header("Settings")]
     public bool SouldSearch;
@@ -195,6 +196,7 @@ public class BossScript : MonoBehaviour
                     GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
                     blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
                     blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<BulletScript>().damage = damage;
                     blt.transform.localScale = new Vector2(0.04f, 0.04f);
                     blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
                     if (!AmIKind)

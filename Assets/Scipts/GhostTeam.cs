@@ -33,6 +33,7 @@ public class GhostTeam : MonoBehaviour
             GameObject bro = Instantiate(realBrother, transform.position, Quaternion.identity);
             bro.layer = 6;
             bro.tag = "Player";
+            bro.GetComponent<EnemyAI>().health *= 2;
             bro.GetComponent<EnemyAI>().AmIKind = true;
             Destroy(gameObject);
         }

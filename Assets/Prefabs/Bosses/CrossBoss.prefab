@@ -257,6 +257,7 @@ MonoBehaviour:
   shootingDistance: 1000
   shootingCooldown: 0.2
   searchingRadius: 0
+  damage: 3
   SouldSearch: 0
   SouldShoot: 1
   ProjectlilesPattern:
@@ -448,6 +449,92 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 2
     m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -4.6945353
+      value: 0.010819234
+      inSlope: 0.39078707
+      outSlope: 0.39078707
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.050410736
+    - serializedVersion: 3
+      time: -3.8651068
+      value: 0.30275357
+      inSlope: 0.31355363
+      outSlope: 0.31355363
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -2.9581015
+      value: 0.549875
+      inSlope: 0.2318417
+      outSlope: 0.2318417
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -1.3323271
+      value: 0.8123233
+      inSlope: 0.092553414
+      outSlope: 0.092553414
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.018643696
+      value: 0.8631952
+      inSlope: -0.016181419
+      outSlope: -0.016181419
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.2720678
+      value: 0.7826819
+      inSlope: -0.111375056
+      outSlope: -0.111375056
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.2754936
+      value: 0.6343782
+      inSlope: -0.18363476
+      outSlope: -0.18363476
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.5018413
+      value: 0.35741368
+      inSlope: -0.26718143
+      outSlope: -0.26718143
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 4.685758
+      value: -0.004189685
+      inSlope: -0.34286356
+      outSlope: -0.34286356
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.044455644
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   BossAttacksBulletPatterns:
   - serializedVersion: 2
     m_Curve:
@@ -522,12 +609,37 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0010070801
+      value: -0.0052490234
+      inSlope: -0.0019457637
+      outSlope: -0.0019457637
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99694824
+      value: -0.0071868896
+      inSlope: -0.0019457637
+      outSlope: -0.0019457637
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   BossAttacksCds:
   - 0.2
   - 0.9
+  - 0.1
   BossAttacksTiming:
   - 5
   - 1
+  - 0.5
   BulletPath:
     serializedVersion: 2
     m_Curve:

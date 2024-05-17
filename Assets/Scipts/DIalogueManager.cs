@@ -118,7 +118,7 @@ public class DialogueScript : MonoBehaviour
                 {
                     StartAnim.Play();
                 }
-                else if (IndexInMain == stopindexes[0])
+                else if (IndexInMain == stopindexes[1])
                 {
                     SmokeEffect.SetActive(true);
                     Invoke(nameof(InvokeOpenMenu), 1f);
