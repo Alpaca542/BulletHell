@@ -100933,7 +100933,7 @@ MonoBehaviour:
   - 2
   - 3
   cnv: {fileID: 1050227594}
-  BigHardnessMultiplyer: 2
+  BigHardnessMultiplyer: 1.5
   HardnessMultiplyer: 1.1
   StartingHardness: 2
   AmountOfWaves: 3
