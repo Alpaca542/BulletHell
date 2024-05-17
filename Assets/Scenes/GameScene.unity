@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 492264639}
   m_Layer: 0
   m_Name: DialogueManager
-  m_TagString: Untagged
+  m_TagString: DlgMng
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1326,7 +1326,8 @@ MonoBehaviour:
   - Who the hell are you? Get out of my boat!
   - Please, stranger, I need help
   - Our swamp nation has been invaded by mutants. They're hypnotizing us and forcing
-    us to serve them. It was a miracle that I managed to escape
+    us to serve them
+  - It was a miracle that I managed to escape
   - If you help us, we'll give you anything you want!
   - Mutants? Damn it... Alright, where do I go?
   - Thank you so much! Go to the northern swamp
@@ -1336,6 +1337,7 @@ MonoBehaviour:
   ShouldIStopAfterpb: 0
   faces:
   - {fileID: 21300000, guid: 0c49ca1be41db4d2ca1943deb7ff44f9, type: 3}
+  - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
@@ -1850,6 +1852,8 @@ MonoBehaviour:
   fill: {fileID: 1062303902}
   speed: 7
   health: 100
+  usedBoost1: 0
+  usedBoost2: 0
   baseSpeed: 0
   rotationSmoothTime: 0.1
   healthBeforeChanged: 0

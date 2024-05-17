@@ -70,15 +70,15 @@ public class DialogueScript : MonoBehaviour
             Display.text += letter1;
             if (letter1 == ".".ToCharArray()[0] || letter1 == "!".ToCharArray()[0] || letter1 == "?".ToCharArray()[0])
             {
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f / (1 / Time.timeScale));
             }
             else if (letter1 == " ".ToCharArray()[0])
             {
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.05f / (1 / Time.timeScale));
             }
             else
             {
-                yield return new WaitForSeconds(typingspeed);
+                yield return new WaitForSeconds(typingspeed / (1 / Time.timeScale));
             }
         }
         //gameObject.GetComponent<soundManager>().sound.loop = false;
@@ -109,6 +109,7 @@ public class DialogueScript : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 1f;
                 cnvInGame.SetActive(true);
                 btnContinue.SetActive(false);
                 cnv.SetActive(false);
@@ -125,6 +126,7 @@ public class DialogueScript : MonoBehaviour
     }
     public void StopTyping()
     {
+        Time.timeScale = 1f;
         cnvInGame.SetActive(true);
         btnContinue.SetActive(false);
         cnv.SetActive(false);

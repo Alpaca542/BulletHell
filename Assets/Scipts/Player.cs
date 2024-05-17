@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Image fill;
     public float speed;
     public float health;
+    public bool usedBoost1;
+    public bool usedBoost2;
     private float AllTheDamage;
     private Rigidbody2D rb;
     public float baseSpeed;

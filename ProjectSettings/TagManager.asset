@@ -12,6 +12,7 @@ TagManager:
   - Spawner
   - Boss
   - Obstacle
+  - DlgMng
   layers:
   - Default
   - TransparentFX

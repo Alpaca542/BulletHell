@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class PickUp : MonoBehaviour
 {
     public int which;
+    public string PickUpLesson1;
+    public Sprite PickUpLessonSprite1;
+    public string PickUpLesson2;
+    public Sprite PickUpLessonSprite2;
     public float HealthBoost;
     public GameObject pickUpParticles;
 
@@ -13,6 +17,18 @@ public class PickUp : MonoBehaviour
     {
         if(collision.tag == "Player" && collision.GetComponent<Player>() != null)
         {
+            if (!collision.GetComponent<Player>().usedBoost1 && which != 2)
+            {
+                collision.GetComponent<Player>().usedBoost1 = true;
+                GameObject.FindGameObjectWithTag("DlgMng").GetComponent<DialogueScript>().StartCrtnRemotely(PickUpLesson1, PickUpLessonSprite1, true);
+                Time.timeScale = 0.05f;
+            }
+            else if(!collision.GetComponent<Player>().usedBoost2 && which == 2)
+            {
+                collision.GetComponent<Player>().usedBoost2 = true;
+                GameObject.FindGameObjectWithTag("DlgMng").GetComponent<DialogueScript>().StartCrtnRemotely(PickUpLesson2, PickUpLessonSprite2, true);
+                Time.timeScale = 0.05f;
+            }
             if (!collision.GetComponent<Player>().boosted)
             {
                 collision.GetComponent<Player>().Boost(which);
