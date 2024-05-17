@@ -10,8 +10,10 @@ public class SpawnEnemies : MonoBehaviour
     public GameObject[] Enemies1;
     public GameObject[] Bosses;
     public float[] Hardness;
-    public GameObject cnv;
+    public GameObject cnvSpawn;
     public Dictionary<GameObject, float> Enemies = new Dictionary<GameObject, float>();
+    public DialogueScript dlg;
+    public Sprite SlimeSprite;
 
     [Header("Settings")]
     public float BigHardnessMultiplyer = 2f;
@@ -28,9 +30,24 @@ public class SpawnEnemies : MonoBehaviour
     [Header("Debug")]
     public int StageIndex = 0;
     public int PriorIndex = 0;
+    public bool UsedTutorial;
+    public bool roundended;
 
+    private void Update()
+    {
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && roundended && !cnvSpawn.activeSelf)
+        {
+            if (!UsedTutorial)
+            {
+                UsedTutorial = true;
+                dlg.StartCrtnRemotely("Yes! I've cured the slimes you caught. Now, you can deploy them, and they'll assist you in battling the mutant", SlimeSprite, true);
+            }
+            cnvSpawn.SetActive(true);
+        }
+    }
     public void SpawnABoss()
     {
+        roundended = false;
         Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
     }
     private void OnEnable()
@@ -54,6 +71,7 @@ public class SpawnEnemies : MonoBehaviour
     }
     IEnumerator StartSpawningg()
     {
+        roundended = false;
         yield return new WaitForSeconds(2f);
         for (int i = 0; i < AmountOfWaves; i++)
         {
@@ -77,6 +95,6 @@ public class SpawnEnemies : MonoBehaviour
             WaveCooldown /= HardnessMultiplyer;
             yield return new WaitForSeconds(Random.Range(WaveCooldown*10 - 3, WaveCooldown*10 + 3)/10);
         }
-        cnv.SetActive(true);
+        roundended = true;
     }
 }

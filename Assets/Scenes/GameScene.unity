@@ -100934,7 +100934,9 @@ MonoBehaviour:
   - 3
   - 2
   - 3
-  cnv: {fileID: 1050227594}
+  cnvSpawn: {fileID: 1050227594}
+  dlg: {fileID: 492264639}
+  SlimeSprite: {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   BigHardnessMultiplyer: 1.5
   HardnessMultiplyer: 1.1
   StartingHardness: 2
@@ -100947,6 +100949,8 @@ MonoBehaviour:
   border2: {fileID: 184046255}
   StageIndex: 0
   PriorIndex: 0
+  UsedTutorial: 0
+  roundended: 0
 --- !u!4 &1313676514
 Transform:
   m_ObjectHideFlags: 0
