@@ -234,7 +234,7 @@ public class BossScript : MonoBehaviour
             SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
             if (spwn.StageIndex == spwn.AmountOfStages - 1)
             {
-                SceneManager.LoadScene("Win");
+                GameObject.FindGameObjectWithTag("DlgMng").GetComponent<DialogueScript>().StartMainLine();
             }
             else
             {
