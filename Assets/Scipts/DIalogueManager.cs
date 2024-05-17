@@ -24,6 +24,7 @@ public class DialogueScript : MonoBehaviour
     public bool startImmediately;
     public Animation anim;
     public Animation StartAnim;
+    public GameObject SmokeEffect;
     private void Start()
     {
         if (startImmediately)
@@ -117,8 +118,17 @@ public class DialogueScript : MonoBehaviour
                 {
                     StartAnim.Play();
                 }
+                else if (IndexInMain == stopindexes[0])
+                {
+                    SmokeEffect.SetActive(true);
+                    Invoke(nameof(InvokeOpenMenu), 1f);
+                }
             }
         }
+    }
+    public void InvokeOpenMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     public void StartTheGameScene()
     {
