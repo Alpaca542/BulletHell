@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 8659112793293879840}
   m_Layer: 8
   m_Name: Gun
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +511,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000333786, y: 0.2505331}
+  m_Offset: {x: -0.047273397, y: 0.17961693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -522,7 +522,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16.241974, y: 13.987169}
+  m_Size: {x: 12.270668, y: 12.048794}
   m_EdgeRadius: 0
 --- !u!50 &8659112793293879840
 Rigidbody2D:

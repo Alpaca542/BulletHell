@@ -32,7 +32,9 @@ public class Player : MonoBehaviour
     public Volume volume;
     public Color32[] vignettereffects;
     public Text[] BoostTextes;
+    public GameObject TransitionSquare;
     public GameObject[] BoostImgs;
+    public bool Died;
     public void Boost(int which)
     {
         Vignette vgn;
@@ -119,17 +121,23 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        AllTheDamage += dmg;
-        health -= dmg;
-        health = Mathf.Clamp(health, 0, 100);
-        if (health <= 0)
+        if (!Died)
         {
-            Die();
+            AllTheDamage += dmg;
+            health -= dmg;
+            health = Mathf.Clamp(health, 0, 100);
+            if (health <= 0)
+            {
+                Died = true;
+                TransitionSquare.SetActive(true);
+                Invoke(nameof(Die), 1f);
+            }
+            if (!healing)
+            {
+                StartCoroutine(CrtnTakeDamage());
+            }
         }
-        if (!healing)
-        {
-            StartCoroutine(CrtnTakeDamage());
-        }
+
     }
 
     public IEnumerator CrtnTakeDamage()
@@ -167,7 +175,7 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Lose");
         Destroy(gameObject);
     }
 }
