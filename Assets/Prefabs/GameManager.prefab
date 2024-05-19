@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _music: {fileID: 8300000, guid: 6fafd2ffcdf312d41a0643980735b78f, type: 3}
   _bossMusic: {fileID: 8300000, guid: a38fbe3d131ba5a4b95b1199cae5706f, type: 3}
+  _sceneLoadAnimationPrefab: {fileID: 793965614083275488, guid: 595ad92673059ec49afc2242dca63a24, type: 3}
+  _sceneLoadEndAnimationPrefab: {fileID: 490623630194968605, guid: 8e5840c8dac358d4bb6436ac64b08064, type: 3}

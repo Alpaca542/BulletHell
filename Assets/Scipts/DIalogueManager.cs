@@ -120,19 +120,15 @@ public class DialogueScript : MonoBehaviour
                 }
                 else if (IndexInMain == stopindexes[1])
                 {
-                    SmokeEffect.SetActive(true);
-                    Invoke(nameof(InvokeOpenMenu), 1f);
+                    GameManager.Instance.LoadScene("Win");
                 }
             }
         }
     }
-    public void InvokeOpenMenu()
-    {
-        SceneManager.LoadScene("Win");
-    }
+
     public void StartTheGameScene()
-    {
-        SceneManager.LoadScene("GameScene");
+	{
+		GameManager.Instance.LoadScene("GameScene");
     }
     public void StopTyping()
     {

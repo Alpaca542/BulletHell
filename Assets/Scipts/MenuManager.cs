@@ -21,24 +21,16 @@ public class MenuManager : MonoBehaviour
 
     public GameObject settingsPanel;
     public GameObject menuPanel;
+
     public void OnStartClicked()
     {
-        SmokeEffect.SetActive(true);
-        Invoke(nameof(InvokeOpenLevel), 1f);
-    }
-    public void OnRestartClicked()
-	{
-		Invoke(nameof(InvokeOpenLevel), 1f);
-	}
-    public void InvokeOpenLevel()
-    {
-        SceneManager.LoadScene("GameScene");
+        GameManager.Instance.LoadScene("GameScene");
     }
 
-    public void InvokeMenuLevel()
-    {
-        SceneManager.LoadScene("Menu");
-    }
+    public void OnRestartClicked()
+	{
+		GameManager.Instance.LoadScene("GameScene");
+	}
 
 	private void Awake()
 	{
@@ -56,25 +48,20 @@ public class MenuManager : MonoBehaviour
 
 	private void Start()
     {
-        EndSmoke.SetActive(true);
-        if (!PlayerPrefs.HasKey("Started") && SceneManager.GetActiveScene().name == "Menu")
-        {
-            EndSmoke.SetActive(false);
-            PlayerPrefs.SetInt("Started", 1);
-        }
-        else
-        {
-            Invoke(nameof(InvokeSmokeStop), 3f);
-        }
-    }
+		if (!PlayerPrefs.HasKey("Started") && SceneManager.GetActiveScene().name == "Menu")
+		{
+			PlayerPrefs.SetInt("Started", 1);
+		}
+	}
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "Menu")
+	{
+		if (scene.name == "Menu")
         {
             playButton.SetActive(true);
             restartButton.SetActive(false);
             headingText.text = "SWAMP INVASTION";
+			headingText.GetComponent<Animator>().enabled = false;
 			gameObject.SetActive(true);
 		}
         else if (scene.name == "GameScene")
@@ -82,11 +69,13 @@ public class MenuManager : MonoBehaviour
 			playButton.SetActive(false);
 			restartButton.SetActive(true);
 			headingText.text = "SWAMP INVASTION";
+            headingText.GetComponent<Animator>().enabled = false;
 			gameObject.SetActive(false);
 		}
         else if (scene.name == "Lose")
 		{
 			headingText.text = "YOU LOSE";
+            headingText.GetComponent<Animator>().enabled = true;
 			gameObject.SetActive(true);
         }
 		SetVolumeSlider(AudioCategory.master, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.master));
@@ -94,19 +83,6 @@ public class MenuManager : MonoBehaviour
 		SetVolumeSlider(AudioCategory.music, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.music));
 	}
 
-    public void InvokeSmokeStop()
-    {
-        EndSmoke.SetActive(false);
-    }
-    public void OpenMenu()
-    {
-        SmokeEffect.SetActive(true);
-        Invoke(nameof(InvokeOpenMenu), 1f);
-    }
-    public void InvokeOpenMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
     public void OpenSetting()
     {
         settingsPanel.SetActive(true);

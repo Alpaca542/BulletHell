@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,12 +9,17 @@ public class GameManager : MonoBehaviour
 {
 	[SerializeField] private AudioClip _music;
 	[SerializeField] private AudioClip _bossMusic;
+	[SerializeField] private GameObject _sceneLoadAnimationPrefab;
+	[SerializeField] private GameObject _sceneLoadEndAnimationPrefab;
 
 	public static GameManager Instance;
     public readonly ObjectPool pool = new ObjectPool();
 	public readonly AudioSystem audioSystem = new AudioSystem();
 	private GameObject _menu;
 	private GameObject _musicObject;
+	private GameObject _sceneLoadEndAnimationObject;
+	private Coroutine _loadSceneCoroutine;
+	private bool _loadSceneCoroutineRunning = false;
 
 	private void Awake()
 	{
@@ -55,6 +61,9 @@ public class GameManager : MonoBehaviour
 	private void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)
 	{
 		pool.Clear();
+		_sceneLoadEndAnimationObject = Instantiate(_sceneLoadEndAnimationPrefab);
+		_sceneLoadEndAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, 10f, 1f);
+		Invoke(nameof(RemoveSceneLoadEndAnimation), 3f);
 	}
 
 	public void SetMainMusic()
@@ -63,6 +72,32 @@ public class GameManager : MonoBehaviour
 		audioSource.clip = _music;
 		audioSource.time = 0;
 		audioSource.Play();
+	}
+
+	public void LoadScene(string name)
+	{
+		if (!_loadSceneCoroutineRunning)
+			_loadSceneCoroutine = StartCoroutine(LoadSceneCoroutine(name));
+	}
+
+	private IEnumerator LoadSceneCoroutine(string name)
+	{
+		_loadSceneCoroutineRunning = true;
+		GameObject sceneLoadAnimationObject = Instantiate(_sceneLoadAnimationPrefab);
+		sceneLoadAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, -10f, 1f);
+		Animation sceneLoadAnimation = sceneLoadAnimationObject.GetComponent<Animation>();
+		while (sceneLoadAnimation.isPlaying)
+		{
+			yield return null;
+		}
+		SceneManager.LoadScene(name);
+		_loadSceneCoroutineRunning = false;
+	}
+
+	private void RemoveSceneLoadEndAnimation()
+	{
+		if (_sceneLoadEndAnimationObject != null)
+			Destroy(_sceneLoadEndAnimationObject);
 	}
 
 	public void SetBossMusic()

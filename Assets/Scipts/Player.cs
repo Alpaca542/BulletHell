@@ -129,7 +129,6 @@ public class Player : MonoBehaviour
             if (health <= 0)
             {
                 Died = true;
-                TransitionSquare.SetActive(true);
                 Invoke(nameof(Die), 1f);
             }
             if (!healing)
@@ -173,9 +172,10 @@ public class Player : MonoBehaviour
             anim.SetBool("IsMoving", false);
         }
     }
+
     public void Die()
     {
-        SceneManager.LoadScene("Lose");
+        GameManager.Instance.LoadScene("Lose");
         Destroy(gameObject);
     }
 }
