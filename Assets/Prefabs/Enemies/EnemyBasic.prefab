@@ -310,6 +310,7 @@ MonoBehaviour:
   shootingDistance: 30
   shootingCooldown: 0.2
   searchingRadius: 5
+  damage: 1
   SouldSearch: 0
   SouldShoot: 1
   SouldGoUp: 1
@@ -359,10 +360,10 @@ MonoBehaviour:
   InvertPatterns: 1
   myDeathParticles: {fileID: 0}
   guns:
-  - {fileID: 8290624857964755676}
-  - {fileID: 2257432605690569480}
-  - {fileID: 6800914922020963949}
-  - {fileID: 2590359646194411832}
+  - 0
+  - 90
+  - 180
+  - 270
   SlimeDeathParticles: {fileID: 3982605251137279380, guid: 0b303819a057b4ed49de0c3db1b61a63, type: 3}
   playerLayer:
     serializedVersion: 2

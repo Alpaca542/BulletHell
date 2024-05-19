@@ -247,37 +247,40 @@ public class EnemyAI : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            foreach (Keyframe kf in ProjectlilesPattern.keys)
+            if (SidesToShoot[i])
             {
-                GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
-                blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
-                blt.GetComponent<BulletScript>().Path = BulletPath;
-                blt.GetComponent<BulletScript>().damage = damage;
-                blt.transform.localScale = new Vector2(0.04f, 0.04f);
-                blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
+                foreach (Keyframe kf in ProjectlilesPattern.keys)
+                {
+                    GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+                    blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
+                    blt.GetComponent<BulletScript>().Path = BulletPath;
+                    blt.GetComponent<BulletScript>().damage = damage;
+                    blt.transform.localScale = new Vector2(0.04f, 0.04f);
+                    blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
 
-                blt.GetComponent<BulletScript>().AmIFromPlayer = false;
-                blt.GetComponent<BulletScript>().FromATeammate = false;
+                    blt.GetComponent<BulletScript>().AmIFromPlayer = false;
+                    blt.GetComponent<BulletScript>().FromATeammate = false;
 
-                if (guns[i] == 270)
-                {
-                    blt.transform.position = new Vector2(transform.position.x + kf.value, transform.position.y - kf.time);
+                    if (guns[i] == 270)
+                    {
+                        blt.transform.position = new Vector2(transform.position.x + kf.value, transform.position.y - kf.time);
+                    }
+                    else if (guns[i] == 90)
+                    {
+                        blt.transform.position = new Vector2(transform.position.x - kf.value, transform.position.y + kf.time);
+                    }
+                    else if (guns[i] == 180)
+                    {
+                        blt.transform.position = new Vector2(transform.position.x - kf.time, transform.position.y - kf.value);
+                    }
+                    else if (guns[i] == 0)
+                    {
+                        blt.transform.position = new Vector2(transform.position.x + kf.time, transform.position.y + kf.value);
+                    }
+                    blt.GetComponent<BulletScript>().startPosition = blt.transform.position;
+                    blt.GetComponent<BulletScript>().speed = bulletSpeed;
+                    blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.outTangent) + 90f);
                 }
-                else if (guns[i] == 90)
-                {
-                    blt.transform.position = new Vector2(transform.position.x - kf.value, transform.position.y + kf.time);
-                }
-                else if (guns[i] == 180)
-                {
-                    blt.transform.position = new Vector2(transform.position.x - kf.time, transform.position.y - kf.value);
-                }
-                else if (guns[i] == 0)
-                {
-                    blt.transform.position = new Vector2(transform.position.x + kf.time, transform.position.y + kf.value);
-                }
-                blt.GetComponent<BulletScript>().startPosition = blt.transform.position;
-                blt.GetComponent<BulletScript>().speed = bulletSpeed;
-                blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.outTangent) + 90f);
             }
         }
     }
