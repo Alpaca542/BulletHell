@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         }
         else if (which == 1)
         {
-            damage += 2;
+            damage += 1;
             StartCoroutine(CrtnEndBoost(which));
             BoostImgs[which].SetActive(true);
         }
@@ -60,8 +60,8 @@ public class Player : MonoBehaviour
         {
             baseSpeed += 2;
             basedamage ++;
-            damage += 5;
-            speed += 5;
+            damage = basedamage + 1;
+            speed += 8;
             health += 50;
             StartCoroutine(CrtnEndBoost(which));
             BoostImgs[which].SetActive(true);

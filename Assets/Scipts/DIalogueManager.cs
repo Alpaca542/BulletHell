@@ -27,6 +27,7 @@ public class DialogueScript : MonoBehaviour
     public GameObject SmokeEffect;
     private void Start()
     {
+        Time.timeScale = 1f;
         if (startImmediately)
         {
             coroutine = Type(sentences[IndexInMain], faces[IndexInMain], false);

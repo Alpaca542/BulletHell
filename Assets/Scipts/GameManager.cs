@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Instance != null && Instance != this)
+        Time.timeScale = 1f;
+        if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
 		}
@@ -43,7 +44,15 @@ public class GameManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			_menu.SetActive(!_menu.activeInHierarchy);
+			if (!_menu.activeInHierarchy)
+			{
+                Time.timeScale = 0.02f;
+            }
+			else
+			{
+                Time.timeScale = 1f;
+            }
+            _menu.SetActive(!_menu.activeInHierarchy);
 		}
 	}
 
@@ -82,6 +91,7 @@ public class GameManager : MonoBehaviour
 
 	private IEnumerator LoadSceneCoroutine(string name)
 	{
+		Time.timeScale = 1f;
 		_loadSceneCoroutineRunning = true;
 		GameObject sceneLoadAnimationObject = Instantiate(_sceneLoadAnimationPrefab);
 		sceneLoadAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, -10f, 1f);

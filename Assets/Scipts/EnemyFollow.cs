@@ -294,7 +294,7 @@ public class EnemyAI : MonoBehaviour
             CopyComponent(SlimeDeathParticles, prt);
             prt.transform.position = transform.position;
             System.Random rnd1 = new System.Random();
-            if (rnd1.Next(0, 4) == 0)
+            if (rnd1.Next(0, 5) == 0)
             {
                 System.Random rnd2 = new System.Random();
                 Instantiate(PickUps[rnd2.Next(0, 4)], transform.position, Quaternion.identity);
