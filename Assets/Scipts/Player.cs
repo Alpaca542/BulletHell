@@ -62,12 +62,13 @@ public class Player : MonoBehaviour
             basedamage ++;
             damage += 5;
             speed += 5;
+            health += 50;
             StartCoroutine(CrtnEndBoost(which));
             BoostImgs[which].SetActive(true);
         }
         else if (which == 3)
         {
-            health += 20;
+            health += 40;
             healthBar.value = health;
             healthBar.GetComponent<Animation>().Play();
             BoostImgs[which].SetActive(true);

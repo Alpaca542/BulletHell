@@ -100707,8 +100707,8 @@ MonoBehaviour:
   dlg: {fileID: 492264639}
   SlimeSprite: {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   prnt: {fileID: 0}
-  BigHardnessMultiplyer: 1.5
-  HardnessMultiplyer: 1.1
+  BigHardnessMultiplyer: 2
+  HardnessMultiplyer: 1.2
   StartingHardness: 2
   AmountOfWaves: 3
   AmountOfStages: 3

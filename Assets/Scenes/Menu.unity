@@ -1219,6 +1219,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5780390738216024958, guid: a18aed17518445d4a8b685aa935e4c91, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 730365125}
+    - target: {fileID: 5780390738216024958, guid: a18aed17518445d4a8b685aa935e4c91, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780390738216024958, guid: a18aed17518445d4a8b685aa935e4c91, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6567189078941830335, guid: a18aed17518445d4a8b685aa935e4c91, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
