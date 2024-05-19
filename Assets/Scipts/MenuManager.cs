@@ -16,11 +16,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Slider sfxVolumeSlider;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject restartButton;
-    public GameObject SmokeEffect;
-    public GameObject EndSmoke;
-
-    public GameObject settingsPanel;
-    public GameObject menuPanel;
 
     public void OnStartClicked()
     {
@@ -83,16 +78,6 @@ public class MenuManager : MonoBehaviour
 		SetVolumeSlider(AudioCategory.music, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.music));
 	}
 
-    public void OpenSetting()
-    {
-        settingsPanel.SetActive(true);
-        menuPanel.SetActive(false);
-    }
-    public void CloseSettings()
-    {
-        settingsPanel.SetActive(false);
-        menuPanel.SetActive(true);
-	}
 	public void OnMasterVolumeChanged(float value)
 	{
 		GameManager.Instance.audioSystem.SetVolume(AudioCategory.master, value);
