@@ -68,11 +68,15 @@ public class SpawnEnemies : MonoBehaviour
         StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
         WaveCooldown /= BigHardnessMultiplyer;
+        Invoke(nameof(TempInvoker), 3f);
+    }
+    public void TempInvoker()
+    {
         StartCoroutine(StartSpawningg());
     }
     IEnumerator StartSpawningg()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         roundended = false;
         for (int i = 0; i < AmountOfWaves; i++)
         {
