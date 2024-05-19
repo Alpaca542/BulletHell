@@ -47,14 +47,6 @@ public class BossScript : MonoBehaviour
     public bool AmIKind;
     public bool Died;
 
-    public void InvokeDestr1()
-    {
-        Invoke(nameof(InvokeDestr2), 2f);
-    }
-    public void InvokeDestr2()
-    {
-        Destroy(gameObject);
-    }
     public void AttackSpawnCycle()
     {
         System.Random rnd = new System.Random();
@@ -152,7 +144,7 @@ public class BossScript : MonoBehaviour
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(SlimeDeathParticles, prt);
             prt.transform.position = transform.position;
-            Destroy(gameObject);
+            Destroy(realBoss);
         }
     }
 

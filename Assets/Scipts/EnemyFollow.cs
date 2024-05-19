@@ -288,7 +288,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!Died)
         {
-            Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.2f, 0.3f);
+            Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.12f, 0.3f);
             Died = true;
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(SlimeDeathParticles, prt);
