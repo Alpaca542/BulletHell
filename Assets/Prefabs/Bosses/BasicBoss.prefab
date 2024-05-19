@@ -158,7 +158,7 @@ MonoBehaviour:
   shootingDistance: 1000
   shootingCooldown: 0.2
   searchingRadius: 0
-  damage: 3
+  damage: 2
   SouldSearch: 0
   SouldShoot: 1
   ProjectlilesPattern:
@@ -314,7 +314,71 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -2.4491525
+      value: -0.0009968281
+      inSlope: -0.00027056187
+      outSlope: -0.00027056187
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.03891012
+      value: -0.0016700029
+      inSlope: -0.005436695
+      outSlope: -0.005436695
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.5552979
+      value: -0.02835083
+      inSlope: -0.010602828
+      outSlope: -0.010602828
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   BossAttacksBulletPatterns:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.0021201
+      value: 0.002072577
+      inSlope: -2.3668048
+      outSlope: -2.3668048
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.063536465
+    - serializedVersion: 3
+      time: 1.9998395
+      value: -0.00010287145
+      inSlope: 2.1726718
+      outSlope: 2.1726718
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.057687238
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   - serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -364,9 +428,11 @@ MonoBehaviour:
   BossAttacksCds:
   - 0.3
   - 0.5
+  - 0.3
   BossAttacksTiming:
-  - 5
+  - 4
   - 1
+  - 4
   BulletPath:
     serializedVersion: 2
     m_Curve:
