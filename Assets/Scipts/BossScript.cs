@@ -242,7 +242,7 @@ public class BossScript : MonoBehaviour
             }
             else
             {
-                StartCoroutine(spwn.BossKilled());
+                spwn.BossKilled();
             }
             Instantiate(gigaPickup, transform.position, Quaternion.identity);
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;

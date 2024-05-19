@@ -59,7 +59,7 @@ public class SpawnEnemies : MonoBehaviour
         }
         StartCoroutine(StartSpawningg());
     }
-    public IEnumerator BossKilled()
+    public void BossKilled()
     {
         foreach(EnemyAI gmb in GameObject.FindObjectsByType<EnemyAI>(FindObjectsSortMode.None))
         {
@@ -68,11 +68,11 @@ public class SpawnEnemies : MonoBehaviour
         StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
         WaveCooldown /= BigHardnessMultiplyer;
-        yield return new WaitForSeconds(4f);
         StartCoroutine(StartSpawningg());
     }
     IEnumerator StartSpawningg()
     {
+        yield return new WaitForSeconds(4f);
         roundended = false;
         for (int i = 0; i < AmountOfWaves; i++)
         {
