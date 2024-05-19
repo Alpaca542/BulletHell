@@ -17,14 +17,16 @@ public class PickUp : MonoBehaviour
     {
         if(collision.tag == "Player" && collision.GetComponent<Player>() != null)
         {
-            if (!collision.GetComponent<Player>().usedBoost1 && which != 2)
+            if (!collision.GetComponent<Player>().usedBoost1 && which != 2 && !PlayerPrefs.HasKey("UsedSlimer1"))
             {
+                PlayerPrefs.SetInt("UsedSlimer1", 1);
                 collision.GetComponent<Player>().usedBoost1 = true;
                 GameObject.FindGameObjectWithTag("DlgMng").GetComponent<DialogueScript>().StartCrtnRemotely(PickUpLesson1, PickUpLessonSprite1, true);
                 Time.timeScale = 0.05f;
             }
-            else if(!collision.GetComponent<Player>().usedBoost2 && which == 2)
+            else if(!collision.GetComponent<Player>().usedBoost2 && which == 2 && !PlayerPrefs.HasKey("UsedSlimer2"))
             {
+                PlayerPrefs.SetInt("UsedSlimer2", 1);
                 collision.GetComponent<Player>().usedBoost2 = true;
                 GameObject.FindGameObjectWithTag("DlgMng").GetComponent<DialogueScript>().StartCrtnRemotely(PickUpLesson2, PickUpLessonSprite2, true);
                 Time.timeScale = 0.05f;
