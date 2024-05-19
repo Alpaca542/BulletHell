@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     public float shootingDistance;
     public float shootingCooldown;
     public float searchingRadius;
+    public float damage = 1f;
 
     [Header("Settings")]
     public bool SouldSearch;
@@ -28,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     public ParticleSystem myDeathParticles;
 
     [Header("Fields")]
-    public GameObject[] guns;
+    public float[] guns;
     private NavMeshAgent agent;
     public GameObject SlimeDeathParticles;
     public LayerMask playerLayer;
@@ -244,41 +245,39 @@ public class EnemyAI : MonoBehaviour
     }
     public void InvokeShoot()
     {
-        for(int i = 0; i<4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if (SidesToShoot[i])
+            foreach (Keyframe kf in ProjectlilesPattern.keys)
             {
-                foreach (Keyframe kf in ProjectlilesPattern.keys)
+                GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
+                blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
+                blt.GetComponent<BulletScript>().Path = BulletPath;
+                blt.GetComponent<BulletScript>().damage = damage;
+                blt.transform.localScale = new Vector2(0.04f, 0.04f);
+                blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
+
+                blt.GetComponent<BulletScript>().AmIFromPlayer = false;
+                blt.GetComponent<BulletScript>().FromATeammate = false;
+
+                if (guns[i] == 270)
                 {
-                    GameObject blt = ((BulletScript)GameManager.Instance.pool.Get<BulletScript>()).gameObject;
-                    blt.transform.rotation = Quaternion.Euler(new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent)));
-                    blt.GetComponent<BulletScript>().Path = BulletPath;
-                    blt.transform.localScale = new Vector2(0.04f, 0.04f);
-                    blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
-                    if (!AmIKind)
-                    {
-                        blt.GetComponent<BulletScript>().AmIFromPlayer = false;
-                        blt.GetComponent<BulletScript>().FromATeammate = false;
-                    }
-                    else
-                    {
-                        blt.GetComponent<BulletScript>().FromATeammate = true;
-                        blt.GetComponent<BulletScript>().AmIFromPlayer = true;
-                    }
-                    if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
-                    {
-                        blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
-                        blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
-                    }
-                    else
-                    {
-                        blt.transform.position = new Vector2(guns[i].transform.position.x + kf.time, guns[i].transform.position.y + kf.value);
-                        blt.GetComponent<BulletScript>().startPosition = new Vector2(guns[i].transform.position.x + kf.time, guns[i].transform.position.y + kf.value);
-                    }
-                    blt.GetComponent<BulletScript>().speed = bulletSpeed;
-                    blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i].transform.rotation.eulerAngles.z + Mathf.Rad2Deg * Mathf.Atan(kf.inTangent));
-                    blt.transform.Rotate(new Vector3(0, 0, 90));
+                    blt.transform.position = new Vector2(transform.position.x + kf.value, transform.position.y - kf.time);
                 }
+                else if (guns[i] == 90)
+                {
+                    blt.transform.position = new Vector2(transform.position.x - kf.value, transform.position.y + kf.time);
+                }
+                else if (guns[i] == 180)
+                {
+                    blt.transform.position = new Vector2(transform.position.x - kf.time, transform.position.y - kf.value);
+                }
+                else if (guns[i] == 0)
+                {
+                    blt.transform.position = new Vector2(transform.position.x + kf.time, transform.position.y + kf.value);
+                }
+                blt.GetComponent<BulletScript>().startPosition = blt.transform.position;
+                blt.GetComponent<BulletScript>().speed = bulletSpeed;
+                blt.GetComponent<BulletScript>().StartRotation = new Vector3(0, 0, guns[i] + Mathf.Rad2Deg * Mathf.Atan(kf.outTangent) + 90f);
             }
         }
     }

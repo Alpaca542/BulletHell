@@ -42,7 +42,7 @@ public class BossScript : MonoBehaviour
     public GameObject realBoss;
 
     [Header("Debug")]
-    public bool AmIShooting;
+    public bool AmIShooting = false;
     public bool ShootAPlayer;
     public bool AmIKind;
     public bool Died;
@@ -87,14 +87,10 @@ public class BossScript : MonoBehaviour
             realBoss.GetComponent<Animator>().SetBool("Boss", true);
         }
 
-
-        if (SouldShoot)
+        if (!AmIShooting)
         {
-            if (!AmIShooting)
-            {
-                AmIShooting = true;
-                InvokeRepeating(nameof(InvokeShoot), shootingCooldown, shootingCooldown);
-            }
+            AmIShooting = true;
+            InvokeRepeating(nameof(InvokeShoot), shootingCooldown, shootingCooldown);
         }
 
     }
