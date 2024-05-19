@@ -292,7 +292,7 @@ Transform:
   m_GameObject: {fileID: 9144182740559946561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6365466, y: 1.4831542, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -441,7 +441,6 @@ MonoBehaviour:
   - {fileID: 1987717496500586349, guid: 05318edb6e6d84d9f8b24a678230b0de, type: 3}
   - {fileID: 4899957029877777301, guid: def9af9dd0135414aa02e051dfdec957, type: 3}
   AmIShooting: 0
-  Alive: 1
   ShootAPlayer: 0
   AmIKind: 0
   distance: 0

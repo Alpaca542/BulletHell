@@ -71,7 +71,7 @@ public class GunScript : MonoBehaviour
         }
 
 
-        if (Connected && ConnectObject != null && ConnectObject.GetComponent<EnemyAI>().Alive && ConnectObject.gameObject.tag != "Boss")
+        if (Connected && ConnectObject != null && !ConnectObject.GetComponent<EnemyAI>().Died && ConnectObject.gameObject.tag != "Boss")
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);
@@ -110,7 +110,7 @@ public class GunScript : MonoBehaviour
         GetComponent<LineRenderer>().enabled = false;
         ConnectObject.GetComponent<Animation>().Play();
         ConnectObject.GetComponent<EnemyAI>().InvokeDestr1();
-        ConnectObject.GetComponent<EnemyAI>().Alive = false;
+        ConnectObject.GetComponent<EnemyAI>().Died = true;
     }
 
     public void InvokePlayerShooting()

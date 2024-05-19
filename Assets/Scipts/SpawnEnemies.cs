@@ -14,6 +14,7 @@ public class SpawnEnemies : MonoBehaviour
     public Dictionary<GameObject, float> Enemies = new Dictionary<GameObject, float>();
     public DialogueScript dlg;
     public Sprite SlimeSprite;
+    public GameObject prnt;
 
     [Header("Settings")]
     public float BigHardnessMultiplyer = 2f;
@@ -58,21 +59,21 @@ public class SpawnEnemies : MonoBehaviour
         }
         StartCoroutine(StartSpawningg());
     }
-    public void BossKilled()
+    public IEnumerator BossKilled()
     {
         foreach(EnemyAI gmb in GameObject.FindObjectsByType<EnemyAI>(FindObjectsSortMode.None))
         {
             gmb.Die();
         }
-        StartCoroutine(StartSpawningg());
         StageIndex++;
         StartingHardness *= BigHardnessMultiplyer;
         WaveCooldown /= BigHardnessMultiplyer;
+        yield return new WaitForSeconds(4f);
+        StartCoroutine(StartSpawningg());
     }
     IEnumerator StartSpawningg()
     {
         roundended = false;
-        yield return new WaitForSeconds(2f);
         for (int i = 0; i < AmountOfWaves; i++)
         {
             float HardnessLeft = StartingHardness;

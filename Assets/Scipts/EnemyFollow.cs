@@ -42,7 +42,6 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Debug")]
     public bool AmIShooting;
-    public bool Alive = true;
     public bool ShootAPlayer;
     public bool AmIKind;
     public float distance = 0;
@@ -211,7 +210,7 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if (SouldShoot && Alive)
+        if (SouldShoot && !Died)
         {
             if (!AmIKind)
             {
