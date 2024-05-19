@@ -14,19 +14,13 @@ public class BulletScript : MonoBehaviour, IPoolable
     private float t = 0.0f;
     public Vector3 startPosition;
     public Vector3 StartRotation;
-    public bool InvertPattern;
 
     public bool AmIFromPlayer;
     public bool FromATeammate;
 
-    private void Start()
-    {
-        startPosition = transform.position;
-    }
     private void OnEnable()
     {
         t = 0;
-        startPosition = transform.position;
     }
 
     public void DieInTime()
@@ -52,21 +46,10 @@ public class BulletScript : MonoBehaviour, IPoolable
         if(!AmIFromPlayer || FromATeammate)
         {
             t += Time.deltaTime;
-
-            if (t > Path.keys[Path.length - 1].time)
-            {
-                t = 0.0f;
-                startPosition = transform.position;
-            }
-
-
             float yPos = Path.Evaluate(t);
-            if (InvertPattern)
-            {
-                Vector2 newPosition = new Vector2(t * speed, yPos * speed);
-                Vector2 rotatedVector = startPosition + (Quaternion.AngleAxis(StartRotation.z+90f, Vector3.forward) * newPosition);
-                transform.position = rotatedVector;
-            }
+            Vector2 newPosition = new Vector2(t * speed, yPos * speed);
+            Vector2 rotatedVector = startPosition + (Quaternion.AngleAxis(StartRotation.z, Vector3.forward) * newPosition);
+            transform.position = rotatedVector;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

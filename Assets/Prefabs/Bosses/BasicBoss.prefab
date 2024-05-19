@@ -10,11 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5812497117440031064}
   - component: {fileID: 1337856315604322645}
-  - component: {fileID: 7845205358212868378}
   - component: {fileID: 7218416339540944300}
-  - component: {fileID: 7916831798847538187}
-  - component: {fileID: 8054469526497458893}
-  - component: {fileID: 2853038813744228266}
   m_Layer: 8
   m_Name: BasicBoss
   m_TagString: Boss
@@ -35,10 +31,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3726262394569308088}
-  - {fileID: 4747036626062388698}
-  - {fileID: 47526833118571989}
-  - {fileID: 283950222219453655}
+  - {fileID: 1159396066310279971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1337856315604322645
@@ -93,33 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
---- !u!50 &7845205358212868378
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36201875529249406}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1000
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!95 &7218416339540944300
 Animator:
   serializedVersion: 5
@@ -141,87 +107,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &7916831798847538187
-BoxCollider2D:
+--- !u!1 &3672646161955238682
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36201875529249406}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.041027546, y: 0.6195326}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20, y: 20}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159396066310279971}
+  - component: {fileID: 5941051392838180980}
+  - component: {fileID: 4598831120974442973}
+  - component: {fileID: 8659112793293879840}
+  m_Layer: 8
+  m_Name: Gun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1159396066310279971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672646161955238682}
   serializedVersion: 2
-  m_Size: {x: 12.773795, y: 11.686346}
-  m_EdgeRadius: 0
---- !u!195 &8054469526497458893
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36201875529249406}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.9
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 17.75
-  m_BaseOffset: 8.3
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &2853038813744228266
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5812497117440031064}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5941051392838180980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36201875529249406}
+  m_GameObject: {fileID: 3672646161955238682}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab2c2664338334178b703bacaf5c4d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  health: 100
+  health: 150
   shootingDistance: 1000
   shootingCooldown: 0.2
   searchingRadius: 0
@@ -266,247 +199,28 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.99757004
-      value: 0.0033883564
-      inSlope: 0.08296478
-      outSlope: 0.08296478
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.06064202
-    - serializedVersion: 3
-      time: 0.0035155863
-      value: -0.008520114
-      inSlope: -0.017527344
-      outSlope: -0.017527344
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0023193
-      value: -0.007751465
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -4.6945353
-      value: 0.010819234
-      inSlope: 0.39078707
-      outSlope: 0.39078707
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.050410736
-    - serializedVersion: 3
-      time: -3.8651068
-      value: 0.30275357
-      inSlope: 0.31355363
-      outSlope: 0.31355363
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -2.9581015
-      value: 0.549875
-      inSlope: 0.2318417
-      outSlope: 0.2318417
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -1.3323271
-      value: 0.8123233
-      inSlope: 0.092553414
-      outSlope: 0.092553414
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.018643696
-      value: 0.8631952
-      inSlope: -0.016181419
-      outSlope: -0.016181419
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.2720678
-      value: 0.7826819
-      inSlope: -0.111375056
-      outSlope: -0.111375056
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 2.2754936
-      value: 0.6343782
-      inSlope: -0.18363476
-      outSlope: -0.18363476
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3.5018413
-      value: 0.35741368
-      inSlope: -0.26718143
-      outSlope: -0.26718143
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 4.685758
-      value: -0.004189685
-      inSlope: -0.34286356
-      outSlope: -0.34286356
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.044455644
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -4.6945353
-      value: 0.010819234
-      inSlope: 0.39078707
-      outSlope: 0.39078707
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.050410736
-    - serializedVersion: 3
-      time: -3.8651068
-      value: 0.30275357
-      inSlope: 0.31355363
-      outSlope: 0.31355363
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -2.9581015
-      value: 0.549875
-      inSlope: 0.2318417
-      outSlope: 0.2318417
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: -1.3323271
-      value: 0.8123233
-      inSlope: 0.092553414
-      outSlope: 0.092553414
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.018643696
-      value: 0.8631952
-      inSlope: -0.016181419
-      outSlope: -0.016181419
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.2720678
-      value: 0.7826819
-      inSlope: -0.111375056
-      outSlope: -0.111375056
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 2.2754936
-      value: 0.6343782
-      inSlope: -0.18363476
-      outSlope: -0.18363476
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 3.5018413
-      value: 0.35741368
-      inSlope: -0.26718143
-      outSlope: -0.26718143
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 4.685758
-      value: -0.004189685
-      inSlope: -0.34286356
-      outSlope: -0.34286356
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.044455644
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  BossAttacksBulletPatterns:
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.9987793
-      value: -0.0048828125
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 1
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0010070801
-      value: -0.0052490234
-      inSlope: -0.0019457637
-      outSlope: -0.0019457637
+      time: -2.4491525
+      value: -0.0009968281
+      inSlope: -0.00027056187
+      outSlope: -0.00027056187
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.99694824
-      value: -0.0071868896
-      inSlope: -0.0019457637
-      outSlope: -0.0019457637
+      time: 0.03891012
+      value: -0.0016700029
+      inSlope: -0.005436695
+      outSlope: -0.005436695
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2.5552979
+      value: -0.02835083
+      inSlope: -0.010602828
+      outSlope: -0.010602828
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -517,19 +231,129 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0010070801
-      value: -0.0052490234
-      inSlope: -0.0019457637
-      outSlope: -0.0019457637
+      time: -2.0174203
+      value: 1.9740093
+      inSlope: 1.1631538
+      outSlope: 1.1631538
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.054837104
+    - serializedVersion: 3
+      time: -1.5086074
+      value: 2.4941914
+      inSlope: 0.88064814
+      outSlope: 0.88064814
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.94725484
+      value: 2.899635
+      inSlope: 0.56279594
+      outSlope: 0.56279594
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.5000229
+      value: 3.0938244
+      inSlope: 0.30492502
+      outSlope: 0.30492502
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.00031200144
+      value: 3.1732063
+      inSlope: 0.01193109
+      outSlope: 0.01193109
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.51563144
+      value: 3.1001685
+      inSlope: -0.29596755
+      outSlope: -0.29596755
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9731516
+      value: 2.9014149
+      inSlope: -0.57357895
+      outSlope: -0.57357895
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5328413
+      value: 2.4840147
+      inSlope: -0.9190361
+      outSlope: -0.9190361
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.9966168
+      value: 1.990448
+      inSlope: -1.2101717
+      outSlope: -1.2101717
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.058169495
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BossAttacksBulletPatterns:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0006053145
+      value: -0.0023377668
+      inSlope: -0.00000046464683
+      outSlope: -0.00000046464683
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.99694824
-      value: -0.0071868896
-      inSlope: -0.0019457637
-      outSlope: -0.0019457637
+      time: 0.99756926
+      value: -0.0023382306
+      inSlope: -0.00000046464683
+      outSlope: -0.00000046464683
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0006053145
+      value: -0.0023377668
+      inSlope: -0.00000046464683
+      outSlope: -0.00000046464683
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99756926
+      value: -0.0023382306
+      inSlope: -0.00000046464683
+      outSlope: -0.00000046464683
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -539,12 +363,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   BossAttacksCds:
   - 0.3
-  - 0.9
-  - 0.3
+  - 0.5
   BossAttacksTiming:
   - 5
   - 1
-  - 0.5
   BulletPath:
     serializedVersion: 2
     m_Curve:
@@ -570,13 +392,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bulletSpeed: 10
-  InvertPatterns: 1
   myDeathParticles: {fileID: 0}
   guns:
-  - {fileID: 1975959877171692600}
-  - {fileID: 4290873684293886508}
-  - {fileID: 4762243295729045671}
-  - {fileID: 5813967689249800469}
+  - 0
+  - 90
+  - 180
+  - 270
   SlimeDeathParticles: {fileID: 6417038553441873970, guid: 0a18113029b3941cfb18eee56a32f0e6, type: 3}
   playerLayer:
     serializedVersion: 2
@@ -585,134 +406,82 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   bullet: {fileID: 666410767073258147, guid: 053b85addb080405b8ad5569ce0087ac, type: 3}
-  target: {fileID: 0}
   enemyBullet: {fileID: 21300000, guid: c958b6e98d965497892049e897d8b27a, type: 3}
   gigaPickup: {fileID: 5945777791856796745, guid: 1a06954d80f634fd6842d77b30e10b0a, type: 3}
+  realBoss: {fileID: 36201875529249406}
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0
   Died: 0
---- !u!1 &1975959877171692600
-GameObject:
+--- !u!61 &4598831120974442973
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3726262394569308088}
-  m_Layer: 8
-  m_Name: GunTop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3726262394569308088
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975959877171692600}
+  m_GameObject: {fileID: 3672646161955238682}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000333786, y: 0.2505331}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20, y: 20}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5812497117440031064}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4290873684293886508
-GameObject:
+  m_Size: {x: 16.241974, y: 13.987169}
+  m_EdgeRadius: 0
+--- !u!50 &8659112793293879840
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4747036626062388698}
-  m_Layer: 8
-  m_Name: GunLeft
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4747036626062388698
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290873684293886508}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.36, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5812497117440031064}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &4762243295729045671
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 47526833118571989}
-  m_Layer: 8
-  m_Name: GunRight
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &47526833118571989
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762243295729045671}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.36, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5812497117440031064}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!1 &5813967689249800469
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 283950222219453655}
-  m_Layer: 8
-  m_Name: GunBottom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &283950222219453655
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813967689249800469}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: -4.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5812497117440031064}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_GameObject: {fileID: 3672646161955238682}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1000
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

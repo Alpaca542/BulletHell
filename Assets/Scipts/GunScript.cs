@@ -71,7 +71,7 @@ public class GunScript : MonoBehaviour
         }
 
 
-        if (Connected && ConnectObject != null && !ConnectObject.GetComponent<EnemyAI>().Died && ConnectObject.gameObject.tag != "Boss")
+        if (Connected && ConnectObject != null && ConnectObject.gameObject.tag != "Boss" && !ConnectObject.GetComponent<EnemyAI>().Died)
         {
             GetComponent<LineRenderer>().enabled = true;
             GetComponent<LineRenderer>().SetPosition(0, transform.position);

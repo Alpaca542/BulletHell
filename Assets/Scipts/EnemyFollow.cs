@@ -265,7 +265,6 @@ public class EnemyAI : MonoBehaviour
                         blt.GetComponent<BulletScript>().FromATeammate = true;
                         blt.GetComponent<BulletScript>().AmIFromPlayer = true;
                     }
-                    blt.GetComponent<BulletScript>().InvertPattern = InvertPatterns;
                     if(guns[i].transform.eulerAngles.z == 90 || guns[i].transform.eulerAngles.z == -90 || guns[i].transform.eulerAngles.z == 270 || guns[i].transform.eulerAngles.z == -270)
                     {
                         blt.transform.position = new Vector2(guns[i].transform.position.x + kf.value, guns[i].transform.position.y + kf.time);
