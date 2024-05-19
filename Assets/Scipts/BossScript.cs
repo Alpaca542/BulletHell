@@ -30,7 +30,8 @@ public class BossScript : MonoBehaviour
     public ParticleSystem myDeathParticles;
 
     [Header("Fields")]
-    public float[] guns;
+	public AudioClip spawnSound;
+	public float[] guns;
     public GameObject SlimeDeathParticles;
     public LayerMask playerLayer;
     public LayerMask enemyLayer;
@@ -59,6 +60,8 @@ public class BossScript : MonoBehaviour
     private void OnEnable()
     {
         Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(1f, 0.7f);
+        GameManager.Instance.audioSystem.PlayClip(spawnSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
+        GameManager.Instance.SetBossMusic();
         AttackSpawnCycle();
         System.Random rnd = new System.Random();
         if (rnd.Next(0, 2) == 0)
@@ -130,6 +133,7 @@ public class BossScript : MonoBehaviour
         if (!Died)
         {
             Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.3f, 0.5f);
+            GameManager.Instance.SetMainMusic();
             Died = true;
             SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
             if (spwn.StageIndex == spwn.AmountOfStages - 1)

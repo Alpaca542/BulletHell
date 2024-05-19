@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using UnityEditor;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     private static MenuManager instance;
+    [SerializeField] private TMP_Text headingText;
     [SerializeField] private UnityEngine.UI.Slider masterVolumeSlider;
     [SerializeField] private UnityEngine.UI.Slider musicVolumeSlider;
     [SerializeField] private UnityEngine.UI.Slider sfxVolumeSlider;
@@ -26,7 +28,7 @@ public class MenuManager : MonoBehaviour
     }
     public void OnRestartClicked()
 	{
-		Invoke(nameof(InvokeMenuLevel), 1f);
+		Invoke(nameof(InvokeOpenLevel), 1f);
 	}
     public void InvokeOpenLevel()
     {
@@ -48,8 +50,8 @@ public class MenuManager : MonoBehaviour
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
+			SceneManager.sceneLoaded += OnSceneLoaded;
 		}
-		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
 	private void Start()
@@ -72,14 +74,21 @@ public class MenuManager : MonoBehaviour
         {
             playButton.SetActive(true);
             restartButton.SetActive(false);
+            headingText.text = "SWAMP INVASTION";
 			gameObject.SetActive(true);
 		}
         else if (scene.name == "GameScene")
 		{
 			playButton.SetActive(false);
 			restartButton.SetActive(true);
-            gameObject.SetActive(false);
+			headingText.text = "SWAMP INVASTION";
+			gameObject.SetActive(false);
 		}
+        else if (scene.name == "Lose")
+		{
+			headingText.text = "YOU LOSE";
+			gameObject.SetActive(true);
+        }
 		SetVolumeSlider(AudioCategory.master, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.master));
 		SetVolumeSlider(AudioCategory.sfx, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.sfx));
 		SetVolumeSlider(AudioCategory.music, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.music));

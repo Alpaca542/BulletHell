@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private AudioClip _music;
+	[SerializeField] private AudioClip _bossMusic;
+
 	public static GameManager Instance;
     public readonly ObjectPool pool = new ObjectPool();
 	public readonly AudioSystem audioSystem = new AudioSystem();
@@ -43,8 +45,25 @@ public class GameManager : MonoBehaviour
 		if (_musicObject == null)
 		{
 			_musicObject = audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
+			_musicObject.name = "MainMusic";
 			DontDestroyOnLoad(_musicObject.gameObject);
 		}
+	}
+
+	public void SetMainMusic()
+	{
+		AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
+		audioSource.clip = _music;
+		audioSource.time = 0;
+		audioSource.Play();
+	}
+
+	public void SetBossMusic()
+	{
+		AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
+		audioSource.clip = _bossMusic;
+		audioSource.time = 0;
+		audioSource.Play();
 	}
 
 	private void LoadPoolablePrefabs()

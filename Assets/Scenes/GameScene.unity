@@ -49452,51 +49452,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 248291057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &189348650
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 189348652}
-  - component: {fileID: 189348651}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &189348651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189348650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbc99de42e443743bfe7072230efc1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _music: {fileID: 0}
---- !u!4 &189348652
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189348650}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3503923, y: 1.2785785, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212496851
 GameObject:
   m_ObjectHideFlags: 0
@@ -100936,6 +100891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b772b07915822436780a9cf2017f622b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossSpawnSound: {fileID: 8300000, guid: 81b5b466ac8976d498641466899dae1c, type: 3}
   Enemies1:
   - {fileID: 4543110674110024123, guid: ecf52202ff0924c9a9f86c392ec610c8, type: 3}
   - {fileID: 1081003551578108873, guid: f99eddb0f8098479abb6df30689456b0, type: 3}
@@ -151554,7 +151510,6 @@ SceneRoots:
   - {fileID: 1207520648}
   - {fileID: 591661874}
   - {fileID: 165381278}
-  - {fileID: 189348652}
   - {fileID: 248291057}
   - {fileID: 1050227598}
   - {fileID: 1429449318}

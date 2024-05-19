@@ -525,6 +525,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8adf5d8b476194d798e824f14afcbd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headingText: {fileID: 0}
+  masterVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  sfxVolumeSlider: {fileID: 0}
+  playButton: {fileID: 0}
+  restartButton: {fileID: 0}
   SmokeEffect: {fileID: 250063963}
   EndSmoke: {fileID: 40815600}
   settingsPanel: {fileID: 0}
@@ -1180,7 +1186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1542892936
 MonoBehaviour:
   m_ObjectHideFlags: 0

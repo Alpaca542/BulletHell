@@ -459,6 +459,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   myDeathParticles: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 81b5b466ac8976d498641466899dae1c, type: 3}
   guns:
   - 0
   - 90
