@@ -68,6 +68,7 @@ public class BossScript : MonoBehaviour
     }
     private void OnEnable()
     {
+        Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(1f, 0.7f);
         AttackSpawnCycle();
         System.Random rnd = new System.Random();
         if (rnd.Next(0, 2) == 0)
@@ -232,6 +233,7 @@ public class BossScript : MonoBehaviour
     {
         if (!Died)
         {
+            Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.3f, 0.5f);
             Died = true;
             SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
             if (spwn.StageIndex == spwn.AmountOfStages - 1)
