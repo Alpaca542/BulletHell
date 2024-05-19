@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,11 +25,12 @@ public class GameManager : MonoBehaviour
 		{
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
+			_menu = FindObjectOfType<MenuManager>(true).gameObject;
+			audioSystem.SetVolume(AudioCategory.master, 0.5f);
+			audioSystem.SetVolume(AudioCategory.sfx, 0.5f);
+			audioSystem.SetVolume(AudioCategory.music, 0.5f);
+			SceneManager.sceneLoaded += OnSceneWasLoaded;
 		}
-		_menu = FindObjectOfType<MenuManager>(true).gameObject;
-		audioSystem.SetVolume(AudioCategory.master, 0.5f);
-		audioSystem.SetVolume(AudioCategory.sfx, 0.5f);
-		audioSystem.SetVolume(AudioCategory.music, 0.5f);
 	}
 
 	private void Update()
@@ -48,6 +50,11 @@ public class GameManager : MonoBehaviour
 			_musicObject.name = "MainMusic";
 			DontDestroyOnLoad(_musicObject.gameObject);
 		}
+	}
+
+	private void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)
+	{
+		pool.Clear();
 	}
 
 	public void SetMainMusic()

@@ -40,6 +40,8 @@ public class ObjectPool
 		public ConcurrentBag<IPoolable> items;
 	}
 
+	private Dictionary<System.Type, Pool> _pools = new Dictionary<System.Type, Pool>();
+
 	public void AddPool(System.Type type, IPoolFactory factory)
 	{
 		_pools.Add(type, new Pool() { factory = factory, items = new ConcurrentBag<IPoolable>() });
@@ -61,5 +63,11 @@ public class ObjectPool
 		_pools[typeof(T)].items.Add(item);
 	}
 
-	private Dictionary<System.Type, Pool> _pools = new Dictionary<System.Type, Pool>();
+	public void Clear()
+	{
+		foreach (var pool in _pools)
+		{
+			pool.Value.items.Clear();
+		}
+	}
 }
