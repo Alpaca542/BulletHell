@@ -68087,11 +68087,13 @@ MonoBehaviour:
   - {fileID: 1168309149}
   - {fileID: 680559793}
   - {fileID: 762867705}
+  TransitionSquare: {fileID: 615912734}
   BoostImgs:
   - {fileID: 544107959}
   - {fileID: 1962811893}
   - {fileID: 1396299532}
   - {fileID: 1090247544}
+  Died: 0
 --- !u!95 &587019925
 Animator:
   serializedVersion: 5
