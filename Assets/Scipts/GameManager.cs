@@ -7,9 +7,10 @@ public class GameManager : MonoBehaviour
 {
 	[SerializeField] private AudioClip _music;
 	public static GameManager Instance;
-
     public readonly ObjectPool pool = new ObjectPool();
 	public readonly AudioSystem audioSystem = new AudioSystem();
+	private GameObject _menu;
+	private GameObject _musicObject;
 
 	private void Awake()
 	{
@@ -20,13 +21,30 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		_menu = FindObjectOfType<MenuManager>(true).gameObject;
+		audioSystem.SetVolume(AudioCategory.master, 0.5f);
+		audioSystem.SetVolume(AudioCategory.sfx, 0.5f);
+		audioSystem.SetVolume(AudioCategory.music, 0.5f);
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			_menu.SetActive(!_menu.activeInHierarchy);
 		}
 	}
 
 	void Start()
     {
 		LoadPoolablePrefabs();
-		audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music });
+		if (_musicObject == null)
+		{
+			_musicObject = audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
+			DontDestroyOnLoad(_musicObject.gameObject);
+		}
 	}
 
 	private void LoadPoolablePrefabs()

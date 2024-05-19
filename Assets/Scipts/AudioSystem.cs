@@ -21,7 +21,7 @@ public class AudioSystem
 {
 	private const int _maxAudioObjects = 20;
 	private int _activeAudioObjects;
-	private float[] _audioCategoryVolumes;
+	private readonly float[] _audioCategoryVolumes;
 
 	public AudioSystem()
 	{
@@ -30,10 +30,10 @@ public class AudioSystem
 			_audioCategoryVolumes[i] = 1.0f;
 	}
 
-	public void PlayClip(AudioClip audioClip, AudioClipSettings audioSettings)
+	public AudioSource PlayClip(AudioClip audioClip, AudioClipSettings audioSettings)
 	{
 		if (_activeAudioObjects >= _maxAudioObjects && !audioSettings.forcePlay)
-			return;
+			return null;
 
         AudioObject audioObject = (AudioObject)GameManager.Instance.pool.Get<AudioObject>();
 		AudioSource audioSource = audioObject.GetComponent<AudioSource>();
@@ -44,11 +44,17 @@ public class AudioSystem
 		audioSource.time = 0f;
 		audioSource.Play();
 		_activeAudioObjects++;
+		return audioSource;
 	}
 
 	public float GetVolume(AudioCategory category)
 	{
 		return _audioCategoryVolumes[(int)AudioCategory.master] * _audioCategoryVolumes[(int)category];
+	}
+
+	public float GetVolumeRaw(AudioCategory category)
+	{
+		return _audioCategoryVolumes[(int)category];
 	}
 
 	public void AudioObjectDeactivated()
