@@ -128,7 +128,7 @@ public class DialogueScript : MonoBehaviour
     }
     public void InvokeOpenMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Win");
     }
     public void StartTheGameScene()
     {

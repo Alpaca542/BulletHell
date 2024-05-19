@@ -36,6 +36,15 @@ public class MenuManager : MonoBehaviour
     {
         EndSmoke.SetActive(false);
     }
+    public void OpenMenu()
+    {
+        SmokeEffect.SetActive(true);
+        Invoke(nameof(InvokeOpenMenu), 1f);
+    }
+    public void InvokeOpenMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
     public void OpenSetting()
     {
         settingsPanel.SetActive(true);

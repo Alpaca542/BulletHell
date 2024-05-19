@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
         health = Mathf.Clamp(health, 0, 100);
         if (health <= 0)
         {
-            Die();
+            Invoke(nameof(Die), 3f);
         }
         if (!healing)
         {
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Lose");
         Destroy(gameObject);
     }
 }

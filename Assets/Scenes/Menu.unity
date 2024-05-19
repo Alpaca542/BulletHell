@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a826414704a9f4e84b79dcb86a61c7db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeslider: {fileID: 0}
-  SfxToggle: {fileID: 0}
+  volumeslider: {fileID: 1916394746}
+  SfxToggle: {fileID: 952524832}
 --- !u!4 &97486058
 Transform:
   m_ObjectHideFlags: 0
