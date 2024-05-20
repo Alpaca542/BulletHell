@@ -21,13 +21,9 @@ public class AudioSystem
 {
 	private const int _maxAudioObjects = 20;
 	private int _activeAudioObjects;
-	public readonly float[] _audioCategoryVolumes;
 
 	public AudioSystem()
 	{
-		_audioCategoryVolumes = new float[Enum.GetValues(typeof(AudioCategory)).Length];
-		for (int i = 0; i < _audioCategoryVolumes.Length; i++)
-			_audioCategoryVolumes[i] = 1.0f;
 	}
 
 	public AudioSource PlayClip(AudioClip audioClip, AudioClipSettings audioSettings)
@@ -39,7 +35,7 @@ public class AudioSystem
 		AudioSource audioSource = audioObject.GetComponent<AudioSource>();
 		audioSource.clip = audioClip;
 		audioSource.loop = audioSettings.looping;
-		audioSource.volume = _audioCategoryVolumes[(int)AudioCategory.master] * _audioCategoryVolumes[(int)audioSettings.category];
+		audioSource.volume = GetVolume(audioSettings.category);
 		audioSource.pitch = audioSettings.pitch;
 		audioSource.time = 0f;
 		audioSource.Play();
@@ -49,12 +45,12 @@ public class AudioSystem
 
 	public float GetVolume(AudioCategory category)
 	{
-		return _audioCategoryVolumes[(int)AudioCategory.master] * _audioCategoryVolumes[(int)category];
+		return PlayerPrefs.GetFloat(AudioCategory.master.ToString()) * PlayerPrefs.GetFloat(category.ToString());
 	}
 
 	public float GetVolumeRaw(AudioCategory category)
 	{
-		return _audioCategoryVolumes[(int)category];
+		return PlayerPrefs.GetFloat(category.ToString());
 	}
 
 	public void AudioObjectDeactivated()
@@ -64,10 +60,10 @@ public class AudioSystem
 
 	public void SetVolume(AudioCategory category, float volume)
 	{
-		_audioCategoryVolumes[(int)category] = Mathf.Max(Mathf.Min(volume, 1f), 0f);
+		PlayerPrefs.SetFloat(category.ToString(), Mathf.Max(Mathf.Min(volume, 1f), 0f));
 		foreach (AudioObject gmb in GameObject.FindObjectsOfType(typeof(AudioObject)))
 		{
-			gmb.GetComponent<AudioSource>().volume = _audioCategoryVolumes[(int)gmb.audioCategory];
+			gmb.GetComponent<AudioSource>().volume = GetVolume(gmb.audioCategory);
 
         }
 	}

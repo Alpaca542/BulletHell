@@ -35,9 +35,6 @@ public class GameManager : MonoBehaviour
 			Instance = this;
 			DontDestroyOnLoad(gameObject);
 			_menu = FindObjectOfType<MenuManager>(true).gameObject;
-			audioSystem.SetVolume(AudioCategory.master, 1f);
-			audioSystem.SetVolume(AudioCategory.sfx, 1f);
-			audioSystem.SetVolume(AudioCategory.music, 0.7f);
 			SceneManager.sceneLoaded += OnSceneWasLoaded;
 		}
 	}
@@ -95,7 +92,7 @@ public class GameManager : MonoBehaviour
         float percentage = 0f;
         while (nowPlaying.volume > 0)
         {
-            nowPlaying.volume = Mathf.Lerp(audioSystem._audioCategoryVolumes[(int)AudioCategory.music], 0, percentage);
+            nowPlaying.volume = Mathf.Lerp(audioSystem.GetVolume(AudioCategory.music), 0, percentage);
             percentage += Time.deltaTime;
             yield return null;
         }
@@ -106,9 +103,9 @@ public class GameManager : MonoBehaviour
             nowPlaying.Play();
         }
         percentage = 0f;
-        while (nowPlaying.volume < audioSystem._audioCategoryVolumes[(int)AudioCategory.music])
+        while (nowPlaying.volume < audioSystem.GetVolume(AudioCategory.music))
         {
-            nowPlaying.volume = Mathf.Lerp(0, audioSystem._audioCategoryVolumes[(int)AudioCategory.music], percentage);
+            nowPlaying.volume = Mathf.Lerp(0, audioSystem.GetVolume(AudioCategory.music), percentage);
             percentage += Time.deltaTime;
             yield return null;
         }
