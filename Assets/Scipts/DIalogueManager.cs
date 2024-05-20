@@ -36,6 +36,9 @@ public class DialogueScript : MonoBehaviour
         }
         else
         {
+            cnvInGame.SetActive(true);
+            btnContinue.SetActive(false);
+            cnv.SetActive(false);
             IndexInMain = stopindexes[0];
             StartAnim.Play();
         }
