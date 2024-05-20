@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6200403184505966613}
   - component: {fileID: 4402097037907674919}
   - component: {fileID: 6092338433890266491}
+  - component: {fileID: 5959629620139927143}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Boss
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  health: 300
+  health: 250
   shootingDistance: 1000
   shootingCooldown: 0.2
   searchingRadius: 0
@@ -615,3 +616,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!208 &5959629620139927143
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5948522235947827372}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 8.395, y: 7.4, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
+  m_TimeToStationary: 0.5

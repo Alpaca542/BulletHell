@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private AudioClip _music;
-	[SerializeField] private AudioClip _bossMusic;
+    [SerializeField] private AudioClip menumusic;
+    [SerializeField] private AudioClip _bossMusic;
 	[SerializeField] private GameObject _sceneLoadAnimationPrefab;
 	[SerializeField] private GameObject _sceneLoadEndAnimationPrefab;
 
@@ -54,14 +55,14 @@ public class GameManager : MonoBehaviour
             }
             _menu.SetActive(!_menu.activeInHierarchy);
 		}
-	}
+    }
 
 	void Start()
     {
 		LoadPoolablePrefabs();
 		if (_musicObject == null)
 		{
-			_musicObject = audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
+			_musicObject = audioSystem.PlayClip(menumusic, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
 			_musicObject.name = "MainMusic";
 			DontDestroyOnLoad(_musicObject.gameObject);
 		}
@@ -69,11 +70,25 @@ public class GameManager : MonoBehaviour
 
 	private void OnSceneWasLoaded(Scene scene, LoadSceneMode mode)
 	{
-		pool.Clear();
+        pool.Clear();
 		_sceneLoadEndAnimationObject = Instantiate(_sceneLoadEndAnimationPrefab);
 		_sceneLoadEndAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, 10f, 1f);
 		Invoke(nameof(RemoveSceneLoadEndAnimation), 3f);
-	}
+        //if (SceneManager.GetActiveScene().name == "GameScene")
+        //{
+        //    Destroy(_musicObject);
+        //    _musicObject = audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
+        //    _musicObject.name = "MainMusic";
+        //    DontDestroyOnLoad(_musicObject.gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(_musicObject);
+        //    _musicObject = audioSystem.PlayClip(menumusic, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
+        //    _musicObject.name = "MainMusic";
+        //    DontDestroyOnLoad(_musicObject.gameObject);
+        //}
+    }
 
 	public void SetMainMusic()
 	{
@@ -110,15 +125,15 @@ public class GameManager : MonoBehaviour
 			Destroy(_sceneLoadEndAnimationObject);
 	}
 
-	public void SetBossMusic()
-	{
-		AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
-		audioSource.clip = _bossMusic;
-		audioSource.time = 0;
-		audioSource.Play();
-	}
+    public void SetMenuMusic()
+    {
+        AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
+        audioSource.clip = menumusic;
+        audioSource.time = 0;
+        audioSource.Play();
+    }
 
-	private void LoadPoolablePrefabs()
+    private void LoadPoolablePrefabs()
 	{
 		Object[] objs = Resources.LoadAll("PoolablePrefabs");
 		foreach (Object obj in objs)

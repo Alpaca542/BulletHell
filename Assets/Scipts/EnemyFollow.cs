@@ -168,45 +168,22 @@ public class EnemyAI : MonoBehaviour
         {
             if (target != null)
             {
-                if(target.transform.tag == "Boss")
+                if (SouldGoUp)
                 {
-                    if (SouldGoUp)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + distance2 + 5f));
-                    }
-                    else if (ShouldGoSide)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance2 + 5f, target.transform.position.y));
-                    }
-                    else if (ShouldGoDiag)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance * 1.5f, target.transform.position.y + distance2 + 5f));
-                    }
-                    else
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance + 5f, target.transform.position.y + distance * 1.5f));
-                    }
+                    agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + distance2));
+                }
+                else if (ShouldGoSide)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance2, target.transform.position.y));
+                }
+                else if (ShouldGoDiag)
+                {
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance2));
                 }
                 else
                 {
-                    if (SouldGoUp)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x, target.transform.position.y + distance2));
-                    }
-                    else if (ShouldGoSide)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance2, target.transform.position.y));
-                    }
-                    else if (ShouldGoDiag)
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance2));
-                    }
-                    else
-                    {
-                        agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance));
-                    }
+                    agent.SetDestination(new Vector2(target.transform.position.x + distance, target.transform.position.y + distance));
                 }
-
             }
         }
 

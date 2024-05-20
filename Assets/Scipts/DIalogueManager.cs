@@ -33,6 +33,7 @@ public class DialogueScript : MonoBehaviour
             coroutine = Type(sentences[IndexInMain], faces[IndexInMain], false);
             StartCoroutine(coroutine);
         }
+        GameManager.Instance.SetMainMusic();
     }
     public void StartCrtnRemotely(string WhatToType, Sprite WhatToShow, bool ShouldIStopAfter)
     {

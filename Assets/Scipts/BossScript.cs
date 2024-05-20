@@ -61,7 +61,6 @@ public class BossScript : MonoBehaviour
     {
         Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(1f, 0.7f);
         GameManager.Instance.audioSystem.PlayClip(spawnSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
-        GameManager.Instance.SetBossMusic();
         AttackSpawnCycle();
         System.Random rnd = new System.Random();
         if (rnd.Next(0, 2) == 0)
