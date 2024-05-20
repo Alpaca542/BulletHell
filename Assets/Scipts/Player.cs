@@ -64,6 +64,9 @@ public class Player : MonoBehaviour
             damage = basedamage + 1;
             speed += 8;
             health += 50;
+            healthBar.value = health;
+            fill.color = healthGradient.Evaluate(healthBar.normalizedValue);
+            healthBar.GetComponent<Animation>().Play();
             StartCoroutine(CrtnEndBoost(which));
             BoostImgs[which].SetActive(true);
         }
