@@ -184,4 +184,4 @@ MonoBehaviour:
   StartRotation: {x: 0, y: 0, z: 0}
   AmIFromPlayer: 0
   FromATeammate: 0
-  hitSound: {fileID: 8300000, guid: 7b4d23f46613f4a56948b5bf03c9d41d, type: 3}
+  hitSound: {fileID: 8300000, guid: 86f985b0e600f44af939130d44e47bc9, type: 3}
