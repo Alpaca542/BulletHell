@@ -57,7 +57,8 @@ public class MenuManager : MonoBehaviour
             restartButton.SetActive(false);
             headingText.text = "SWAMP INVASTION";
 			headingText.GetComponent<Animator>().enabled = false;
-			gameObject.SetActive(true);
+            GetComponent<Canvas>().worldCamera = Camera.main;
+            gameObject.SetActive(true);
 		}
         else if (scene.name == "GameScene")
 		{
@@ -71,7 +72,8 @@ public class MenuManager : MonoBehaviour
 		{
 			headingText.text = "YOU LOSE";
             headingText.GetComponent<Animator>().enabled = true;
-			gameObject.SetActive(true);
+            GetComponent<Canvas>().worldCamera = Camera.main;
+            gameObject.SetActive(true);
         }
 		SetVolumeSlider(AudioCategory.master, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.master));
 		SetVolumeSlider(AudioCategory.sfx, GameManager.Instance.audioSystem.GetVolumeRaw(AudioCategory.sfx));
