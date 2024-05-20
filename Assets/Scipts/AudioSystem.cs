@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum AudioCategory
@@ -21,10 +22,6 @@ public class AudioSystem
 {
 	private const int _maxAudioObjects = 20;
 	private int _activeAudioObjects;
-
-	public AudioSystem()
-	{
-	}
 
 	public AudioSource PlayClip(AudioClip audioClip, AudioClipSettings audioSettings)
 	{

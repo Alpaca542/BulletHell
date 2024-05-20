@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,14 @@ public class GameManager : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 			_menu = FindObjectOfType<MenuManager>(true).gameObject;
 			SceneManager.sceneLoaded += OnSceneWasLoaded;
+
+			foreach (var category in Enum.GetValues(typeof(AudioCategory)).Cast<AudioCategory>())
+			{
+				if (!PlayerPrefs.HasKey(category.ToString()))
+				{
+					audioSystem.SetVolume(category, 0.5f);
+				}
+			}
 		}
 	}
 
@@ -139,8 +148,8 @@ public class GameManager : MonoBehaviour
 
     private void LoadPoolablePrefabs()
 	{
-		Object[] objs = Resources.LoadAll("PoolablePrefabs");
-		foreach (Object obj in objs)
+		UnityEngine.Object[] objs = Resources.LoadAll("PoolablePrefabs");
+		foreach (UnityEngine.Object obj in objs)
 		{
 			if (obj is not GameObject)
 			{
