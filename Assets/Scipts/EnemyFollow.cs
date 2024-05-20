@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour
     private RaycastHit2D ray;
     private ParticleSystem copy;
     public GameObject[] PickUps;
+    public AudioClip DieSound;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -272,6 +273,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!Died)
         {
+            GameManager.Instance.audioSystem.PlayClip(DieSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.12f, 0.3f);
             Died = true;
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;

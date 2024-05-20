@@ -523,7 +523,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   bulletSpeed: 10
   myDeathParticles: {fileID: 0}
-  spawnSound: {fileID: 8300000, guid: 81b5b466ac8976d498641466899dae1c, type: 3}
+  spawnSound: {fileID: 8300000, guid: fab8470e5de7649188ab9d86c50755be, type: 3}
   guns:
   - 0
   - 90
@@ -540,6 +540,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 21300000, guid: c958b6e98d965497892049e897d8b27a, type: 3}
   gigaPickup: {fileID: 5945777791856796745, guid: 1a06954d80f634fd6842d77b30e10b0a, type: 3}
   realBoss: {fileID: 1932256041328878569}
+  DieSound: {fileID: 8300000, guid: fe14b17f09683421394f2aa4564c44c7, type: 3}
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0

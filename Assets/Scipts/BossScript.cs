@@ -41,6 +41,7 @@ public class BossScript : MonoBehaviour
     private ParticleSystem copy;
     public GameObject gigaPickup;
     public GameObject realBoss;
+    public AudioClip DieSound;
 
     [Header("Debug")]
     public bool AmIShooting = false;
@@ -132,6 +133,7 @@ public class BossScript : MonoBehaviour
         if (!Died)
         {
             Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.3f, 0.5f);
+            GameManager.Instance.audioSystem.PlayClip(DieSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             Died = true;
             SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
             if (spwn.StageIndex == spwn.AmountOfStages - 1)

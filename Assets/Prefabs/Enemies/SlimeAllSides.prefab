@@ -195,6 +195,7 @@ MonoBehaviour:
   - {fileID: 4899957029877777301, guid: def9af9dd0135414aa02e051dfdec957, type: 3}
   - {fileID: 1987717496500586349, guid: 05318edb6e6d84d9f8b24a678230b0de, type: 3}
   - {fileID: 4899957029877777301, guid: def9af9dd0135414aa02e051dfdec957, type: 3}
+  DieSound: {fileID: 8300000, guid: cd0a93075308341bb9cac59289487b80, type: 3}
   AmIShooting: 0
   ShootAPlayer: 0
   AmIKind: 0
