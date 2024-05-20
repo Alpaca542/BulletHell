@@ -105,10 +105,7 @@ public class BulletScript : MonoBehaviour, IPoolable
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(BulletDeathParticles, prt);
             prt.transform.position = transform.position;
-            if (AmIFromPlayer)
-            {
-                GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
-            }
+            GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             GameManager.Instance.pool.Return(this);
         }
         else if (collision.gameObject.tag == "Obstacle")
