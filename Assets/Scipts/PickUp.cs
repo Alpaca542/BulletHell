@@ -12,6 +12,7 @@ public class PickUp : MonoBehaviour
     public Sprite PickUpLessonSprite2;
     public float HealthBoost;
     public GameObject pickUpParticles;
+    public AudioClip boostSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,6 +34,7 @@ public class PickUp : MonoBehaviour
             }
             if (!collision.GetComponent<Player>().boosted)
             {
+                GameManager.Instance.audioSystem.PlayClip(boostSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
                 collision.GetComponent<Player>().Boost(which);
 
                 GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;

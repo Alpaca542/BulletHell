@@ -236,7 +236,14 @@ public class EnemyAI : MonoBehaviour
                     blt.GetComponent<SpriteRenderer>().sprite = enemyBullet;
 
                     blt.GetComponent<BulletScript>().AmIFromPlayer = false;
-                    blt.GetComponent<BulletScript>().FromATeammate = false;
+                    if (AmIKind)
+                    {
+                        blt.GetComponent<BulletScript>().FromATeammate = true;
+                    }
+                    else
+                    {
+                        blt.GetComponent<BulletScript>().FromATeammate = false;
+                    }
 
                     if (guns[i] == 270)
                     {

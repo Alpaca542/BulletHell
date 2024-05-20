@@ -17,6 +17,7 @@ public class BulletScript : MonoBehaviour, IPoolable
 
     public bool AmIFromPlayer;
     public bool FromATeammate;
+    public AudioClip hitSound;
 
     private void OnEnable()
     {
@@ -54,7 +55,7 @@ public class BulletScript : MonoBehaviour, IPoolable
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy" && AmIFromPlayer)
+        if (collision.gameObject.tag == "Enemy" && (AmIFromPlayer || FromATeammate))
         {
             EnemyAI enem = collision.gameObject.GetComponent<EnemyAI>();
             enem.health -= damage;
@@ -65,9 +66,10 @@ public class BulletScript : MonoBehaviour, IPoolable
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(BulletDeathParticles, prt);
             prt.transform.position = transform.position;
+            GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             GameManager.Instance.pool.Return(this);
         }
-        else if(collision.gameObject.tag == "Player" && !AmIFromPlayer)
+        else if(collision.gameObject.tag == "Player" && !AmIFromPlayer && !FromATeammate)
         {
             if(collision.gameObject.GetComponent<Player>() != null)
             {
@@ -89,10 +91,14 @@ public class BulletScript : MonoBehaviour, IPoolable
                 GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
                 CopyComponent(BulletDeathParticles, prt);
                 prt.transform.position = transform.position;
+                if (AmIFromPlayer)
+                {
+                    GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
+                }
                 GameManager.Instance.pool.Return(this);
             }
         }
-        else if (collision.gameObject.tag == "Boss" && AmIFromPlayer)
+        else if (collision.gameObject.tag == "Boss" && (AmIFromPlayer || FromATeammate))
         {
             BossScript enem = collision.gameObject.GetComponent<BossScript>();
             enem.health -= damage;
@@ -103,6 +109,7 @@ public class BulletScript : MonoBehaviour, IPoolable
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(BulletDeathParticles, prt);
             prt.transform.position = transform.position;
+            GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             GameManager.Instance.pool.Return(this);
         }
         else if (collision.gameObject.tag == "Obstacle")
@@ -110,6 +117,7 @@ public class BulletScript : MonoBehaviour, IPoolable
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(BulletDeathParticles, prt);
             prt.transform.position = transform.position;
+            GameManager.Instance.audioSystem.PlayClip(hitSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
             GameManager.Instance.pool.Return(this);
         }
     }

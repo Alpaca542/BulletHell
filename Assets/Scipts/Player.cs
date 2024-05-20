@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     public GameObject TransitionSquare;
     public GameObject[] BoostImgs;
     public bool Died;
+    public AudioClip hitSound;
     public void Boost(int which)
     {
         Vignette vgn;

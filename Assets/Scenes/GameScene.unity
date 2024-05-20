@@ -68049,6 +68049,7 @@ MonoBehaviour:
   - {fileID: 1396299532}
   - {fileID: 1090247544}
   Died: 0
+  hitSound: {fileID: 8300000, guid: cd0a93075308341bb9cac59289487b80, type: 3}
 --- !u!95 &587019925
 Animator:
   serializedVersion: 5
