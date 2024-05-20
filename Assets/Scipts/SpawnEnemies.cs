@@ -15,6 +15,7 @@ public class SpawnEnemies : MonoBehaviour
     public DialogueScript dlg;
     public Sprite SlimeSprite;
     public GameObject prnt;
+    private System.Random random;
 
     [Header("Settings")]
     public float BigHardnessMultiplyer = 2f;
@@ -51,6 +52,10 @@ public class SpawnEnemies : MonoBehaviour
         roundended = false;
         Instantiate(Bosses[StageIndex], transform.position, Quaternion.identity);
     }
+    private void Awake()
+    {
+        random = new System.Random();
+    }
     private void OnEnable()
     {
         for (int i = 0; i < Enemies1.Length; i++)
@@ -85,8 +90,6 @@ public class SpawnEnemies : MonoBehaviour
                                                     .ToDictionary(kv => kv.Key, kv => kv.Value);
             while (EnemiesToUse.Count != 0)
             {
-                System.Random random = new System.Random();
-
                 KeyValuePair<GameObject, float> chosenEnemy = EnemiesToUse.ElementAt(random.Next(0, EnemiesToUse.Count));
                 GameObject enem = Instantiate(chosenEnemy.Key, new Vector3(Random.Range(border1.position.x, border2.position.x), Random.Range(border1.position.y, border2.position.y), 0), Quaternion.identity);
                 enem.GetComponent<NavMeshAgent>().avoidancePriority = PriorIndex;

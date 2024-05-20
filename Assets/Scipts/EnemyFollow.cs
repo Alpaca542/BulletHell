@@ -41,6 +41,7 @@ public class EnemyAI : MonoBehaviour
     private ParticleSystem copy;
     public GameObject[] PickUps;
     public AudioClip DieSound;
+    private System.Random rnd;
 
     [Header("Debug")]
     public bool AmIShooting;
@@ -58,9 +59,12 @@ public class EnemyAI : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    private void Awake()
+    {
+        rnd = new System.Random();
+    }
     private void OnEnable()
     {
-        System.Random rnd = new System.Random();
         if (rnd.Next(0, 2) == 0)
         {
             ShootAPlayer = true;
@@ -279,11 +283,9 @@ public class EnemyAI : MonoBehaviour
             GameObject prt = ((DieInTime)GameManager.Instance.pool.Get<DieInTime>()).gameObject;
             CopyComponent(SlimeDeathParticles, prt);
             prt.transform.position = transform.position;
-            System.Random rnd1 = new System.Random();
-            if (rnd1.Next(0, 5) == 0)
+            if (rnd.Next(0, 5) == 0)
             {
-                System.Random rnd2 = new System.Random();
-                Instantiate(PickUps[rnd2.Next(0, 4)], transform.position, Quaternion.identity);
+                Instantiate(PickUps[rnd.Next(0, PickUps.Length)], transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

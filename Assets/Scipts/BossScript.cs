@@ -42,6 +42,7 @@ public class BossScript : MonoBehaviour
     public GameObject gigaPickup;
     public GameObject realBoss;
     public AudioClip DieSound;
+    private System.Random rnd1;
 
     [Header("Debug")]
     public bool AmIShooting = false;
@@ -51,8 +52,7 @@ public class BossScript : MonoBehaviour
 
     public void AttackSpawnCycle()
     {
-        System.Random rnd = new System.Random();
-        int vl = rnd.Next(0, BossAttacks.Length);
+        int vl = rnd1.Next(0, BossAttacks.Length);
         BulletPath = BossAttacksBulletPatterns[vl];
         ProjectlilesPattern = BossAttacks[vl];
         shootingCooldown = BossAttacksCds[vl];
@@ -60,11 +60,11 @@ public class BossScript : MonoBehaviour
     }
     private void OnEnable()
     {
+        rnd1 = new System.Random();
         Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(1f, 0.7f);
         GameManager.Instance.audioSystem.PlayClip(spawnSound, new AudioClipSettings { category = AudioCategory.sfx, forcePlay = true, looping = false });
         AttackSpawnCycle();
-        System.Random rnd = new System.Random();
-        if (rnd.Next(0, 2) == 0)
+        if (rnd1.Next(0, 2) == 0)
         {
             ShootAPlayer = true;
         }
