@@ -1356,7 +1356,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4cec7b61ed6624f88b67943f5adc7fef, type: 3}
-    m_FontSize: 223
+    m_FontSize: 218
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1367,7 +1367,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.24
-  m_Text: Thanks for playing
+  m_Text: Thanks for playing!
 --- !u!222 &1836498037
 CanvasRenderer:
   m_ObjectHideFlags: 0
