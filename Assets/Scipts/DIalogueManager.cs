@@ -155,15 +155,22 @@ public class DialogueScript : MonoBehaviour
             //gameObject.GetComponent<soundManager>().sound.loop = false;
             //GetComponent<AudioSource>().Stop();
             StopCoroutine(coroutine);
-            if (ShouldIStopAfterpb)
+            if (Display.text == Stringpb)
             {
-                Display.text = Stringpb;
-                btnContinueFake.SetActive(true);
+                ContinueTyping();
             }
             else
             {
-                Display.text = sentences[IndexInMain];
-                btnContinue.SetActive(true);
+                if (ShouldIStopAfterpb)
+                {
+                    Display.text = Stringpb;
+                    btnContinueFake.SetActive(true);
+                }
+                else
+                {
+                    Display.text = sentences[IndexInMain];
+                    btnContinue.SetActive(true);
+                }
             }
         }
     }

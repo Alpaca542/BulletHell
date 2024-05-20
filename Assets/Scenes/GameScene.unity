@@ -49915,7 +49915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -67517,17 +67517,18 @@ MonoBehaviour:
   sentences:
   - Who the hell are you? Get out of my boat!
   - Please, stranger, I need help
-  - Our swamp nation has been invaded by mutants. They're hypnotizing us and forcing
-    us to serve them
+  - Our swamp nation has been invaded by mutants
+  - ' They''re hypnotizing us and forcing us to serve them'
   - It was a miracle that I managed to escape
   - If you help us, we'll give you anything you want!
   - Mutants? Damn it... Alright, where do I go?
   - Thank you so much! Go to the northern swamp
-  - And... one more thing... Can you please avoid killing my people? If you capture
-    them, I can break the hypnosis and they can help you fight the mutants
+  - And... one more thing...
+  - Can you please avoid killing my people? If you capture them, I can break the
+    hypnosis and they can help you fight the mutants
   - I'll think about it
   - You can use your right mouse button to catch them and left mouse button to shoot!
-  - I'll have my revenge
+  - NOOOOOOO...
   - Thank you so much!
   - You saved us!
   ShouldIStopAfterpb: 0
@@ -67537,7 +67538,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
+  - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 0c49ca1be41db4d2ca1943deb7ff44f9, type: 3}
+  - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 23a37eadd2fd9476e81be315774b61ce, type: 3}
   - {fileID: 21300000, guid: 0c49ca1be41db4d2ca1943deb7ff44f9, type: 3}
@@ -113163,7 +113166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
