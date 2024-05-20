@@ -28,10 +28,16 @@ public class DialogueScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        if (startImmediately)
+        if (startImmediately && !PlayerPrefs.HasKey("Storyline"))
         {
+            PlayerPrefs.SetInt("Storyline", 1);
             coroutine = Type(sentences[IndexInMain], faces[IndexInMain], false);
             StartCoroutine(coroutine);
+        }
+        else
+        {
+            IndexInMain = stopindexes[0];
+            StartAnim.Play();
         }
         GameManager.Instance.SetMainMusic();
     }
