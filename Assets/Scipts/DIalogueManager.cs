@@ -157,7 +157,14 @@ public class DialogueScript : MonoBehaviour
             StopCoroutine(coroutine);
             if (Display.text == Stringpb)
             {
-                ContinueTyping();
+                if (ShouldIStopAfterpb)
+                {
+                    StopTyping();
+                }
+                else
+                {
+                    ContinueTyping();
+                }
             }
             else
             {
