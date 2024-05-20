@@ -85,13 +85,13 @@ public class GameManager : MonoBehaviour
 
 	public void LoadScene(string name)
 	{
-		if (!_loadSceneCoroutineRunning)
+        Time.timeScale = 1f;
+        if (!_loadSceneCoroutineRunning)
 			_loadSceneCoroutine = StartCoroutine(LoadSceneCoroutine(name));
 	}
 
 	private IEnumerator LoadSceneCoroutine(string name)
 	{
-		Time.timeScale = 1f;
 		_loadSceneCoroutineRunning = true;
 		GameObject sceneLoadAnimationObject = Instantiate(_sceneLoadAnimationPrefab);
 		sceneLoadAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, -10f, 1f);
