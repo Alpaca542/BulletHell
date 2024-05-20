@@ -21,7 +21,7 @@ public class AudioSystem
 {
 	private const int _maxAudioObjects = 20;
 	private int _activeAudioObjects;
-	private readonly float[] _audioCategoryVolumes;
+	public readonly float[] _audioCategoryVolumes;
 
 	public AudioSystem()
 	{
@@ -65,5 +65,10 @@ public class AudioSystem
 	public void SetVolume(AudioCategory category, float volume)
 	{
 		_audioCategoryVolumes[(int)category] = Mathf.Max(Mathf.Min(volume, 1f), 0f);
+		foreach (AudioObject gmb in GameObject.FindObjectsOfType(typeof(AudioObject)))
+		{
+			gmb.GetComponent<AudioSource>().volume = _audioCategoryVolumes[(int)gmb.audioCategory];
+
+        }
 	}
 }

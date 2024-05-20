@@ -17,11 +17,14 @@ public class AudioObject : MonoBehaviour, IPoolable
 		gameObject.SetActive(false);
 		GameManager.Instance.audioSystem.AudioObjectDeactivated();
 	}
-
-	private void Update()
+    private void OnEnable()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GameManager.Instance.audioSystem.GetVolume(audioCategory);
+    }
+    private void Update()
 	{
 		AudioSource audioSource = GetComponent<AudioSource>();
-		audioSource.volume = GameManager.Instance.audioSystem.GetVolume(audioCategory);
 		if (!audioSource.isPlaying && !audioSource.loop)
 			GameManager.Instance.pool.Return(this);
 	}

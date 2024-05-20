@@ -132,7 +132,6 @@ public class BossScript : MonoBehaviour
         if (!Died)
         {
             Camera.main.GetComponent<CameraShake>().StartCrtnRemotelyShake(0.3f, 0.5f);
-            GameManager.Instance.SetMainMusic();
             Died = true;
             SpawnEnemies spwn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnEnemies>();
             if (spwn.StageIndex == spwn.AmountOfStages - 1)

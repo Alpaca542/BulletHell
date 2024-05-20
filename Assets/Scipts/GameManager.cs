@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
 		}
     }
 
-	void Start()
+	void OnEnable()
     {
 		LoadPoolablePrefabs();
 		if (_musicObject == null)
@@ -74,38 +75,46 @@ public class GameManager : MonoBehaviour
 		_sceneLoadEndAnimationObject = Instantiate(_sceneLoadEndAnimationPrefab);
 		_sceneLoadEndAnimationObject.transform.position = Camera.main.transform.position + new Vector3(0f, 10f, 1f);
 		Invoke(nameof(RemoveSceneLoadEndAnimation), 3f);
-        //if (SceneManager.GetActiveScene().name == "GameScene")
-        //{
-        //    Destroy(_musicObject);
-        //    _musicObject = audioSystem.PlayClip(_music, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
-        //    _musicObject.name = "MainMusic";
-        //    DontDestroyOnLoad(_musicObject.gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(_musicObject);
-        //    _musicObject = audioSystem.PlayClip(menumusic, new AudioClipSettings { looping = true, forcePlay = true, category = AudioCategory.music }).gameObject;
-        //    _musicObject.name = "MainMusic";
-        //    DontDestroyOnLoad(_musicObject.gameObject);
-        //}
     }
 
 	public void SetMainMusic()
 	{
 		AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
-		audioSource.clip = _music;
-		audioSource.time = 0;
-		audioSource.Play();
-	}
+        StartCoroutine(MixAudio(audioSource, _music));
+    }
 
-	public void LoadScene(string name)
+    public void LoadScene(string name)
 	{
         Time.timeScale = 1f;
         if (!_loadSceneCoroutineRunning)
 			_loadSceneCoroutine = StartCoroutine(LoadSceneCoroutine(name));
 	}
 
-	private IEnumerator LoadSceneCoroutine(string name)
+    private IEnumerator MixAudio(AudioSource nowPlaying, AudioClip target)
+    {
+        float percentage = 0f;
+        while (nowPlaying.volume > 0)
+        {
+            nowPlaying.volume = Mathf.Lerp(audioSystem._audioCategoryVolumes[(int)AudioCategory.music], 0, percentage);
+            percentage += Time.deltaTime / 1.2f;
+            yield return null;
+        }
+        nowPlaying.clip = target;
+        nowPlaying.time = 0;
+        if (!nowPlaying.isPlaying)
+        {
+            nowPlaying.Play();
+        }
+        percentage = 0f;
+        while (nowPlaying.volume < audioSystem._audioCategoryVolumes[(int)AudioCategory.music])
+        {
+            nowPlaying.volume = Mathf.Lerp(0, audioSystem._audioCategoryVolumes[(int)AudioCategory.music], percentage);
+            percentage += Time.deltaTime / 1.2f;
+            yield return null;
+        }
+    }
+
+    private IEnumerator LoadSceneCoroutine(string name)
 	{
 		_loadSceneCoroutineRunning = true;
 		GameObject sceneLoadAnimationObject = Instantiate(_sceneLoadAnimationPrefab);
@@ -128,9 +137,7 @@ public class GameManager : MonoBehaviour
     public void SetMenuMusic()
     {
         AudioSource audioSource = _musicObject.GetComponent<AudioSource>();
-        audioSource.clip = menumusic;
-        audioSource.time = 0;
-        audioSource.Play();
+        StartCoroutine(MixAudio(audioSource, menumusic));
     }
 
     private void LoadPoolablePrefabs()
