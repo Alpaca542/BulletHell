@@ -67477,6 +67477,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   StartAnim: {fileID: 1669510864}
   SmokeEffect: {fileID: 0}
+  player: {fileID: 587019919}
 --- !u!4 &492264640
 Transform:
   m_ObjectHideFlags: 0
@@ -107049,7 +107050,7 @@ Transform:
   m_GameObject: {fileID: 1669510862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.484924, y: 10.216083, z: -1.4667126}
+  m_LocalPosition: {x: -17.484924, y: 10.216083, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
